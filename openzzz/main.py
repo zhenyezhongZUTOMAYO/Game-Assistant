@@ -3,7 +3,6 @@ import pynput
 from time import sleep
 def openZzz():
     keyboard=pynput.keyboard.Controller()
-    sleep(4)
     keyboard.press(pynput.keyboard.Key['f2'])
     sleep(0.5)
     keyboard.release(pynput.keyboard.Key['f2'])
@@ -22,6 +21,9 @@ def openZzz():
     pyautogui.click(2274,1372)#(x,y)下一步
     sleep(1)
     pyautogui.click(2274,1372)#(x,y)出战
+if __name__=="__main__":
+    sleep(4)
+    openZzz()
 # pyautogui.keyUp('alt')
 
 # def on_click(x, y, button, pressed):
