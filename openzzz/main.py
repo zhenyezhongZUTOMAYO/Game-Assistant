@@ -3,7 +3,6 @@ import pynput
 from time import sleep
 def openZzz():
     keyboard=pynput.keyboard.Controller()
-    sleep(4)
     keyboard.press(pynput.keyboard.Key['f2'])
     sleep(0.5)
     keyboard.release(pynput.keyboard.Key['f2'])
