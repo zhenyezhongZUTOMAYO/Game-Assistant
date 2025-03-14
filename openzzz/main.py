@@ -1,26 +1,52 @@
 import pyautogui
 import pynput
 from time import sleep
+
+def convert_coordinates(x, y, original_res, target_res):
+    """
+    将坐标从原分辨率转换到目标分辨率
+    :param x: 原坐标x
+    :param y: 原坐标y
+    :param original_res: 原分辨率 (width, height)
+    :param target_res: 目标分辨率 (width, height)
+    :return: 转换后的坐标 (new_x, new_y)
+    """
+    original_width, original_height = original_res
+    target_width, target_height = target_res
+
+    # 计算缩放比例
+    scale_x = target_width / original_width
+    scale_y = target_height / original_height
+
+    # 转换坐标
+    new_x = int(x * scale_x)
+    new_y = int(y * scale_y)
+
+    return new_x, new_y
+
 def openZzz():
+    original_res=(2560,1440)
+    target_res=pyautogui.size()
     keyboard=pynput.keyboard.Controller()
     keyboard.press(pynput.keyboard.Key['f2'])
     sleep(0.5)
     keyboard.release(pynput.keyboard.Key['f2'])
-    pyautogui.click(1819,197)#(x,y)作战
+    pyautogui.click(convert_coordinates(1819,197,original_res,target_res))#(x,y)作战
     sleep(1)
-    pyautogui.click(442,618)#(x,y)零号空洞
+    pyautogui.click(convert_coordinates(442,618,original_res,target_res))#(x,y)零号空洞
     sleep(1)
-    pyautogui.click(1939,631)#(x,y)前往
+    pyautogui.click(convert_coordinates(1939,631,original_res,target_res))#(x,y)前往
     sleep(1)
-    pyautogui.click(1459,826)#(x,y)确认
+    pyautogui.click(convert_coordinates(1459,826,original_res,target_res))#(x,y)确认
     sleep(3)
-    pyautogui.click(1750,789)#(x,y)战线肃清
+    pyautogui.click(convert_coordinates(1750,789,original_res,target_res))#(x,y)战线肃清
     sleep(1)
-    pyautogui.click(1750,789)#(x,y)点一个buff
+    pyautogui.click(convert_coordinates(1750,789,original_res,target_res))#(x,y)点一个buff
     sleep(1)
-    pyautogui.click(2274,1372)#(x,y)下一步
+    pyautogui.click(convert_coordinates(2274,1372,original_res,target_res))#(x,y)下一步
     sleep(1)
-    pyautogui.click(2274,1372)#(x,y)出战
+    pyautogui.click(convert_coordinates(2274,1372,original_res,target_res))#(x,y)出战
+    
 if __name__=="__main__":
     sleep(4)
     openZzz()
