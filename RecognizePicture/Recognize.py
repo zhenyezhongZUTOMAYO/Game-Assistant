@@ -64,12 +64,12 @@ class Recognize:
                 self.va()
                 return False
 
-    def ToRecognizeIfThen(self,image_path,Fuction):
+    def ToRecognizeIfThen(self,image_path,Fuction,Confidence=0.8):
         while True:
             try:
-                location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+                location = pyautogui.locateOnScreen(image_path, confidence=Confidence)
                 if location is not None:
-                    Fuction()
+                    Fuction(location)
                     return
                 else:
                     time.sleep(0.2)
@@ -93,14 +93,14 @@ class Recognize:
             keyboard.release('w')
             rec.vb()
 
-    def click_image(self, image_path):
-        try:
-            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
-            if location is not None:
-                x, y = pyautogui.center(location)  # 获取图像中心坐标
-                pyautogui.click(x, y)  # 点击图像中心位置
-        except Exception as e:
-            return False
+    # def click_image(self, image_path):
+    #     try:
+    #         location = pyautogui.locateOnScreen(image_path, confidence=0.7)
+    #         if location is not None:
+    #             x, y = pyautogui.center(location)  # 获取图像中心坐标
+    #             pyautogui.click(x, y)  # 点击图像中心位置
+    #     except Exception as e:
+    #         return False
 
 rec=Recognize()
 

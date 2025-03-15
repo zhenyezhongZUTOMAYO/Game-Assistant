@@ -6,12 +6,15 @@ import pyautogui
 import threading
 import time
 
-def method():
+def method(location):
     keyboard = pynput.keyboard.Controller()
     keyboard.press('f')
     time.sleep(0.5)
     keyboard.release('f')
 
+def clickMethod(location):
+    x, y = pyautogui.center(location)  # 获取图像中心坐标
+    pyautogui.click(x, y)  # 点击图像中心位置
 source_path = "D:\\Git\\Game-Assistant\\Soruce\\"
 def CommunicateToNpc():
     # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[source_path+"GanTan.png",])
@@ -30,8 +33,8 @@ def CommunicateToNpc():
     #     time.sleep(2)
     #     keyboard.release('w')
     #     rec.vb()
-    thread_c=threading.Thread(target=rec.ToRecognizeIfThen,args=["D:\\Git\\Game-Assistant\\Soruce\\TestSpeak1.png" , lambda: rec.click_image("D:\\Git\\Game-Assistant\\Soruce\\Speak1.png"),])
-    thread_d=threading.Thread(target=rec.ToRecognizeIfThen,args=["D:\\Git\\Game-Assistant\\Soruce\\TestSpeak2.png" , lambda: rec.click_image("D:\\Git\\Game-Assistant\\Soruce\\Speak2.png"),])
+    thread_c=threading.Thread(target=rec.ToRecognizeIfThen,args=["D:\\Git\\Game-Assistant\\Soruce\\TestSpeak1.png" , clickMethod])
+    thread_d=threading.Thread(target=rec.ToRecognizeIfThen,args=["D:\\Git\\Game-Assistant\\Soruce\\TestSpeak2.png" , clickMethod])
     thread_c.start()
     thread_d.start()
     #点击对话箭头（上面两行）
