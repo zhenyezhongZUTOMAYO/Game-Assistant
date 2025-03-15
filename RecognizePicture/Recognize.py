@@ -29,16 +29,6 @@ class Recognize:
     def vb(self):
         self.sb+=1
 
-    def ToRecognizeIsHave(self,image_path):
-        try:
-            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
-            if location is not None:
-                return True
-            else:
-                return False
-        except Exception:
-            return False
-
     def ToRecognizeWhere(self,image_path):
         try:
             location = pyautogui.locateOnScreen(image_path, confidence=0.8)

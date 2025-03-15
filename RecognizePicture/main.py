@@ -11,9 +11,21 @@ def method(location):
     keyboard.press('f')
     time.sleep(0.5)
     keyboard.release('f')
+    Speak()
 
-def clickMethod(location):
-    x, y = pyautogui.center(location)  # 获取图像中心坐标
+
+def Speak():
+    rec =Recognize.Recognize()
+    thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=["D:\\Git\\Game-Assistant\\Soruce\\TestSpeak1.png", ])
+    thread_a.start()
+    while True:
+        rec.pa()
+        if not thread_a.is_alive():
+            return
+        clickMethod(rec.x,rec.y)
+        rec.vb()
+
+def clickMethod(x,y):
     pyautogui.click(x, y)  # 点击图像中心位置
 source_path = "D:\\Git\\Game-Assistant\\Soruce\\"
 def CommunicateToNpc():
