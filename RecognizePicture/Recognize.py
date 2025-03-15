@@ -96,3 +96,10 @@ class Recognize:
 
 rec=Recognize()
 
+    def click_image(self, image_path):
+        try:
+            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+            if location is not None:
+                x, y = pyautogui.center(location)  # 获取图像中心坐标
+                pyautogui.click(x, y)  # 点击图像中心位置
+
