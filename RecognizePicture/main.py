@@ -30,8 +30,10 @@ def CommunicateToNpc():
     #     time.sleep(2)
     #     keyboard.release('w')
     #     rec.vb()
-    rec.ToRecognizeIfThen("D:\\Git\\Game-Assistant\\Soruce\\Speak1.png", lambda: rec.click_image("D:\\Git\\Game-Assistant\\Soruce\\Speak1.png"))
-    rec.ToRecognizeIfThen("D:\\Git\\Game-Assistant\\Soruce\\Speak2.png", lambda: rec.click_image("D:\\Git\\Game-Assistant\\Soruce\\Speak2.png"))
+    thread_c=threading.Thread(target=rec.ToRecognizeIfThen,args=["D:\\Git\\Game-Assistant\\Soruce\\TestSpeak1.png" , lambda: rec.click_image("D:\\Git\\Game-Assistant\\Soruce\\Speak1.png"),])
+    thread_d=threading.Thread(target=rec.ToRecognizeIfThen,args=["D:\\Git\\Game-Assistant\\Soruce\\TestSpeak2.png" , lambda: rec.click_image("D:\\Git\\Game-Assistant\\Soruce\\Speak2.png"),])
+    thread_c.start()
+    thread_d.start()
     #点击对话箭头（上面两行）
 if __name__=="__main__":
     time.sleep(3)

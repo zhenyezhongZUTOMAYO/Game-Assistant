@@ -72,9 +72,9 @@ class Recognize:
                     Fuction()
                     return
                 else:
-                    time.sleep(1)
+                    time.sleep(0.2)
             except Exception as e:
-                time.sleep(1)
+                time.sleep(0.2)
 
     def trakingImage(self,image_path):
         thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[image_path, ])
@@ -93,13 +93,15 @@ class Recognize:
             keyboard.release('w')
             rec.vb()
 
-
-rec=Recognize()
-
     def click_image(self, image_path):
         try:
             location = pyautogui.locateOnScreen(image_path, confidence=0.8)
             if location is not None:
                 x, y = pyautogui.center(location)  # 获取图像中心坐标
                 pyautogui.click(x, y)  # 点击图像中心位置
+        except Exception as e:
+            return False
+
+rec=Recognize()
+
 
