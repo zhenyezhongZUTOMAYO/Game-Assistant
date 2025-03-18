@@ -12,6 +12,8 @@ class Recognize:
         self.y=-1
         self.sa=0 #获取到坐标的个数
         self.sb=1 #执行完操作的个数
+        self.source_path = __file__[0:__file__.find("Game-Assistant")]
+        self.resolutionRatio=pyautogui.size()[0]
 
     def pa(self):
         self.sa-=1
@@ -29,9 +31,9 @@ class Recognize:
     def vb(self):
         self.sb+=1
 
-    def ToRecognizeWhere(self,image_path):
+    def ToRecognizeWhere(self,image_path,confidence=0.8):
         try:
-            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+            location = pyautogui.locateOnScreen(image_path, confidence=confidence)
             if location is not None:
                 self.x,self.y = pyautogui.center(location)
                 return True
@@ -40,11 +42,11 @@ class Recognize:
         except Exception :
             return False
 
-    def ToRecognizeConWhere(self,image_path):
+    def ToRecognizeConWhere(self,image_path,confidence=0.8):
         while True:
             try:
                 self.pb()
-                location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+                location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 if location is not None:
                     self.x, self.y = pyautogui.center(location)
                     self.va()
@@ -54,10 +56,10 @@ class Recognize:
                 self.va()
                 return False
 
-    def ToRecognizeIfThen(self,image_path,Fuction,Confidence=0.8):
+    def ToRecognizeIfThen(self,image_path,Fuction,confidence=0.8):
         while True:
             try:
-                location = pyautogui.locateOnScreen(image_path, confidence=Confidence)
+                location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 if location is not None:
                     Fuction(location)
                     return
@@ -66,8 +68,8 @@ class Recognize:
             except Exception as e:
                 time.sleep(0.2)
 
-    def trakingImage(self,image_path):
-        thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[image_path, ])
+    def trakingImage(self,image_path,confidence=0.8):
+        thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[image_path,confidence])
         thread_a.start()
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2

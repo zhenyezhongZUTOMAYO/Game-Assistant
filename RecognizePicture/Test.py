@@ -1,12 +1,20 @@
 import pyautogui
 import ctypes
+import os
 from main import  *
 
 def detectGanTanHao():
-    Speak()
+    # Speak()
+    CommunicateToNpc(0.8)
+
+    # 获取当前文件夹路径
+
+    # print("当前文件夹路径:", __file__)
+    # print(__file__[0:__file__.find("Game-Assistant")-1])
     # ctypes.windll.user32.mouse_event(0x0001, 100,100)
     #method()正常
     # CommunicateToNpc()
+    # rec.trakingImage(rec.source_path+"Game-Assistant\\Soruce\\"+str(rec.resolutionRatio)+"GanTan.png",0.3)
     # rec.ToRecognizeIfThen("D:\\Git\\Game-Assistant\\Soruce\\Inter.png",method)
     # 等待一段时间，方便你切换到目标屏幕
     # screen_width, screen_height = pyautogui.size()
@@ -16,11 +24,11 @@ def detectGanTanHao():
     # time.sleep(1)
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
-    # image_path = "D:\\Git\\Game-Assistant\\Soruce\\TestSpeak1.png"
+    # image_path = __file__[0:__file__.find("Game-Assistant")]+"Game-Assistant\\Soruce\\2560GanTan.png"
     #
     # try:
     #     # 在屏幕上查找图片
-    #     location = pyautogui.locateOnScreen(image_path, confidence=0.7)
+    #     location = pyautogui.locateOnScreen(image_path, confidence=0.3)
     #
     #     if location is not None:
     #         # 获取图片的中心坐标
