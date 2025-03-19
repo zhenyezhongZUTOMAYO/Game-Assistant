@@ -13,12 +13,12 @@ rec = Recognize.Recognize()
 
 # 定义图片路径和优先级
 PRIORITY_IMAGES = {
-    "priority0": "E:\\GitHub\\Game-Assistant\\Soruce\\BuffTest.png",  # 高优先级图片
-    "priority10": "E:\\GitHub\\Game-Assistant\\Soruce\\Buff10.png",  # 中0优先级图片
-    "priority11": "E:\\GitHub\\Game-Assistant\\Soruce\\Buff11.png",  # 中1优先级图片
-    "priority12": "E:\\GitHub\\Game-Assistant\\Soruce\\Buff12.png",  # 中2优先级图片
-    "priority13": "E:\\GitHub\\Game-Assistant\\Soruce\\Buff13.png",  # 中3优先级图片
-    "priority2": "E:\\GitHub\\Game-Assistant\\Soruce\\Buff2.png",  # 低优先级图片
+    "priority0": "E:\\GitHub\\Game-Assistant\\Source\\BuffTest.png",  # 高优先级图片
+    "priority10": "E:\\GitHub\\Game-Assistant\\Source\\Buff10.png",  # 中0优先级图片
+    "priority11": "E:\\GitHub\\Game-Assistant\\Source\\Buff11.png",  # 中1优先级图片
+    "priority12": "E:\\GitHub\\Game-Assistant\\Source\\Buff12.png",  # 中2优先级图片
+    "priority13": "E:\\GitHub\\Game-Assistant\\Source\\Buff13.png",  # 中3优先级图片
+    "priority2": "E:\\GitHub\\Game-Assistant\\Source\\Buff2.png",  # 低优先级图片
 }
 
 # 检查文件是否存在
