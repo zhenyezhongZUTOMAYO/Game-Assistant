@@ -1,6 +1,6 @@
 import pyautogui
 import ctypes
-import os
+import sys
 from main import  *
 
 def detectGanTanHao():

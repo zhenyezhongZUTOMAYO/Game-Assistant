@@ -79,7 +79,7 @@ class Recognize:
             rec.pa()
             if  not thread_a.is_alive():
                 return False
-            ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((rec.x-center_x)/2)) , ctypes.c_int(int((rec.y-center_y)/2)))
+            ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((rec.x-center_x)/2)),0)
             keyboard.press('w')
             time.sleep(1)
             keyboard.release('w')

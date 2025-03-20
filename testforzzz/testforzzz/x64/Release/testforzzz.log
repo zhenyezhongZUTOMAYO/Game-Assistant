@@ -1,0 +1,10 @@
+﻿  FileName.cpp
+E:\C++code\testforzzz\FileName.cpp(20,9): warning C4311: “类型强制转换”: 从“HINSTANCE”到“int”的指针截断
+E:\C++code\testforzzz\FileName.cpp(20,9): warning C4302: “类型强制转换”: 从“HINSTANCE”到“int”截断
+E:\C++code\testforzzz\FileName.cpp(21,80): warning C4311: “类型强制转换”: 从“HINSTANCE”到“int”的指针截断
+E:\C++code\testforzzz\FileName.cpp(21,80): warning C4302: “类型强制转换”: 从“HINSTANCE”到“int”截断
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 98 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  testforzzz.vcxproj -> E:\C++code\testforzzz\x64\Release\testforzzz.exe
