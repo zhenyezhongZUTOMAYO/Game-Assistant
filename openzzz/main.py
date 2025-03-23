@@ -11,6 +11,7 @@ def convert_coordinates(x, y, original_res, target_res):
     :param target_res: 目标分辨率 (width, height)
     :return: 转换后的坐标 (new_x, new_y)
     """
+
     original_width, original_height = original_res
     target_width, target_height = target_res
 
@@ -27,6 +28,9 @@ def convert_coordinates(x, y, original_res, target_res):
 def openZzz():
     original_res=(2560,1440)
     target_res=pyautogui.size()
+    size_t=0
+    if target_res[0]/target_res[1]!=16/9:
+        size_t=(target_res[1]-target_res[0]/16*9)/2
     keyboard=pynput.keyboard.Controller()
     keyboard.press(pynput.keyboard.Key['f2'])
     sleep(0.5)
@@ -39,16 +43,16 @@ def openZzz():
     sleep(1)
     pyautogui.click(convert_coordinates(1459,826,original_res,target_res))#(x,y)确认
     sleep(3)
-    pyautogui.click(convert_coordinates(1750,789,original_res,target_res))#(x,y)战线肃清
+    pyautogui.click(convert_coordinates(1750,789-size_t,original_res,target_res))#(x,y)战线肃清
     sleep(1)
-    pyautogui.click(convert_coordinates(1750,789,original_res,target_res))#(x,y)点一个buff
+    pyautogui.click(convert_coordinates(1750,789-size_t,original_res,target_res))#(x,y)点一个buff
     sleep(1)
-    pyautogui.click(convert_coordinates(2274,1372,original_res,target_res))#(x,y)下一步
+    pyautogui.click(convert_coordinates(2274,1372-size_t,original_res,target_res))#(x,y)下一步
     sleep(1)
-    pyautogui.click(convert_coordinates(2274,1372,original_res,target_res))#(x,y)出战
+    pyautogui.click(convert_coordinates(2274,1372-size_t,original_res,target_res))#(x,y)出战
     
 if __name__=="__main__":
-    sleep(4)
+    sleep(3)
     openZzz()
 # pyautogui.keyUp('alt')
 

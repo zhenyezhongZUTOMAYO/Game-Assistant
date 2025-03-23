@@ -73,6 +73,8 @@ def CommunicateToNpc(confidence=0.8):
     thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"Inter.png",method,confidence])
     # thread_a.start()
     thread_b.start()
+    p=Recognize.Recognize()
+    p.trakingImage()
     rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"GanTan.png",confidence)
     # screen_width, screen_height =pyautogui.size()
     # center_x=screen_width // 2
