@@ -1,5 +1,6 @@
 import Recognize
-from pyautogui import *
+import pyautogui
+import threading
 
 def convert_coordinates(x, y, original_res, target_res):
     """
@@ -29,12 +30,41 @@ class SpeakNpc:
     def __init__(self):
         self.rec=Recognize.Recognize()
     def isBuff(self):
-        if self.rec.ToRecongnizeIsHave(self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Buff1.png") is not False:
-            #buff1
-            """(1320, 1308)
-            (2276, 1164)
-            (1380, 903)
+        if self.rec.ToRecognizeWhere(self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Buff1.png") is not False:
+            self.Buff1()
+        if self.rec.ToRecognizeIsHave(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "TestSpeak1.png") is not False:
+            self.Speak()
+            
+    def Buff1(self):
+        # buff1
+        """(1320, 1308)
+        (2276, 1164)
+        (1380, 903)
+        """
+        pyautogui.click(convert_coordinates(1320, 1308, (2560, 1440), self.rec.resolutionRatio))
+        pyautogui.click(convert_coordinates(2276, 1164, (2560, 1440), self.rec.resolutionRatio))
+        pyautogui.click(convert_coordinates(1380, 903, (2560, 1440), self.rec.resolutionRatio))
+    def Speak(self):
+        """
+            这是一个与人对话的函数如果2秒内未出现与人交流的白点那么退出识别
+            :return: None
             """
-            click(convert_coordinates(1320, 1308,(2560,1440),self.rec.resolutionRatio))
-            click(convert_coordinates(2276, 1164,(2560,1440),self.rec.resolutionRatio))
-            click(convert_coordinates(1380, 903,(2560,1440),self.rec.resolutionRatio))
+        rec = Recognize.Recognize()
+        thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "TestSpeak1.png", ])
+        thread_a.start()
+        stop = 0
+        while True:
+            rec.pa()
+            if not thread_a.is_alive():
+                return
+            if rec.real:
+                pyautogui.click(rec.x, rec.y)
+                stop = 0
+            else:
+                """
+                识别不到的停止机制如果连续10次识别不到那么终止
+                """
+                stop += 1
+                if stop > 9:
+                    rec.end = True
+            rec.vb()

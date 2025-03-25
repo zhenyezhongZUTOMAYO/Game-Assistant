@@ -33,7 +33,7 @@ class Recognize:
     def vb(self):
         self.sb+=1
 
-    def ToRecongnizeIsHave(self,image_path,confidence=0.8):
+    def ToRecognizeIsHave(self,image_path,confidence=0.8):
         thread_a = threading.Thread(target=self.ToRecognizeConWhere, args=[self.source_path + "Game-Assistant\\Source\\" + str(self.resolutionRatio[0]) + "TestSpeak1.png", ])
         thread_a.start()
         stop = 0
@@ -46,10 +46,10 @@ class Recognize:
                 return True
             else:
                 """
-                识别不到的停止机制如果连续10次识别不到那么终止
+                识别不到的停止机制如果连续3次识别不到那么终止
                 """
                 stop += 1
-                if stop > 3:
+                if stop > 2:
                     self.end = True
                     return False
             self.vb()
