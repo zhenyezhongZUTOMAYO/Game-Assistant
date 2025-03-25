@@ -1,6 +1,8 @@
 import pyautogui
 import ctypes
 import sys
+import time
+import Recognize
 from main import  *
 
 def Test(rec):
@@ -69,3 +71,8 @@ def detectGanTanHao():
 if __name__=="__main__":
     # time.sleep(2)
     detectGanTanHao()
+    # rec=Recognize.Recognize()
+    # now=time.time()
+    # rec.ToRecongnizeIsHave("D:\\Git\\Game-Assistant\\Source\\2560GanTan.png")
+    # then=time.time()
+    # print(then-now)

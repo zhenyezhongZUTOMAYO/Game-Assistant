@@ -21,7 +21,7 @@ def Speak():
     :return: None
     """
     rec =Recognize.Recognize()
-    thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"TestSpeak1.png",])
+    thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"TestSpeak1.png",])
     thread_a.start()
     stop=0
     while True:
@@ -70,12 +70,11 @@ def Speak():
 
 def CommunicateToNpc(confidence=0.8):
     # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
-    thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"Inter.png",method,confidence])
+
+    thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Inter.png",method,confidence])
     # thread_a.start()
     thread_b.start()
-    p=Recognize.Recognize()
-    p.trakingImage()
-    rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"GanTan.png",confidence)
+    rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",confidence)
     # screen_width, screen_height =pyautogui.size()
     # center_x=screen_width // 2
     # center_y=screen_height // 2
@@ -87,8 +86,8 @@ def CommunicateToNpc(confidence=0.8):
     #     time.sleep(2)
     #     keyboard.release('w')
     #     rec.vb()
-    # thread_c=threading.Thread(target=rec.ToRecognizeIfThen,args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"TestSpeak1.png" , pyautogui.click,confidence])
-    # thread_d=threading.Thread(target=rec.ToRecognizeIfThen,args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"TestSpeak2.png" , pyautogui.click,confidence])
+    # thread_c=threading.Thread(target=rec.ToRecognizeIfThen,args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"TestSpeak1.png" , pyautogui.click,confidence])
+    # thread_d=threading.Thread(target=rec.ToRecognizeIfThen,args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"TestSpeak2.png" , pyautogui.click,confidence])
     # thread_c.start()
     # thread_d.start()
     #点击对话箭头（上面两行）
@@ -97,5 +96,5 @@ if __name__=="__main__":
     #     run_as_admin()
     #     sys.exit()  # 退出当前非管理员权限的进程
     # openzzz.openZzz()
-    rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio)+"GanTan.png",CommunicateToNpc())
+    rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",CommunicateToNpc())
 

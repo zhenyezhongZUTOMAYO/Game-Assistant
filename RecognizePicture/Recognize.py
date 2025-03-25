@@ -15,7 +15,7 @@ class Recognize:
         self.end=False#外部函数操控内部图象识别是否停止的变量
         self.real=False#是否捕获到目标
         self.source_path = __file__[0:__file__.find("Game-Assistant")]
-        self.resolutionRatio=pyautogui.size()[0]
+        self.resolutionRatio=pyautogui.size()
 
     def pa(self):
         self.sa-=1
@@ -32,6 +32,27 @@ class Recognize:
 
     def vb(self):
         self.sb+=1
+
+    def ToRecongnizeIsHave(self,image_path,confidence=0.8):
+        thread_a = threading.Thread(target=self.ToRecognizeConWhere, args=[self.source_path + "Game-Assistant\\Source\\" + str(self.resolutionRatio[0]) + "TestSpeak1.png", ])
+        thread_a.start()
+        stop = 0
+        while True:
+            self.pa()
+            if not thread_a.is_alive():
+                return
+            if self.real:
+                self.end=True
+                return True
+            else:
+                """
+                识别不到的停止机制如果连续10次识别不到那么终止
+                """
+                stop += 1
+                if stop > 3:
+                    self.end = True
+                    return False
+            self.vb()
 
     def ToRecognizeWhere(self,image_path,confidence=0.8):
         """
@@ -102,31 +123,31 @@ class Recognize:
 
     def trakingImage(self,image_path,confidence=0.8):
         """
-        通过调用ToRecognizeConWhere来实现图像追踪(比较强大)
+        通过调用ToRecognizeConWhere来实现图像追d踪(比较强大)
         通过self.end关闭
         :param image_path:
         :param confidence:
         :return:
         """
-        thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[image_path,confidence])
+        thread_a = threading.Thread(target=self.ToRecognizeConWhere, args=[image_path,confidence])
         thread_a.start()
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2
         center_y = screen_height // 2
         keyboard = pynput.keyboard.Controller()
         while True:
-            rec.pa()
+            self.pa()
             if  not thread_a.is_alive():
                 return False
-            if rec.real:
-                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((rec.x-center_x)/2)),0)
+            if self.real:
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)
             else:
-                rec.vb()
+                self.vb()
                 continue
             keyboard.press('w')
             time.sleep(1)
             keyboard.release('w')
-            rec.vb()
+            self.vb()
 
     # def click_image(self, image_path):
     #     try:
