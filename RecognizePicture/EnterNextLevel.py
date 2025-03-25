@@ -16,27 +16,37 @@ class LevelSystem:
         time.sleep(0.5)
         self.keyboard.release('f')
         self.rec.end = True
+        _enter_flow()
 
     def start_detection(self):
-        """启动入口检测"""
-        entrance_path = f"{self.rec.source_path}Game-Assistant\\Source\\{self.rec.resolutionRatio[0]}GanTan.png"
-        self.rec.ToRecognizeIfThen(entrance_path, self._enter_flow)
+        """线程化启动入口检测"""
+        thread_a = threading.Thread(target=rec.ToRecognizeIfThen, args=[rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "levelEntrance.png", method,confidence])
+        thread_a.start()
+        rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "levelEntrance.png",confidence)
 
-    def _enter_flow(self, location, _):
-        """完整的进入流程"""
-        # 1. 追踪目标
-        self.rec.trakingImage(f"{self.rec.source_path}Game-Assistant\\Source\\{self.rec.resolutionRatio[0]}GanTan.png", 0.8)
-        
-        # 2. 执行交互
-        self._method(None, None)
-        
-        # 3. 验证结果
-        if self._verify_entrance():
-            print("成功进入下一层！")
-        else:
-            print("进入下一层失败")
+    def _enter_flow(self):
+        rec =Recognize.Recognize()
+        thread_b = threading.Thread(target=rec.ToRecognizeConWhere, args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"levelEntrance.png",])
+        thread_b.start()
+        stop=0
+        while True:
+            rec.pa()
+            if not thread_b.is_alive():
+                return False
+            if rec.real:
+                pyautogui.click(rec.x,rec.y)
+                stop=0
+            else:
+                """
+                识别不到的停止机制如果连续10次识别不到那么终止
+                """
+                stop+=1
+                if stop > 9:
+                    rec.end=True
+            rec.vb()
 
-def start():
-    """模块启动入口"""
-    system = LevelSystem()
-    system.start_detection()
+
+    def start(self):
+        """模块启动入口"""
+        system = LevelSystem()
+        system.start_detection()
