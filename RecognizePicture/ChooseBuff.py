@@ -25,9 +25,9 @@ class BuffSelector:
                 "cooldown": 2  # 模式执行后的冷却时间
             },
             "RandomBuff": {
-                "entry_image": self._get_image_path("ChooseOne.png"),
+                "entry_image": self._get_image_path("Buff.png"),
                 "actions": [
-                    {"image": self._get_image_path("Buff.png"), "name": "随机选择buff", "delay": 1},
+                    {"image": self._get_image_path("Buff.png"), "name": "选择buff", "delay": 1},
                 ],
                 "exit_image": self._get_image_path("Confirm.png"),
                 "cooldown": 2
@@ -74,11 +74,6 @@ class BuffSelector:
             start_time = time.time()
 
             while self.running and time.time() - start_time < 10:  # 最多等待10秒
-                # 优先检查退出条件
-                if self.rec.ToRecognizeWhere(mode_config["exit_image"]):
-                    print("检测到退出确认，点击确认")
-                    pyautogui.click(self.rec.x, self.rec.y)
-                    return True
 
                 # 检测目标图片
                 if self.rec.ToRecognizeWhere(action["image"]):
@@ -86,6 +81,12 @@ class BuffSelector:
                     pyautogui.click(self.rec.x, self.rec.y)
                     time.sleep(action["delay"])
                     break
+
+                # 优先检查退出条件
+                if self.rec.ToRecognizeWhere(mode_config["exit_image"]):
+                    print("检测到退出确认，点击确认")
+                    pyautogui.click(self.rec.x, self.rec.y)
+                    return True
 
                 time.sleep(0.2)
 
