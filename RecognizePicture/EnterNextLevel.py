@@ -19,13 +19,13 @@ class LevelSystem:
 
     def start_detection(self):
         """启动入口检测"""
-        entrance_path = f"{self.rec.source_path}Game-Assistant\\Source\\{self.rec.resolutionRatio}level_entrance.png"
+        entrance_path = f"{self.rec.source_path}Game-Assistant\\Source\\{self.rec.resolutionRatio[0]}GanTan.png"
         self.rec.ToRecognizeIfThen(entrance_path, self._enter_flow)
 
     def _enter_flow(self, location, _):
         """完整的进入流程"""
         # 1. 追踪目标
-        self.rec.trakingImage(entrance_path, 0.8)
+        self.rec.trakingImage(f"{self.rec.source_path}Game-Assistant\\Source\\{self.rec.resolutionRatio[0]}GanTan.png", 0.8)
         
         # 2. 执行交互
         self._method(None, None)

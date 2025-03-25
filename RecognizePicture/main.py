@@ -1,6 +1,7 @@
 import Recognize
 import ctypes
 import sys
+from EnterNextLevel import  LevelSystem
 from Recognize import rec
 import pynput
 import pyautogui
