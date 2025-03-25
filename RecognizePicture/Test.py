@@ -3,9 +3,22 @@ import ctypes
 import sys
 from main import  *
 
+def Test(rec):
+    """
+
+    :param rec:
+    :return:
+    测试rec在函数内部能不能修改
+    """
+    rec.end=True
+
 def detectGanTanHao():
     # Speak()
     CommunicateToNpc(0.8)
+    # rec=Recognize.Recognize()
+    # print(rec.end)
+    # Test(rec)
+    # print(rec.end)
 
     # 获取当前文件夹路径
 
@@ -54,5 +67,5 @@ def detectGanTanHao():
     #     print(f"发生错误: {e}")
 
 if __name__=="__main__":
-    time.sleep(2)
+    # time.sleep(2)
     detectGanTanHao()
