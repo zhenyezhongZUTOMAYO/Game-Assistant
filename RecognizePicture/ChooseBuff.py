@@ -18,9 +18,9 @@ MODES_CONFIG = {
         "exit_image": "E:\\GitHub\\Game-Assistant\\Source\\Confirm.png"
     },
     "mode2": {
-        "entry_image": "E:\\GitHub\\Game-Assistant\\Source\\Buff10.png",
+        "entry_image": "E:\\GitHub\\Game-Assistant\\Source\\ChooseOne.png",
         "actions": [
-            {"image": "E:\\GitHub\\Game-Assistant\\Source\\Buff2.png", "name": "动作", "delay": 1},
+            {"image": "E:\\GitHub\\Game-Assistant\\Source\\Buff.png", "name": "动作", "delay": 1},
         ],
         "exit_image": "E:\\GitHub\\Game-Assistant\\Source\\Confirm.png"
     }
@@ -31,21 +31,6 @@ class ModeExecutor:
     def __init__(self):
         self.current_mode = None
         self.running = True
-
-    def check_files_exist(self):
-        """检查所有图片文件是否存在"""
-        for mode, config in MODES_CONFIG.items():
-            if not os.path.exists(config["entry_image"]):
-                print(f"错误: 入口图片不存在 - {config['entry_image']}")
-                return False
-            for action in config["actions"]:
-                if not os.path.exists(action["image"]):
-                    print(f"错误: 动作图片不存在 - {action['image']}")
-                    return False
-            if not os.path.exists(config["exit_image"]):
-                print(f"错误: 退出图片不存在 - {config['exit_image']}")
-                return False
-        return True
 
     def execute_action_sequence(self, mode_config):
         """按顺序执行模式下的动作"""
@@ -86,11 +71,6 @@ class ModeExecutor:
 
 def main():
     executor = ModeExecutor()
-
-    # 检查文件是否存在
-    if not executor.check_files_exist():
-        print("程序退出: 部分图片文件缺失。")
-        return
 
     # 启动模式检测和执行线程
     mode_thread = threading.Thread(target=executor.detect_and_execute_modes)
