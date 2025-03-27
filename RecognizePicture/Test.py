@@ -6,6 +6,39 @@ import Recognize
 import SpeakNpc
 from main import  *
 
+import cv2
+import numpy as np
+
+def locate_with_alpha(template_path, confidence=0.8):
+    """
+    匹配带透明通道的图片
+    :param template_path: 模板图片路径（PNG 透明背景）
+    :param confidence: 匹配阈值（0~1）
+    :return: 匹配位置 (left, top, width, height)，或 None
+    """
+    # 1. 读取模板图片（带 Alpha 通道）
+    template = cv2.imread(template_path, cv2.IMREAD_UNCHANGED)  # BGRA 格式
+    template_bgr = template[:, :, :3]  # BGR 部分
+    template_alpha = template[:, :, 3]  # Alpha 通道
+    mask = cv2.threshold(template_alpha, 1, 255, cv2.THRESH_BINARY)[1]  # 非透明部分=255
+
+    # 2. 获取屏幕截图（BGR 格式）
+    screenshot = np.array(pyautogui.screenshot())
+    screenshot_bgr = cv2.cvtColor(screenshot, cv2.COLOR_RGB2BGR)  # RGB -> BGR
+
+    # 3. 执行模板匹配（仅匹配非透明部分）
+    result = cv2.matchTemplate(screenshot_bgr, template_bgr, cv2.TM_CCOEFF_NORMED, mask=mask)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+
+    if max_val >= confidence:
+        h, w = template_bgr.shape[:2]
+        return (*max_loc, w, h)  # (left, top, width, height)
+    else:
+        return None
+
+# 示例用法
+
+
 def Test(rec):
     """
 
@@ -71,9 +104,16 @@ def detectGanTanHao():
 
 if __name__=="__main__":
     # time.sleep(2)
-    spk=SpeakNpc.SpeakNpc()
-    spk.isBuff()
+    # spk=SpeakNpc.SpeakNpc()
+    # spk.isBuff()
     # detectGanTanHao()
+    match_pos = locate_with_alpha("D:\\Git\\Game-Assistant\\Source\\3840GanTan111.png", confidence=0.8)
+    if match_pos:
+        x, y, w, h = match_pos
+        print(f"匹配成功！位置：{x + w // 2},{y + h // 2}")
+        pyautogui.click(x + w // 2, y + h // 2)  # 点击中心
+    else:
+        print("匹配失败！")
     # rec=Recognize.Recognize()
     # now=time.time()
     # rec.ToRecongnizeIsHave("D:\\Git\\Game-Assistant\\Source\\2560GanTan.png")
