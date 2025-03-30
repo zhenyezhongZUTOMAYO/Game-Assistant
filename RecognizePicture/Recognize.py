@@ -85,15 +85,18 @@ class Recognize:
         while True:
             try:
                 self.pb()
+                print(f"开始识别{image_path}")
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 if location is not None:
                     self.x, self.y = pyautogui.center(location)
                     self.real=True
                     self.va()
+                    print("识别成功")
                 else:
                     return False
             except Exception as e:
                 self.va()
+                print("识别失败")
                 if self.end:
                     return False
 
@@ -146,17 +149,21 @@ class Recognize:
         keyboard = pynput.keyboard.Controller()
         while True:
             self.pa()
+            print("进入操作")
             if  not thread_a.is_alive():
                 return False
             if self.real:
+                print("正在操作")
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)
             else:
                 self.vb()
+                print("操作完成-误操作")
                 continue
             keyboard.press('w')
             time.sleep(1)
             keyboard.release('w')
             self.vb()
+            print("操作完成-有操作")
 
     # def click_image(self, image_path):
     #     try:

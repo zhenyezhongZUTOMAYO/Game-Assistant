@@ -24,6 +24,14 @@ class BuffSelector:
                 "exit_image": self._get_image_path("Confirm.png"),
                 "cooldown": 2  # 模式执行后的冷却时间
             },
+            "Lottery": {
+                "entry_image": self._get_image_path("Lottery.png"),
+                "actions": [
+                    {"image": self._get_image_path("Lottery.png"), "name": "抽奖", "delay": 1},
+                ],
+                "exit_image": self._get_image_path("ExitLottery.png"),
+                "cooldown": 2
+            },
             "RandomBuff": {
                 "entry_image": self._get_image_path("Buff.png"),
                 "actions": [
@@ -33,7 +41,6 @@ class BuffSelector:
                 "cooldown": 2
             }
         }
-
         # 验证所有图片文件是否存在
         self._validate_image_files()
 
