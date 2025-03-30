@@ -98,5 +98,7 @@ if __name__=="__main__":
     #     sys.exit()  # 退出当前非管理员权限的进程
     # openzzz.openZzz()
     rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",CommunicateToNpc())
+    buff = ChooseBuff.BuffSelector()
+    buff.start()
     #level_system = LevelSystem()  # 创建进入下一层实例
     #level_system.start_detection()  # 开始检测入口

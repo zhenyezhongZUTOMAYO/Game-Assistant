@@ -111,7 +111,7 @@ if __name__=="__main__":
     if match_pos:
         x, y, w, h = match_pos
         print(f"匹配成功！位置：{x + w // 2},{y + h // 2}")
-        pyautogui.click(x + w // 2, y + h // 2)  # 点击中心
+           # 点击中心
     else:
         print("匹配失败！")
     # rec=Recognize.Recognize()
