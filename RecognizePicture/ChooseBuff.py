@@ -17,35 +17,35 @@ class BuffSelector:
         # 模式配置
         self.modes_config = {
             "BloodLoss": {
-                "entry_image": self._get_image_path("BloodLoss.png"),
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodLoss.png"),
                 "actions": [
-                    {"image": self._get_image_path("BloodLoss.png"), "name": "选择流血buff", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodLoss.png"), "name": "选择流血buff", "delay": 1},
                 ],
-                "exit_image": self._get_image_path("Confirm.png"),
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
                 "cooldown": 2  # 模式执行后的冷却时间
             },
             "Lottery": {
-                "entry_image": self._get_image_path("Lottery.png"),
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Lottery.png"),
                 "actions": [
-                    {"image": self._get_image_path("Lottery.png"), "name": "抽奖", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Lottery.png"), "name": "抽奖", "delay": 1},
                 ],
-                "exit_image": self._get_image_path("ExitLottery.png"),
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitLottery.png"),
                 "cooldown": 2
             },
             "ChooseBuff": {
-                "entry_image": self._get_image_path("Buff.png"),
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"),
                 "actions": [
-                    {"image": self._get_image_path("Buff.png"), "name": "选择buff", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择buff", "delay": 1},
                 ],
-                "exit_image": self._get_image_path("Confirm.png"),
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
                 "cooldown": 2
             },
             "ChooseCard": {
-                "entry_image": self._get_image_path("Card.png"),
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Card.png"),
                 "actions": [
-                    {"image": self._get_image_path("Card.png"), "name": "选择card", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Card.png"), "name": "选择card", "delay": 1},
                 ],
-                "exit_image": self._get_image_path("Confirm.png"),
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
                 "cooldown": 2  # 模式执行后的冷却时间
             },
         }
