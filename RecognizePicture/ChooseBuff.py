@@ -32,21 +32,37 @@ class BuffSelector:
                 "exit_image": self._get_image_path("ExitLottery.png"),
                 "cooldown": 2
             },
-            "RandomBuff": {
+            "ChooseBuff": {
                 "entry_image": self._get_image_path("Buff.png"),
                 "actions": [
                     {"image": self._get_image_path("Buff.png"), "name": "选择buff", "delay": 1},
                 ],
                 "exit_image": self._get_image_path("Confirm.png"),
                 "cooldown": 2
-            }
+            },
+            "ChooseCard": {
+                "entry_image": self._get_image_path("Card.png"),
+                "actions": [
+                    {"image": self._get_image_path("Card.png"), "name": "选择card", "delay": 1},
+                ],
+                "exit_image": self._get_image_path("Confirm.png"),
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
         }
         # 验证所有图片文件是否存在
         self._validate_image_files()
 
     def _get_image_path(self, filename):
-        """获取图片完整路径"""
-        return os.path.join("E:\\GitHub\\Game-Assistant\\Source", filename)
+        """获取图片完整路径（动态相对路径）"""
+        # 获取当前文件的目录路径
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        source_dir = os.path.join(current_dir, "..", "Source")
+
+        # 规范路径格式（解决../的问题）
+        normalized_path = os.path.normpath(source_dir)
+
+        # 组合最终路径
+        return os.path.join(normalized_path, filename)
 
     def _validate_image_files(self):
         """验证所有配置的图片文件是否存在"""
@@ -80,7 +96,7 @@ class BuffSelector:
             print(f"等待执行: {action['name']}")
             start_time = time.time()
 
-            while self.running and time.time() - start_time < 10:  # 最多等待10秒
+            while self.running and time.time() - start_time < 3:  # 最多等待3秒
 
                 # 检测目标图片
                 if self.rec.ToRecognizeWhere(action["image"]):
@@ -140,7 +156,7 @@ class BuffSelector:
             self.running = True
             self.thread = threading.Thread(target=self._mode_detection_loop, daemon=True)
             self.thread.start()
-            print("Buff选择器已启动")
+            print("已启动")
 
     def stop(self):
         """停止检测"""
@@ -148,10 +164,10 @@ class BuffSelector:
             self.running = False
             if self.thread and self.thread.is_alive():
                 self.thread.join()
-            print("Buff选择器已停止")
+            print("已停止")
 
 
-def main():
+def BUFF():
     selector = BuffSelector()
     selector.start()
 
@@ -166,4 +182,4 @@ def main():
 if __name__ == "__main__":
     print("3秒后开始运行...")
     sleep(3)  # 初始等待时间
-    main()
+    BUFF()

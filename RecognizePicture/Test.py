@@ -17,7 +17,7 @@ def Test(rec):
 
 def detectGanTanHao():
     # Speak()
-    # CommunicateToNpc(0.8)
+    # CommunicateToNpc(0.7)
     # rec=Recognize.Recognize()
     # print(rec.end)
     # Test(rec)
@@ -40,8 +40,7 @@ def detectGanTanHao():
     # time.sleep(1)
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
-    image_path = rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png"
-
+    image_path = "C:\\Users\\21642\\Pictures\\Screenshots\\123456.png"
     try:
         # 在屏幕上查找图片
         location = pyautogui.locateOnScreen(image_path, confidence=0.8)
@@ -74,10 +73,10 @@ if __name__=="__main__":
     # spk=SpeakNpc.SpeakNpc()
     # spk.isBuff()
     detectGanTanHao()
-    # rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png")
-    print(rec.ToRecognizeWhere("E:\\GitHub\\Game-Assistant\\Source\\2560GanTan.png"))
+#     # rec.trakingImage(recsource_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png")
+    print(rec.ToRecognizeWhere("E:\\GitHub\\Game-Assistant\\Source\\2560GanTan.png",0.7))
     # rec=Recognize.Recognize()
-    # rec.trakingImage("C:\\Users\\21642\\Pictures\\Screenshots\\123.png")
+    # rec.trakingImage("E:\\GitHub\\Game-Assistant\\Source\\2560GanTan.png",0.8)
     # now=time.time()
     # rec.ToRecongnizeIsHave("D:\\Git\\Game-Assistant\\Source\\2560GanTan.png")
     # then=time.time()
