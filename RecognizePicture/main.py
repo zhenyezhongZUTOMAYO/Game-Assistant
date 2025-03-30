@@ -7,7 +7,7 @@ import pynput
 import pyautogui
 import threading
 import time
-
+import ChooseBuff
 def method(location,rec):
     keyboard = pynput.keyboard.Controller()
     keyboard.press('f')
@@ -75,7 +75,7 @@ def CommunicateToNpc(confidence=0.8):
     thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Inter.png",method,confidence])
     # thread_a.start()
     thread_b.start()
-    rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan111.png",confidence)
+    rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",confidence)
     # screen_width, screen_height =pyautogui.size()
     # center_x=screen_width // 2
     # center_y=screen_height // 2
@@ -98,5 +98,5 @@ if __name__=="__main__":
     #     sys.exit()  # 退出当前非管理员权限的进程
     # openzzz.openZzz()
     rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",CommunicateToNpc())
-    level_system = LevelSystem()  # 创建进入下一层实例
-    level_system.start_detection()  # 开始检测入口
+    #level_system = LevelSystem()  # 创建进入下一层实例
+    #level_system.start_detection()  # 开始检测入口

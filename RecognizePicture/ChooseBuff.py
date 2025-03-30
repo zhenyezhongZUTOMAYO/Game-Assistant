@@ -157,6 +157,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print("3秒后开始运行...")
-    sleep(3)  # 初始等待时间
     main()
