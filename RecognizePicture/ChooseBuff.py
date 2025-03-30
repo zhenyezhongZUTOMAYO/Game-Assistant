@@ -10,6 +10,7 @@ import sys
 class BuffSelector:
     def __init__(self):
         self.rec = Recognize.Recognize()
+        self.rec.resolutionRatio[0]=2560
         self.running = False
         self.current_mode = None
         self.thread = None

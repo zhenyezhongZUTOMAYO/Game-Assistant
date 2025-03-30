@@ -95,6 +95,7 @@ class Recognize:
                 else:
                     return False
             except Exception as e:
+                self.real=False
                 self.va()
                 print("识别失败")
                 if self.end:
