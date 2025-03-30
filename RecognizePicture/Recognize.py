@@ -115,14 +115,23 @@ class Recognize:
         """
         while True:
             try:
+                print(f"尝试识别: {image_path}")  # 新增路径打印
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
+                print(f"识别结果: {location}")  # 调试输出
                 if location is not None:
+                    print(f"成功识别坐标: {location}")
                     Fuction(location,self)
                     return
                 else:
+                    print("未识别到目标，继续尝试...")
                     time.sleep(0.2)
             except Exception as e:
+                import traceback  # 新增完整堆栈打印
+                print(f"完整异常信息:\n{traceback.format_exc()}")
+                print("等待2秒后重试...")
                 time.sleep(0.2)
+
+
 
     def trakingImage(self,image_path,confidence=0.8):
         """
