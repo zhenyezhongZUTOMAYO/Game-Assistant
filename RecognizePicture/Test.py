@@ -50,7 +50,7 @@ def Test(rec):
 
 def detectGanTanHao():
     # Speak()
-    CommunicateToNpc(0.8)
+    # CommunicateToNpc(0.8)
     # rec=Recognize.Recognize()
     # print(rec.end)
     # Test(rec)
@@ -73,47 +73,49 @@ def detectGanTanHao():
     # time.sleep(1)
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
-    # image_path = __file__[0:__file__.find("Game-Assistant")]+"Game-Assistant\\Soruce\\2560GanTan.png"
-    #
-    # try:
-    #     # 在屏幕上查找图片
-    #     location = pyautogui.locateOnScreen(image_path, confidence=0.3)
-    #
-    #     if location is not None:
-    #         # 获取图片的中心坐标
-    #         x, y = pyautogui.center(location)
-    #         print(f"找到图片，坐标位于: ({x}, {y})")
-    #     else:
-    #         print("未找到图片")
-    # except Exception as e:
-    #     print(f"发生错误: {e}")
-    #     image_path = "D:\\Git\\Game-Assistant\\Source\\TestSpeak2.png"
-    #
-    # try:
-    #     # 在屏幕上查找图片
-    #     location = pyautogui.locateOnScreen(image_path, confidence=0.7)
-    #
-    #     if location is not None:
-    #         # 获取图片的中心坐标
-    #         x, y = pyautogui.center(location)
-    #         print(f"找到图片，坐标位于: ({x}, {y})")
-    #     else:
-    #         print("未找到图片")
-    # except Exception as e:
-    #     print(f"发生错误: {e}")
+    image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"
+
+    try:
+        # 在屏幕上查找图片
+        location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+
+        if location is not None:
+            # 获取图片的中心坐标
+            x1, y1 = pyautogui.center(location)
+            print(f"找到图片，坐标位于: ({x1}, {y1})")
+        else:
+            print("未找到图片")
+    except Exception as e:
+        print(f"发生错误: {e}")
+
+    image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTanSpeak.png"
+
+    try:
+        # 在屏幕上查找图片
+        location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
+
+        if location is not None:
+            # 获取图片的中心坐标
+            x2, y2 = pyautogui.center(location)
+            print(f"找到图片，坐标位于: ({x2}, {y2})")
+        else:
+            print("未找到图片")
+    except Exception as e:
+        print(f"发生错误: {e}")
+    print(f"({x2-x1},{y2-y1})")
 
 if __name__=="__main__":
     # time.sleep(2)
     # spk=SpeakNpc.SpeakNpc()
     # spk.isBuff()
-    # detectGanTanHao()
-    match_pos = locate_with_alpha("D:\\Git\\Game-Assistant\\Source\\3840GanTan111.png", confidence=0.8)
-    if match_pos:
-        x, y, w, h = match_pos
-        print(f"匹配成功！位置：{x + w // 2},{y + h // 2}")
-           # 点击中心
-    else:
-        print("匹配失败！")
+    detectGanTanHao()
+    # match_pos = locate_with_alpha("D:\\Git\\Game-Assistant\\Source\\3840GanTan111.png", confidence=0.8)
+    # if match_pos:
+    #     x, y, w, h = match_pos
+    #     print(f"匹配成功！位置：{x + w // 2},{y + h // 2}")
+    #        # 点击中心
+    # else:
+    #     print("匹配失败！")
     # rec=Recognize.Recognize()
     # now=time.time()
     # rec.ToRecongnizeIsHave("D:\\Git\\Game-Assistant\\Source\\2560GanTan.png")

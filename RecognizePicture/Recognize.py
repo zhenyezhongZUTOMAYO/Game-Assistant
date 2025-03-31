@@ -14,6 +14,7 @@ class Recognize:
         self.sb=1 #执行完操作的个数
         self.end=False#外部函数操控内部图象识别是否停止的变量
         self.real=False#是否捕获到目标
+        self.keyboard = pynput.keyboard.Controller()
         self.source_path = __file__[0:__file__.find("Game-Assistant")]
         self.resolutionRatio=pyautogui.size()
 
@@ -85,6 +86,10 @@ class Recognize:
         while True:
             try:
                 self.pb()
+                if self.end:
+                    self.va()
+                    print("退出")
+                    return
                 print(f"开始识别{image_path}")
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 if location is not None:
@@ -99,6 +104,7 @@ class Recognize:
                 self.va()
                 print("识别失败")
                 if self.end:
+                    print("退出")
                     return False
 
 
@@ -116,15 +122,15 @@ class Recognize:
         """
         while True:
             try:
-                print(f"尝试识别: {image_path}")  # 新增路径打印
+                # print(f"尝试识别: {image_path}")  # 新增路径打印
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
-                print(f"识别结果: {location}")  # 调试输出
+                # print(f"识别结果: {location}")  # 调试输出
                 if location is not None:
-                    print(f"成功识别坐标: {location}")
+                    # print(f"成功识别坐标: {location}")
                     Fuction(location,self)
                     return
                 else:
-                    print("未识别到目标，继续尝试...")
+                    # print("未识别到目标，继续尝试...")
                     time.sleep(0.2)
             except Exception as e:
                 # import traceback  # 新增完整堆栈打印
@@ -147,11 +153,11 @@ class Recognize:
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2
         center_y = screen_height // 2
-        keyboard = pynput.keyboard.Controller()
         while True:
             self.pa()
             print("进入操作")
             if  not thread_a.is_alive():
+                self.vb()
                 return False
             if self.real:
                 print("正在操作")
@@ -160,9 +166,9 @@ class Recognize:
                 self.vb()
                 print("操作完成-误操作")
                 continue
-            keyboard.press('w')
+            self.keyboard.press('w')
             time.sleep(1)
-            keyboard.release('w')
+            self.keyboard.release('w')
             self.vb()
             print("操作完成-有操作")
 

@@ -5,15 +5,29 @@ import threading
 import time
 class GanTanChat:
     def __init__(self):
-        rec=Recognize.Recognize()
+        self.rec=Recognize.Recognize()
 
-    def method(self,location,rec):
-        self.rec.end = True
+    def method(self,location,rec:Recognize.Recognize):
+        self.rec.end=True
+        self.rec.keyboard.release('w')
         keyboard = pynput.keyboard.Controller()
+
+        if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
+            keyboard.press('s')
+            time.sleep(0.5)
+            keyboard.release('s')
+            keyboard.press('a')
+            time.sleep(0.5)
+            keyboard.release('a')
+            self.rec.end = False  # 外部函数操控内部图象识别是否停止的变量
+            self.rec.real = False  # 是否捕获到目标
+            self.CommunicateToNpc()
+            return
         keyboard.press('f')
         time.sleep(0.5)
         keyboard.release('f')
         self.Speak()
+
         keyboard.press('s')
         time.sleep(2)
         keyboard.release('s')
