@@ -88,7 +88,7 @@ def detectGanTanHao():
     # except Exception as e:
     #     print(f"发生错误: {e}")
 
-    for i in range(1,7):
+    for i in range(1,9):
         image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + f"Direction{i}.png"
 
         try:
