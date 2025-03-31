@@ -16,6 +16,34 @@ class BuffSelector:
 
         # 模式配置
         self.modes_config = {
+            "Start": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}StartBuff.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Start1.png"),"name": "选择战备buff1", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Start2.png"),"name": "选择战备buff2", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Start0.png"),"name": "确认携带","delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
+            "Store": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Store.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Store.png"), "name": "商店页面",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
+            "BloodStore": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodStore.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodStore.png"), "name": "血量商店页面",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
             "BloodLoss": {
                 "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodLoss.png"),
                 "actions": [
@@ -32,10 +60,40 @@ class BuffSelector:
                 "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitLottery.png"),
                 "cooldown": 2
             },
-            "ChooseBuff": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"),
+            "GetGift": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}GetGift.png"),
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择buff", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "获得战利品",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "cooldown": 2
+            },
+            "GetGear": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}GetGear.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Gear.png"), "name": "获得战备",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "cooldown": 2
+            },
+            "ChooseTwo": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ChooseTwo.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择两个buff",
+                     "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择两个buff",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ConfirmTwo.png"),
+                "cooldown": 2
+            },
+            "ChooseOne": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ChooseOne.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择一个buff", "delay": 1},
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Gear.png"), "name": "选择一个战备","delay": 1},
                 ],
                 "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
                 "cooldown": 2
@@ -46,6 +104,15 @@ class BuffSelector:
                     {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Card.png"), "name": "选择card", "delay": 1},
                 ],
                 "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
+            "ChoosePath": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Path.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Path.png"), "name": "选择路线",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
                 "cooldown": 2  # 模式执行后的冷却时间
             },
         }
@@ -89,41 +156,120 @@ class BuffSelector:
             sys.exit(1)
 
     def _execute_mode_actions(self, mode_config):
-        """执行指定模式的动作序列"""
+        """执行指定模式的动作序列（带容错机制）"""
         print(f"[模式激活] {self.current_mode}")
+        click_history = {}  # 存储已点击过的位置 {图片路径: [坐标列表]}
+        success_count = 0  # 记录成功执行的动作数
 
         for action in mode_config["actions"]:
-            print(f"等待执行: {action['name']}")
+            print(f"正在执行: {action['name']}")
+            action_done = False
             start_time = time.time()
+            attempts = 0
+            max_attempts = action.get("max_attempts", 3)  # 最大尝试次数，默认为3
 
-            while self.running and time.time() - start_time < 3:  # 最多等待3秒
+            # 带超时检测的执行循环
+            while self.running and time.time() - start_time < action.get("timeout", 3) and attempts < max_attempts:
+                found = self.rec.ToRecognizeWhere(action["image"])
+                if found:
+                    current_pos = (self.rec.x, self.rec.y)
 
-                # 检测目标图片
-                if self.rec.ToRecognizeWhere(action["image"]):
-                    print(f"执行 {action['name']} 位置: ({self.rec.x}, {self.rec.y})")
-                    pyautogui.click(self.rec.x, self.rec.y)
+                    # 重复点击检查
+                    if self._is_duplicate_click(action["image"], current_pos, click_history):
+                        print(f"检测到重复位置: {current_pos}，尝试向右偏移600像素")
+                        offset_pos = (current_pos[0] + 600, current_pos[1])  # 向右偏移600像素
+
+                        # 确保偏移后的位置在屏幕范围内
+                        screen_width, screen_height = pyautogui.size()
+                        if offset_pos[0] > screen_width:
+                            offset_pos = (screen_width - 100, offset_pos[1])  # 如果超出屏幕右侧，调整到屏幕边缘
+                            print(f"调整偏移位置到屏幕边缘: {offset_pos}")
+
+                        print(f"执行 {action['name']} (偏移位置: {offset_pos})")
+                        pyautogui.click(*offset_pos)
+                        time.sleep(action["delay"])
+
+                        # 记录原始点击位置（不是偏移后的位置）
+                        self._record_click(action["image"], current_pos, click_history)
+                        action_done = True
+                        success_count += 1
+                        break
+
+                    # 执行点击操作（非重复位置）
+                    print(f"执行 {action['name']} ({current_pos})")
+                    pyautogui.click(*current_pos)
                     time.sleep(action["delay"])
+
+                    # 记录点击历史
+                    self._record_click(action["image"], current_pos, click_history)
+                    action_done = True
+                    success_count += 1
                     break
 
-                # 优先检查退出条件
-                if self.rec.ToRecognizeWhere(mode_config["exit_image"]):
-                    print("检测到退出确认，点击确认")
-                    pyautogui.click(self.rec.x, self.rec.y)
-                    return True
-
+                attempts += 1
                 time.sleep(0.2)
 
-            else:
-                print(f"超时: 未找到 {action['name']} 图片")
-                return False
+            if not action_done:
+                print(f"跳过未找到的: {action['name']}")
 
-        # 最后确认退出
-        if self.rec.ToRecognizeWhere(mode_config["exit_image"]):
-            pyautogui.click(self.rec.x, self.rec.y)
+        # 退出确认处理（无论是否成功执行动作）
+        print("处理退出确认...")
+        exit_found = False
+        exit_start = time.time()
+        while self.running and time.time() - exit_start < 3:
+            if self.rec.ToRecognizeWhere(mode_config["exit_image"]):
+                pyautogui.click(self.rec.x, self.rec.y)
+                exit_found = True
+                break
+            time.sleep(0.2)
 
-        print(f"[模式完成] {self.current_mode}")
-        return True
+        return success_count > 0 or exit_found
 
+    def _is_duplicate_click(self, image_path, current_pos, history):
+        """重复点击检测"""
+        if image_path not in history:
+            return False
+
+        # 考虑屏幕缩放因素
+        screen_scale = 1.0  # 可通过OCR获取实际屏幕缩放比例
+        threshold = 15 * screen_scale
+
+        # 计算最小曼哈顿距离（性能更优）
+        min_distance = min(
+            abs(current_pos[0] - x) + abs(current_pos[1] - y)
+            for (x, y) in history[image_path]
+        )
+
+        return min_distance < threshold
+
+    def _record_click(self, image_path, position, history):
+        """记录点击位置"""
+        if image_path not in history:
+            history[image_path] = []
+        history[image_path].append(position)
+
+    def _get_search_regions(self, screen_w, screen_h, margin=50, exclude=[]):
+        """生成智能搜索区域（避开已点击位置）"""
+        # 基础分区：将屏幕划分为3x3网格
+        regions = []
+        cell_w = (screen_w - 2 * margin) // 3
+        cell_h = (screen_h - 2 * margin) // 3
+
+        for i in range(3):
+            for j in range(3):
+                left = margin + i * cell_w
+                top = margin + j * cell_h
+                regions.append((left, top, cell_w, cell_h))
+
+        # 排除已点击区域周围的区块
+        filtered_regions = []
+        for (x, y) in exclude:
+            for region in regions:
+                r_left, r_top, r_w, r_h = region
+                if not (r_left < x < r_left + r_w and r_top < y < r_top + r_h):
+                    filtered_regions.append(region)
+
+        return filtered_regions if filtered_regions else regions
     def _mode_detection_loop(self):
         """模式检测主循环"""
         last_mode_time = 0
