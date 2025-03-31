@@ -73,36 +73,37 @@ def detectGanTanHao():
     # time.sleep(1)
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
-    image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"
+    # image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"
+    #
+    # try:
+    #     # 在屏幕上查找图片
+    #     location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+    #
+    #     if location is not None:
+    #         # 获取图片的中心坐标
+    #         x1, y1 = pyautogui.center(location)
+    #         print(f"找到图片，坐标位于: ({x1}, {y1})")
+    #     else:
+    #         print("未找到图片")
+    # except Exception as e:
+    #     print(f"发生错误: {e}")
 
-    try:
-        # 在屏幕上查找图片
-        location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+    for i in range(1,7):
+        image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + f"Direction{i}.png"
 
-        if location is not None:
-            # 获取图片的中心坐标
-            x1, y1 = pyautogui.center(location)
-            print(f"找到图片，坐标位于: ({x1}, {y1})")
-        else:
-            print("未找到图片")
-    except Exception as e:
-        print(f"发生错误: {e}")
+        try:
+            # 在屏幕上查找图片
+            location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
 
-    image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTanSpeak.png"
-
-    try:
-        # 在屏幕上查找图片
-        location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
-
-        if location is not None:
-            # 获取图片的中心坐标
-            x2, y2 = pyautogui.center(location)
-            print(f"找到图片，坐标位于: ({x2}, {y2})")
-        else:
-            print("未找到图片")
-    except Exception as e:
-        print(f"发生错误: {e}")
-    print(f"({x2-x1},{y2-y1})")
+            if location is not None:
+                # 获取图片的中心坐标
+                x2, y2 = pyautogui.center(location)
+                print(f"{i}:  第{i}张图片找到图片，坐标位于: ({x2}, {y2})")
+            else:
+                print("未找到图片")
+        except Exception as e:
+            print(f"发生错误: {e}")
+    # print(f"({x2-x1},{y2-y1})")
 
 if __name__=="__main__":
     # time.sleep(2)

@@ -1,6 +1,7 @@
 from time import sleep
 import Recognize
 import pyautogui
+import pynput
 import threading
 import time
 import os
@@ -13,124 +14,113 @@ class BuffSelector:
         self.running = False
         self.current_mode = None
         self.thread = None
+        self.buff=False
+        self.loop=0
 
         # 模式配置
         self.modes_config = {
             "Start": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}StartBuff.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}StartBuff.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Start1.png"),"name": "选择战备buff1", "delay": 1},
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Start2.png"),"name": "选择战备buff2", "delay": 1},
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Start0.png"),"name": "确认携带","delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start1.png","name": "选择战备buff1", "delay": 1,"max_attempts":6},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start2.png","name": "选择战备buff2", "delay": 1,"max_attempts":6},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start0.png","name": "确认携带","delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
             "Store": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Store.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Store.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Store.png"), "name": "商店页面",
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Store.png", "name": "商店页面",
                      "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
             "BloodStore": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodStore.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}BloodStore.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodStore.png"), "name": "血量商店页面",
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}BloodStore.png", "name": "血量商店页面",
                      "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
             "BloodLoss": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodLoss.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}BloodLoss.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodLoss.png"), "name": "选择流血buff", "delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}BloodLoss.png", "name": "选择流血buff", "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
             "Lottery": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Lottery.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Lottery.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Lottery.png"), "name": "抽奖", "delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Lottery.png", "name": "抽奖", "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitLottery.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitLottery.png",
                 "cooldown": 2
             },
             "GetGift": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}GetGift.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}GetGift.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "获得战利品",
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png", "name": "获得战利品",
                      "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2
             },
             "GetGear": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}GetGear.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}GetGear.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Gear.png"), "name": "获得战备",
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Gear.png", "name": "获得战备",
                      "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2
             },
             "ChooseTwo": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ChooseTwo.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ChooseTwo.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择两个buff",
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png", "name": "选择两个buff",
                      "delay": 1},
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择两个buff",
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png", "name": "选择两个buff",
                      "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ConfirmTwo.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ConfirmTwo.png",
                 "cooldown": 2
             },
             "ChooseOne": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ChooseOne.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ChooseOne.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "选择一个buff", "delay": 1},
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Gear.png"), "name": "选择一个战备","delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png", "name": "选择一个buff", "delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Gear.png", "name": "选择一个战备","delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2
             },
             "ChooseCard": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Card.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Card.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Card.png"), "name": "选择card", "delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Card.png", "name": "选择card", "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
             "ChoosePath": {
-                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Path.png"),
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Path.png",
                 "actions": [
-                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Path.png"), "name": "选择路线",
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Path.png", "name": "选择路线",
                      "delay": 1},
                 ],
-                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
         }
         # 验证所有图片文件是否存在
-        self._validate_image_files()
-
-    def _get_image_path(self, filename):
-        """获取图片完整路径（动态相对路径）"""
-        # 获取当前文件的目录路径
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        source_dir = os.path.join(current_dir, "..", "Source")
-
-        # 规范路径格式（解决../的问题）
-        normalized_path = os.path.normpath(source_dir)
-
-        # 组合最终路径
-        return os.path.join(normalized_path, filename)
-
+        # self._validate_image_files()
     def _validate_image_files(self):
         """验证所有配置的图片文件是否存在"""
         missing_files = []
@@ -164,12 +154,11 @@ class BuffSelector:
         for action in mode_config["actions"]:
             print(f"正在执行: {action['name']}")
             action_done = False
-            start_time = time.time()
             attempts = 0
             max_attempts = action.get("max_attempts", 3)  # 最大尝试次数，默认为3
 
             # 带超时检测的执行循环
-            while self.running and time.time() - start_time < action.get("timeout", 3) and attempts < max_attempts:
+            while self.running and attempts < max_attempts:
                 found = self.rec.ToRecognizeWhere(action["image"])
                 if found:
                     current_pos = (self.rec.x, self.rec.y)
@@ -207,7 +196,6 @@ class BuffSelector:
                     break
 
                 attempts += 1
-                time.sleep(0.2)
 
             if not action_done:
                 print(f"跳过未找到的: {action['name']}")
@@ -217,11 +205,17 @@ class BuffSelector:
         exit_found = False
         exit_start = time.time()
         while self.running and time.time() - exit_start < 3:
+            # if mode_config["exit_image"]==self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png" or mode_config["exit_image"]== self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitLottery.png":
+            #     keyboard = pynput.keyboard.Controller()
+            #     keyboard.press(pynput.keyboard.Key.esc)
+            #     time.sleep(0.5)
+            #     keyboard.release(pynput.keyboard.Key.esc)
+            #     exit_found = True
+            #     break
             if self.rec.ToRecognizeWhere(mode_config["exit_image"]):
                 pyautogui.click(self.rec.x, self.rec.y)
                 exit_found = True
                 break
-            time.sleep(0.2)
 
         return success_count > 0 or exit_found
 
@@ -284,16 +278,17 @@ class BuffSelector:
 
             # 检测所有可能的模式
             for mode_name, config in self.modes_config.items():
-                # 检查模式特定的冷却时间
-                if self.current_mode == mode_name and current_time - last_mode_time < config["cooldown"]:
-                    continue
 
                 if self.rec.ToRecognizeWhere(config["entry_image"]):
                     self.current_mode = mode_name
+                    print("buff设置为True")
+                    self.buff=True
                     if self._execute_mode_actions(config):
                         last_mode_time = time.time()
+                    print("buff设置为False")
+                    self.buff = False
                     break
-
+            self.loop+=1
             time.sleep(0.2)
 
     def start(self):
@@ -302,7 +297,7 @@ class BuffSelector:
             self.running = True
             self.thread = threading.Thread(target=self._mode_detection_loop, daemon=True)
             self.thread.start()
-            print("已启动")
+            print("buff-------------------------已启动")
 
     def stop(self):
         """停止检测"""

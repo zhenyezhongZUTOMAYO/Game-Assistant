@@ -88,28 +88,28 @@ class Recognize:
                 self.pb()
                 if self.end:
                     self.va()
-                    print("退出")
+                    # print("退出")
                     return
-                print(f"开始识别{image_path}")
+                # print(f"开始识别{image_path}")
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 if location is not None:
                     self.x, self.y = pyautogui.center(location)
                     self.real=True
                     self.va()
-                    print("识别成功")
+                    # print("识别成功")
                 else:
                     return False
             except Exception as e:
                 self.real=False
                 self.va()
-                print("识别失败")
+                # print("识别失败")
                 if self.end:
-                    print("退出")
+                    #
                     return False
 
 
 
-    def ToRecognizeIfThen(self,image_path,Fuction,confidence=0.8):
+    def ToRecognizeIfThen(self,image_path,Function,confidence=0.8):
         """
         用来识别图像是否存在,若不存在一直识别,直到存在执行Fuction(location,self)
         location是坐标,self返回这个类的对象,方便调用self.end来关闭正在一直识别的那个函数
@@ -121,20 +121,23 @@ class Recognize:
         :return:
         """
         while True:
+            location = None
             try:
                 # print(f"尝试识别: {image_path}")  # 新增路径打印
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 # print(f"识别结果: {location}")  # 调试输出
                 if location is not None:
                     # print(f"成功识别坐标: {location}")
-                    Fuction(location,self)
+                    Function()
                     return
                 else:
                     # print("未识别到目标，继续尝试...")
                     time.sleep(0.2)
             except Exception as e:
-                # import traceback  # 新增完整堆栈打印
-                # print(f"完整异常信息:\n{traceback.format_exc()}")
+                if location is not None:
+                    import traceback  # 新增完整堆栈打印
+                    print(f"完整异常信息:\n{traceback.format_exc()}")
+                    return
                 # print("等待2秒后重试...")
                 time.sleep(0.2)
 
@@ -155,22 +158,22 @@ class Recognize:
         center_y = screen_height // 2
         while True:
             self.pa()
-            print("进入操作")
+            # print("进入操作")
             if  not thread_a.is_alive():
                 self.vb()
                 return False
             if self.real:
-                print("正在操作")
+                # print("正在操作")
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)
             else:
                 self.vb()
-                print("操作完成-误操作")
+                # print("操作完成-误操作")
                 continue
             self.keyboard.press('w')
             time.sleep(1)
             self.keyboard.release('w')
             self.vb()
-            print("操作完成-有操作")
+            # print("操作完成-有操作")
 
     # def click_image(self, image_path):
     #     try:
