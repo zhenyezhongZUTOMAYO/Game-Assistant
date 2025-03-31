@@ -10,7 +10,6 @@ import sys
 class BuffSelector:
     def __init__(self):
         self.rec = Recognize.Recognize()
-        self.rec.resolutionRatio[0]=2560
         self.running = False
         self.current_mode = None
         self.thread = None
@@ -36,7 +35,15 @@ class BuffSelector:
                 "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
                 "cooldown": 2  # 模式执行后的冷却时间
             },
-
+            "BloodStore": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodStore.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodStore.png"), "name": "血量商店页面",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitStart.png"),
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
             "BloodLoss": {
                 "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}BloodLoss.png"),
                 "actions": [
@@ -51,6 +58,24 @@ class BuffSelector:
                     {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Lottery.png"), "name": "抽奖", "delay": 1},
                 ],
                 "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}ExitLottery.png"),
+                "cooldown": 2
+            },
+            "GetGift": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}GetGift.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Buff.png"), "name": "获得战利品",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
+                "cooldown": 2
+            },
+            "GetGear": {
+                "entry_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}GetGear.png"),
+                "actions": [
+                    {"image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Gear.png"), "name": "获得战备",
+                     "delay": 1},
+                ],
+                "exit_image": self._get_image_path(f"{self.rec.resolutionRatio[0]}Confirm.png"),
                 "cooldown": 2
             },
             "ChooseTwo": {
