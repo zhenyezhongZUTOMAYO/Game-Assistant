@@ -8,6 +8,7 @@ import pyautogui
 import threading
 import time
 import ChooseBuff
+import GanTanChat
 def method(location,rec):
     keyboard = pynput.keyboard.Controller()
     keyboard.press('f')
@@ -15,6 +16,9 @@ def method(location,rec):
     keyboard.release('f')
     rec.end=True
     Speak()
+    keyboard.press('s')
+    time.sleep(2)
+    keyboard.release('s')
 
 def Speak():
     """
@@ -37,7 +41,7 @@ def Speak():
             识别不到的停止机制如果连续10次识别不到那么终止
             """
             stop+=1
-            if stop > 9:
+            if stop > 3:
                 rec.end=True
         rec.vb()
 
@@ -99,6 +103,8 @@ if __name__=="__main__":
     # openzzz.openZzz()
     buff = ChooseBuff.BuffSelector()
     buff.start()
-    rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",CommunicateToNpc())
+    gantan=GanTanChat.GanTanChat()
+    rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",gantan.CommunicateToNpc())
+
     #level_system = LevelSystem()  # 创建进入下一层实例
     #level_system.start_detection()  # 开始检测入口

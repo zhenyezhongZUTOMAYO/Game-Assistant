@@ -127,9 +127,9 @@ class Recognize:
                     print("未识别到目标，继续尝试...")
                     time.sleep(0.2)
             except Exception as e:
-                import traceback  # 新增完整堆栈打印
-                print(f"完整异常信息:\n{traceback.format_exc()}")
-                print("等待2秒后重试...")
+                # import traceback  # 新增完整堆栈打印
+                # print(f"完整异常信息:\n{traceback.format_exc()}")
+                # print("等待2秒后重试...")
                 time.sleep(0.2)
 
 
