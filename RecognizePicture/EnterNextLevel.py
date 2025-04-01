@@ -7,7 +7,7 @@ import threading
 import sys
 import ctypes
 
-
+#1#
 class LevelSystem:
     def __init__(self):
         self.rec = Recognize()  # 独立实例
