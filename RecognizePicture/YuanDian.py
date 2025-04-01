@@ -34,9 +34,11 @@ class YuanDian:
                             self.rec.va()
                             print(f"{i}:  第{i}张图片找到图片，坐标位于: ({self.rec.x}, {self.rec.y})")
                         else:
-                            print("未找到图片")
+                            pass
+                            # print("未找到图片")
                     except Exception as e:
-                        print(f"发生错误: {e}")
+                        pass
+                        # print(f"发生错误: {e}")
                 #----识别失败
 
                     # print("识别成功")
@@ -59,23 +61,24 @@ class YuanDian:
             if lock[0]==0:
                 self.rec.real=False
                 while lock[0]==0:
-                    print("原点被锁住!")
+                    # print("原点被锁住!")
                     time.sleep(1)
             self.rec.pa()
-            print("原点开始执行")
+            # print("原点开始执行")
             # print("进入操作")
             if not thread_a.is_alive():
                 self.rec.vb()
                 return False
             if self.rec.real:
-                print("正在操作")
+                # print("正在操作")
                 stop=0
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
             else:
                 stop+=1
                 if stop>3:
-                    print("原点未识别到")
+                    # print("原点未识别到")
                     self.rec.end=True
+                    lock[1]=1
                 self.rec.vb()
                 # print("操作完成-误操作")
                 continue

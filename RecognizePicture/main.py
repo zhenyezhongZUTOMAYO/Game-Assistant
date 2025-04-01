@@ -10,7 +10,7 @@ import time
 import ChooseBuff
 import GanTanChat
 import SumRecognize
-def method(location,rec):
+def method(rec,location):
     keyboard = pynput.keyboard.Controller()
     keyboard.press('f')
     time.sleep(0.5)
@@ -77,7 +77,7 @@ def Speak():
 def CommunicateToNpc(confidence=0.8):
     # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
 
-    thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Inter.png",method,confidence])
+    thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Inter.png",method])
     # thread_a.start()
     thread_b.start()
     rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",confidence)
@@ -125,4 +125,5 @@ if __name__=="__main__":
     # sum.YuanDian()
     # rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Direction.png")
     level_system = LevelSystem()  # 创建进入下一层实例
-    level_system.start()  # 开始检测入口
+    lock=[0,1]
+    level_system.start(lock)  # 开始检测入口

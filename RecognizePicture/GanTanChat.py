@@ -9,26 +9,24 @@ class GanTanChat:
         self.BuffSelector=None
         self.lock=[]
 
-    def method(self):
+    def method(self,rec,location):
         self.lock[0] = 0  #锁住圆点
-        print("锁住原点")
-        self.rec.end=True
-        self.rec.keyboard.release('w')
+        # print("锁住原点")
+        rec.end=True
+        rec.keyboard.release('w')
         keyboard = pynput.keyboard.Controller()
-        rec=Recognize.Recognize()
         if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
             keyboard.press('s')
-            time.sleep(0.5)
+            time.sleep(1)
             keyboard.release('s')
             keyboard.press('a')
-            time.sleep(0.5)
+            time.sleep(0.4)
             keyboard.release('a')
-            self.rec.end = False  # 外部函数操控内部图象识别是否停止的变量
-            self.rec.real = False  # 是否捕获到目标
-            self.CommunicateToNpc()
+            rec.end = False  # 外部函数操控内部图象识别是否停止的变量
+            rec.real = False  # 是否捕获到目标
             return
-        print("准备互动")
-        print("互动")
+        # print("准备互动")
+        # print("互动")
         keyboard.press('f')
         time.sleep(0.5)
         keyboard.release('f')
@@ -36,17 +34,17 @@ class GanTanChat:
         # print(f"sa={self.rec.sa}\nsb={self.rec.sb}")
 
         keyboard.press('s')
-        time.sleep(2)
+        time.sleep(1.7)
         keyboard.release('s')
         self.lock[0]=1  #释放原点
-        print("释放原点")
+        # print("释放原点")
 
     def Speak(self):
         """
         这是一个与人对话的函数如果2秒内未出现与人交流的白点那么退出识别
         :return: None
         """
-        print("Speak开始")
+        # print("Speak开始")
         rec = Recognize.Recognize()
         thread_a = threading.Thread(target=rec.ToRecognizeConWhere, args=[
             rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "TestSpeak1.png", ])
@@ -75,19 +73,26 @@ class GanTanChat:
             if rec.ToRecognizeWhere(
                     rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "Option.png"):
                 pyautogui.click(rec.x, rec.y)
-        print("Speak结束")
+        # print("Speak结束")
 
-    def CommunicateToNpc(self,confidence=0.8):
+    def CommunicateToNpc(self,rec,location,confidence=0.8):
+        print("开始识别     Gantan")
         # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
-        thread_b = threading.Thread(target=self.rec.ToRecognizeIfThen, args=[
+        rec=Recognize.Recognize()
+        thread_b = threading.Thread(target=rec.ToRecognizeIfThen, args=[
             self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Inter.png", self.method,
             confidence])
         # thread_a.start()
         thread_b.start()
+
+        rec.end=False
+        #将识别门锁住
+        self.lock[1]=0
         # print("trackingImage")
-        self.rec.trakingImage(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "GanTan.png",confidence)
-        self.rec.end=False
+        # print(self.rec.end)
+        rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",confidence,1)
         # print("trackingImageEnd")
+        thread_b.join()
 
     def test(self):
         self.lock[0]=1

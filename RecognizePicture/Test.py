@@ -73,45 +73,65 @@ def detectGanTanHao():
     # time.sleep(1)
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
-    # image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"
-    #
-    # try:
-    #     # 在屏幕上查找图片
-    #     location = pyautogui.locateOnScreen(image_path, confidence=0.8)
-    #
-    #     if location is not None:
-    #         # 获取图片的中心坐标
-    #         x1, y1 = pyautogui.center(location)
-    #         print(f"找到图片，坐标位于: ({x1}, {y1})")
-    #     else:
-    #         print("未找到图片")
-    # except Exception as e:
-    #     print(f"发生错误: {e}")
-    win=[0]*22
-    win[0]=20
-    win_sum=0
-    print(win[0]/49)
-    for j in range(1,50):
-        next=[2,3,9,15,18]
-        for i in next:
-            image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + f"Direction{i}.png"
+    image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"
 
-            try:
-                # 在屏幕上查找图片
-                location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
+    try:
+        # 在屏幕上查找图片
+        location = pyautogui.locateOnScreen(image_path, confidence=0.8)
 
-                if location is not None:
-                    # 获取图片的中心坐标
-                    win[i]+=1
-                    x2, y2 = pyautogui.center(location)
-                    print(f"{i}:  第{i}张图片找到图片，坐标位于: ({x2}, {y2})")
-                else:
-                    print("未找到图片")
-            except Exception as e:
-                print(f"发生错误: {e}")
-    for i in next:
-        print(f"第{i}张图片: 胜场:{win[i]},胜率:{win[i]/49}")
+        if location is not None:
+            # 获取图片的中心坐标
+            x1, y1 = pyautogui.center(location)
+            print(f"找到图片，坐标位于: ({x1}, {y1})")
+        else:
+            print("未找到图片")
+    except Exception as e:
+        print(f"发生错误: {e}")
+    # win=[0]*22
+    # win[0]=20
+    # win_sum=0
+    # print(win[0]/49)
+    # for j in range(1,50):
+    #     next=[2,3,9,15,18]
+    #     for i in next:
+    #         image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + f"Direction{i}.png"
+    #
+    #         try:
+    #             # 在屏幕上查找图片
+    #             location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
+    #
+    #             if location is not None:
+    #                 # 获取图片的中心坐标
+    #                 win[i]+=1
+    #                 x2, y2 = pyautogui.center(location)
+    #                 print(f"{i}:  第{i}张图片找到图片，坐标位于: ({x2}, {y2})")
+    #             else:
+    #                 print("未找到图片")
+    #         except Exception as e:
+    #             print(f"发生错误: {e}")
+    # for i in next:
+    #     print(f"第{i}张图片: 胜场:{win[i]},胜率:{win[i]/49}")
     # print(f"({x2-x1},{y2-y1})")
+    # next = ["levelEntrance","DaiJiaZhiJian", "OuRan", "Timestamp", "WuShang", "YingBi", "ZhanBei", "ZhiYouHuiTan", "Boss"]
+    # rec.real = False
+    # for i in next:
+    #     image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(
+    #         rec.resolutionRatio[0]) + f"{i}.png"
+    #
+    #     try:
+    #         # 在屏幕上查找图片
+    #         location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
+    #
+    #         if location is not None:
+    #             # 获取图片的中心坐标
+    #             rec.x, rec.y = pyautogui.center(location)
+    #             rec.real = True
+    #             rec.va()
+    #             print(f"{i}:  第{i}张图片找到图片，坐标位于: ({rec.x}, {rec.y})")
+    #         else:
+    #             print("未找到图片")
+    #     except Exception as e:
+    #         print(f"发生错误: {e}")
 
 if __name__=="__main__":
     # time.sleep(2)

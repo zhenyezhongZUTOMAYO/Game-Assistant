@@ -7,6 +7,28 @@ import time
 import os
 import sys
 
+def convert_coordinates(x, y, original_res, target_res):
+    """
+    将坐标从原分辨率转换到目标分辨率
+    :param x: 原坐标x
+    :param y: 原坐标y
+    :param original_res: 原分辨率 (width, height)
+    :param target_res: 目标分辨率 (width, height)
+    :return: 转换后的坐标 (new_x, new_y)
+    """
+
+    original_width, original_height = original_res
+    target_width, target_height = target_res
+
+    # 计算缩放比例
+    scale_x = target_width / original_width
+    scale_y = target_height / original_height
+
+    # 转换坐标
+    new_x = int(x * scale_x)
+    new_y = int(y * scale_y)
+
+    return new_x, new_y
 
 class BuffSelector:
     def __init__(self):
@@ -15,14 +37,15 @@ class BuffSelector:
         self.current_mode = None
         self.thread = None
         self.sa=0
+        self.lock=[]
 
         # 模式配置
         self.modes_config = {
             "Start": {
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}StartBuff.png",
                 "actions": [
-                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start1.png","name": "选择战备buff1", "delay": 1,"max_attempts":4,"is_skip":True},
-                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start2.png","name": "选择战备buff2", "delay": 1,"max_attempts":4},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start1.png","name": "选择战备buff1", "delay": 1,"max_attempts":6,"is_skip":True},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start2.png","name": "选择战备buff2", "delay": 1,"max_attempts":6},
                     {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start0.png","name": "确认携带","delay": 1},
                 ],
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png",
@@ -91,6 +114,14 @@ class BuffSelector:
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ConfirmTwo.png",
                 "cooldown": 2
             },
+            "ChooseCard": {
+                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Card.png",
+                "actions": [
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Card.png", "name": "选择card", "delay": 1},
+                ],
+                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
             "ChooseOne": {
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ChooseOne.png",
                 "actions": [
@@ -100,14 +131,7 @@ class BuffSelector:
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2
             },
-            "ChooseCard": {
-                "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Card.png",
-                "actions": [
-                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Card.png", "name": "选择card", "delay": 1},
-                ],
-                "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
-                "cooldown": 2  # 模式执行后的冷却时间
-            },
+
             "ChoosePath": {
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Path.png",
                 "actions": [
@@ -168,12 +192,12 @@ class BuffSelector:
                     # 重复点击检查
                     if self._is_duplicate_click(action["image"], current_pos, click_history):
                         print(f"检测到重复位置: {current_pos}，尝试向右偏移600像素")
-                        offset_pos = (current_pos[0] + 600, current_pos[1])  # 向右偏移600像素
+                        offset_pos = (current_pos[0] + convert_coordinates(600,0,(2560,1440),self.rec.resolutionRatio)[0], current_pos[1])  # 向右偏移600像素
 
                         # 确保偏移后的位置在屏幕范围内
                         screen_width, screen_height = pyautogui.size()
                         if offset_pos[0] > screen_width:
-                            offset_pos = (screen_width - 100, offset_pos[1])  # 如果超出屏幕右侧，调整到屏幕边缘
+                            offset_pos = (screen_width - convert_coordinates(100,0,(2560,1440),self.rec.resolutionRatio)[0], offset_pos[1])  # 如果超出屏幕右侧，调整到屏幕边缘
                             print(f"调整偏移位置到屏幕边缘: {offset_pos}")
 
                         print(f"执行 {action['name']} (偏移位置: {offset_pos})")
@@ -284,10 +308,14 @@ class BuffSelector:
                 if self.rec.ToRecognizeWhere(config["entry_image"]):
                     self.current_mode = mode_name
                     print("buff设置为True")
+                    if mode_name=="ChoosePath":
+                        self.lock[1] = 0
                     self.buff=True
                     if self._execute_mode_actions(config):
                         last_mode_time = time.time()
                     print("buff设置为False")
+                    if mode_name=="ChoosePath":
+                        self.lock[1] = 1
                     self.buff = False
                     break
             self.va()
@@ -299,7 +327,7 @@ class BuffSelector:
             self.running = True
             self.thread = threading.Thread(target=self._mode_detection_loop, daemon=True)
             self.thread.start()
-            print("buff-------------------------已启动")
+            # print("buff-------------------------已启动")
 
     def stop(self):
         """停止检测"""

@@ -104,7 +104,6 @@ class Recognize:
                 self.va()
                 # print("识别失败")
                 if self.end:
-                    #
                     return False
 
 
@@ -118,7 +117,7 @@ class Recognize:
         :param image_path:
         :param Fuction: 自己提供的函数
         :param confidence:
-        :return:
+        :return:d
         """
         while True:
             location = None
@@ -128,10 +127,9 @@ class Recognize:
                 # print(f"识别结果: {location}")  # 调试输出
                 if location is not None:
                     # print(f"成功识别坐标: {location}")
-                    Function()
+                    Function(self,location)
                     return
                 else:
-                    # print("未识别到目标，继续尝试...")
                     time.sleep(0.2)
             except Exception as e:
                 if location is not None:
@@ -141,7 +139,7 @@ class Recognize:
 
 
 
-    def trakingImage(self,image_path,confidence=0.8):
+    def trakingImage(self,image_path,confidence=0.8,sleep=1):
         """
         通过调用ToRecognizeConWhere来实现图像追d踪(比较强大)
         通过self.end关闭
@@ -159,6 +157,7 @@ class Recognize:
             # print("进入操作")
             if  not thread_a.is_alive():
                 self.vb()
+                # print("退出操作")
                 return False
             if self.real:
                 # print("正在操作")
@@ -168,7 +167,7 @@ class Recognize:
                 # print("操作完成-误操作")
                 continue
             self.keyboard.press('w')
-            time.sleep(1)
+            time.sleep(sleep)
             self.keyboard.release('w')
             self.vb()
             # print("操作完成-有操作")
