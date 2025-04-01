@@ -15,7 +15,7 @@ class LevelSystem:
         self.confidence = 0.3  # 确保拼写正确，并且有默认值
         self.running = False
         self.thread = None
-
+#1#
     def RecognizeTarget(self):
         """识别目标的方法"""
         # 尝试识别 Timestamp.png
