@@ -18,14 +18,11 @@ class LevelSystem:
 
     def RecognizeTarget(self):
         """识别目标的方法"""
-        self.rec.pa()  # 开始识别前调用一次pa
-        
         # 尝试识别 Timestamp.png
         if self.rec.ToRecognizeConWhere(
             self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Timestamp.png",
             self.confidence
         ):
-            self.rec.vb()  # 识别成功后释放缓冲区
             return True
             
         # 尝试识别 WuShang.png
@@ -33,25 +30,31 @@ class LevelSystem:
             self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "WuShang.png",
             self.confidence
         ):
-            self.rec.vb()  # 识别成功后释放缓冲区
             return True
             
-        self.rec.vb()  # 所有识别都失败后释放缓冲区
         return False
 
     def trackingTarget(self):
         """追踪目标的方法"""
-        self.rec.end = False
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2
         center_y = screen_height // 2
         stop = 0
         
-        while not self.rec.end:
+        while True:
             print("目标开始执行")
             
-            # 在主线程中进行识别
-            if self.RecognizeTarget():
+            # 创建识别线程
+            self.rec.pa()  # 开始识别前调用一次pa
+            recognize_thread = threading.Thread(target=self.RecognizeTarget)
+            recognize_thread.start()
+            
+            # 等待识别结果
+            recognize_thread.join()
+            
+            if self.rec.real:  # 使用rec.real来判断识别结果
+                self.rec.pb()  # 识别成功后，通知消费者可以开始操作
+                
                 # 调整视角对准目标
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
                 time.sleep(0.5)  # 等待视角调整完成
@@ -75,7 +78,8 @@ class LevelSystem:
                 stop += 1
                 if stop > 3:
                     print("目标未识别到")
-                    self.rec.end = True
+                    return  # 直接返回，结束函数
+                self.rec.pb()  # 识别失败也要通知消费者
                 continue
 
     def start(self):
