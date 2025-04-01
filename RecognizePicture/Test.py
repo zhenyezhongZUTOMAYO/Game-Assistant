@@ -87,22 +87,30 @@ def detectGanTanHao():
     #         print("未找到图片")
     # except Exception as e:
     #     print(f"发生错误: {e}")
+    win=[0]*22
+    win[0]=20
+    win_sum=0
+    print(win[0]/49)
+    for j in range(1,50):
+        next=[2,3,9,15,18]
+        for i in next:
+            image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + f"Direction{i}.png"
 
-    for i in range(1,9):
-        image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + f"Direction{i}.png"
+            try:
+                # 在屏幕上查找图片
+                location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
 
-        try:
-            # 在屏幕上查找图片
-            location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
-
-            if location is not None:
-                # 获取图片的中心坐标
-                x2, y2 = pyautogui.center(location)
-                print(f"{i}:  第{i}张图片找到图片，坐标位于: ({x2}, {y2})")
-            else:
-                print("未找到图片")
-        except Exception as e:
-            print(f"发生错误: {e}")
+                if location is not None:
+                    # 获取图片的中心坐标
+                    win[i]+=1
+                    x2, y2 = pyautogui.center(location)
+                    print(f"{i}:  第{i}张图片找到图片，坐标位于: ({x2}, {y2})")
+                else:
+                    print("未找到图片")
+            except Exception as e:
+                print(f"发生错误: {e}")
+    for i in next:
+        print(f"第{i}张图片: 胜场:{win[i]},胜率:{win[i]/49}")
     # print(f"({x2-x1},{y2-y1})")
 
 if __name__=="__main__":

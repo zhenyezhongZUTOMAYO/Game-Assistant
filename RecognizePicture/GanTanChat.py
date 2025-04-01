@@ -7,8 +7,11 @@ class GanTanChat:
     def __init__(self):
         self.rec=Recognize.Recognize()
         self.BuffSelector=None
+        self.lock=[]
 
     def method(self):
+        self.lock[0] = 0  #锁住圆点
+        print("锁住原点")
         self.rec.end=True
         self.rec.keyboard.release('w')
         keyboard = pynput.keyboard.Controller()
@@ -25,11 +28,6 @@ class GanTanChat:
             self.CommunicateToNpc()
             return
         print("准备互动")
-        if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "Inter.png"):
-            print("回退互动")
-            keyboard.press('s')
-            time.sleep(0.5)
-            keyboard.release('s')
         print("互动")
         keyboard.press('f')
         time.sleep(0.5)
@@ -40,7 +38,8 @@ class GanTanChat:
         keyboard.press('s')
         time.sleep(2)
         keyboard.release('s')
-
+        self.lock[0]=1  #释放原点
+        print("释放原点")
 
     def Speak(self):
         """
@@ -64,18 +63,14 @@ class GanTanChat:
                 """
                 识别不到的停止机制如果连续4次识别不到那么终止
                 """
-                print("识别不到stop+1")
+                # print("识别不到stop+1")
                 stop += 1
                 print("检测是否正在执行Buff")
-                loop=self.BuffSelector.loop
-                if self.BuffSelector.buff == True or (stop > 3 and self.BuffSelector.loop-loop > 1):
+                if stop > 3:
                     rec.end = True
-                    print(f"buff为{self.BuffSelector.buff}")
-                    while self.BuffSelector.buff:
-                        print("循环...")
-                        time.sleep(1)
-                    while self.BuffSelector.loop-loop>1:
-                        time.sleep(0.2)
+                    self.BuffSelector.pa()
+                    self.BuffSelector.pa()
+                    return
             rec.vb()
             if rec.ToRecognizeWhere(
                     rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "Option.png"):
@@ -93,3 +88,6 @@ class GanTanChat:
         self.rec.trakingImage(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "GanTan.png",confidence)
         self.rec.end=False
         # print("trackingImageEnd")
+
+    def test(self):
+        self.lock[0]=1
