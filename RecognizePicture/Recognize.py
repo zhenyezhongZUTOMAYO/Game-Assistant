@@ -138,8 +138,6 @@ class Recognize:
                     import traceback  # 新增完整堆栈打印
                     print(f"完整异常信息:\n{traceback.format_exc()}")
                     return
-                # print("等待2秒后重试...")
-                time.sleep(0.2)
 
 
 

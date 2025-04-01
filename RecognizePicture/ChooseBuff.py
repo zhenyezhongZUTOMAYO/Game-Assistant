@@ -14,16 +14,15 @@ class BuffSelector:
         self.running = False
         self.current_mode = None
         self.thread = None
-        self.buff=False
-        self.loop=0
+        self.sa=0
 
         # 模式配置
         self.modes_config = {
             "Start": {
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}StartBuff.png",
                 "actions": [
-                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start1.png","name": "选择战备buff1", "delay": 1,"max_attempts":6},
-                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start2.png","name": "选择战备buff2", "delay": 1,"max_attempts":6},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start1.png","name": "选择战备buff1", "delay": 1,"max_attempts":4,"is_skip":True},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start2.png","name": "选择战备buff2", "delay": 1,"max_attempts":4},
                     {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Start0.png","name": "确认携带","delay": 1},
                 ],
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png",
@@ -152,16 +151,19 @@ class BuffSelector:
         success_count = 0  # 记录成功执行的动作数
 
         for action in mode_config["actions"]:
+            if action.get("skip", False):
+                continue
             print(f"正在执行: {action['name']}")
             action_done = False
             attempts = 0
             max_attempts = action.get("max_attempts", 3)  # 最大尝试次数，默认为3
-
             # 带超时检测的执行循环
             while self.running and attempts < max_attempts:
                 found = self.rec.ToRecognizeWhere(action["image"])
                 if found:
                     current_pos = (self.rec.x, self.rec.y)
+                    if action.get("is_skip", False):
+                        action["skip"] = True
 
                     # 重复点击检查
                     if self._is_duplicate_click(action["image"], current_pos, click_history):
@@ -288,7 +290,7 @@ class BuffSelector:
                     print("buff设置为False")
                     self.buff = False
                     break
-            self.loop+=1
+            self.va()
             time.sleep(0.2)
 
     def start(self):
@@ -306,7 +308,14 @@ class BuffSelector:
             if self.thread and self.thread.is_alive():
                 self.thread.join()
             print("已停止")
+    def pa(self):
+        self.sa-=1
+        while self.sa<0:
+            time.sleep(1)
 
+    def va(self):
+        if self.sa<0:
+            self.sa+=1
 
 def BUFF():
     selector = BuffSelector()
@@ -318,6 +327,7 @@ def BUFF():
     except KeyboardInterrupt:
         selector.stop()
         print("程序已安全退出")
+
 
 
 if __name__ == "__main__":

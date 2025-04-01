@@ -110,6 +110,9 @@ if __name__=="__main__":
     # rec.ToRecognizeIfThen(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",gantan.CommunicateToNpc())
     sum=SumRecognize.SumRecognize()
     sum.start()
+
+    # sum.lock[0]=1
+    # sum.YuanDian()
     # rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Direction.png")
     #level_system = LevelSystem()  # 创建进入下一层实例
     #level_system.start_detection()  # 开始检测入口

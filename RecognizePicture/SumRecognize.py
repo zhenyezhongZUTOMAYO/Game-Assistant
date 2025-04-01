@@ -6,20 +6,26 @@ import Recognize
 import threading
 class SumRecognize:
     def __init__(self):
+        #初始化类
         self.buff=ChooseBuff.BuffSelector()
         self.gantan=GanTanChat.GanTanChat()
         self.yd=YuanDian.YuanDian()
         self.gantan.BuffSelector=self.buff
         self.rec=Recognize.Recognize()
+        #初始化锁
+        self.lock=[]
+        for i in range(0,1):
+            self.lock.append(0)
+        self.gantan.lock=self.lock
+
 
     def GanTan(self):
         while True:
             self.rec.ToRecognizeIfThen(self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"GanTan.png",self.gantan.CommunicateToNpc)
 
+
     def YuanDian(self):
-        while True:
-            self.rec.ToRecognizeIfThen(self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Direction2.png",self.yd.trackingYuanDian)
-            time.sleep(5)
+        self.yd.trackingYuanDian(self.lock)
 
     def start(self):
         thread=[]
@@ -34,4 +40,7 @@ class SumRecognize:
         for thr in thread:
             thr.join()
 
-
+    # def test(self):
+    #     print(self.lock[0])
+    #     self.gantan.test()
+    #     print(self.lock[0])

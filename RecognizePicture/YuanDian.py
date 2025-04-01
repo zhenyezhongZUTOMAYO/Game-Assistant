@@ -7,16 +7,52 @@ class YuanDian:
     def __init__(self):
         self.rec=Recognize.Recognize()
 
-    def trackingYuanDian(self):
+    def RecognizeYuanDian(self):
+        while True:
+                self.rec.pb()
+                if self.rec.end:
+                    self.rec.va()
+                    # print("退出")
+                    return
+                # print(f"开始识别{image_path}")
+                for i in range(1,7):
+                    location=None
+                    try:
+                        location = pyautogui.locateOnScreen(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + f"Direction{i}.png")
+                    except Exception as e:
+                        continue
+                    if location is not None:
+                        break
+                #----识别失败
+                if location is not None:
+                    self.x, self.y = pyautogui.center(location)
+                    self.rec.real = True
+                    self.rec.va()
+                    # print("识别成功")
+                else:
+                    self.rec.real=False
+                    self.rec.va()
+                    # print("识别失败")
+                    if self.rec.end:
+                        return False
+
+    def trackingYuanDian(self,lock):
         self.rec.end=False
-        thread_a = threading.Thread(target=self.rec.ToRecognizeConWhere, args=[self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + f"Direction2.png", ])
+        thread_a = threading.Thread(target=self.RecognizeYuanDian)
         thread_a.start()
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2
         center_y = screen_height // 2
         stop=0
         while True:
+            #添加锁机制,如果一个函数运行时不希望其他程序识别时启用锁
+            if lock[0]==0:
+                self.rec.real=False
+                while lock[0]==0:
+                    print("原点被锁住!")
+                    time.sleep(1)
             self.rec.pa()
+            print("原点开始执行")
             # print("进入操作")
             if not thread_a.is_alive():
                 self.rec.vb()
@@ -26,9 +62,9 @@ class YuanDian:
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
             else:
                 stop+=1
-                if stop>5:
+                if stop>3:
+                    print("原点未识别到")
                     self.rec.end=True
-                    self.rec.vb()
                 self.rec.vb()
                 # print("操作完成-误操作")
                 continue
