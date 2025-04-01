@@ -3,9 +3,11 @@ import threading
 import pyautogui
 import time
 import ctypes
+from Recognize import rec
 class YuanDian:
     def __init__(self):
-        self.rec=Recognize.Recognize()
+        self.rec = Recognize.Recognize()
+        self.location=None
 
     def RecognizeYuanDian(self):
         while True:
@@ -14,23 +16,31 @@ class YuanDian:
                     self.rec.va()
                     # print("退出")
                     return
-                # print(f"开始识别{image_path}")
-                for i in range(1,7):
-                    location=None
+                print("开始识别    原点")
+                next = [2, 3, 9, 15, 18]
+                self.rec.real=False
+                for i in next:
+                    image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(
+                        rec.resolutionRatio[0]) + f"Direction{i}.png"
+
                     try:
-                        location = pyautogui.locateOnScreen(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + f"Direction{i}.png")
+                        # 在屏幕上查找图片
+                        location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
+
+                        if location is not None:
+                            # 获取图片的中心坐标
+                            self.rec.x, self.rec.y = pyautogui.center(location)
+                            self.rec.real=True
+                            self.rec.va()
+                            print(f"{i}:  第{i}张图片找到图片，坐标位于: ({self.rec.x}, {self.rec.y})")
+                        else:
+                            print("未找到图片")
                     except Exception as e:
-                        continue
-                    if location is not None:
-                        break
+                        print(f"发生错误: {e}")
                 #----识别失败
-                if location is not None:
-                    self.x, self.y = pyautogui.center(location)
-                    self.rec.real = True
-                    self.rec.va()
+
                     # print("识别成功")
-                else:
-                    self.rec.real=False
+                if not self.rec.real:
                     self.rec.va()
                     # print("识别失败")
                     if self.rec.end:
@@ -58,7 +68,8 @@ class YuanDian:
                 self.rec.vb()
                 return False
             if self.rec.real:
-                # print("正在操作")
+                print("正在操作")
+                stop=0
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
             else:
                 stop+=1

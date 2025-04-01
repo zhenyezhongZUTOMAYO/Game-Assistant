@@ -25,14 +25,15 @@ class SumRecognize:
 
 
     def YuanDian(self):
-        self.yd.trackingYuanDian(self.lock)
+        while True:
+            self.yd.trackingYuanDian(self.lock)
 
     def start(self):
         thread=[]
         print("start")
         thread_gantan=threading.Thread(target=self.GanTan,args=[])
         thread.append(thread_gantan)
-        thread_yd=threading.Thread(target=self.YuanDian,args=[])
+        thread_yd=threading.Thread(target=self.YuanDian,)
         thread.append(thread_yd)
         self.buff.start()
         for thr in thread:
