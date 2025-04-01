@@ -15,14 +15,17 @@ class LevelSystem:
         self.confidence = 0.3  # 确保拼写正确，并且有默认值
         self.running = False
         self.thread = None
-#1#
+
     def RecognizeTarget(self):
         """识别目标的方法"""
+        self.rec.pa()  # 开始识别前调用一次pa
+        
         # 尝试识别 Timestamp.png
         if self.rec.ToRecognizeConWhere(
             self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Timestamp.png",
             self.confidence
         ):
+            self.rec.vb()  # 识别成功后释放缓冲区
             return True
             
         # 尝试识别 WuShang.png
@@ -30,8 +33,10 @@ class LevelSystem:
             self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "WuShang.png",
             self.confidence
         ):
+            self.rec.vb()  # 识别成功后释放缓冲区
             return True
             
+        self.rec.vb()  # 所有识别都失败后释放缓冲区
         return False
 
     def trackingTarget(self):
@@ -43,7 +48,6 @@ class LevelSystem:
         stop = 0
         
         while not self.rec.end:
-            self.rec.pa()
             print("目标开始执行")
             
             # 在主线程中进行识别
@@ -72,10 +76,7 @@ class LevelSystem:
                 if stop > 3:
                     print("目标未识别到")
                     self.rec.end = True
-                self.rec.vb()
                 continue
-                
-            self.rec.vb()
 
     def start(self):
         """模块启动入口"""
