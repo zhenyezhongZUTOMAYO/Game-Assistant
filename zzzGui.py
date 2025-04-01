@@ -149,7 +149,7 @@ class GameAssistant(QMainWindow):
         
         # 按钮部分
         btn = QPushButton("前往")
-        btn.setIcon(QIcon("E:/zzzHollow脚本/src/icon/文档@3x.ico"))
+        btn.setIcon(QIcon("Source/文档@3x.ico"))#E:/zzzHollow脚本/src/icon/文档@3x.ico
         btn.setStyleSheet("""
          QPushButton {
                 background-color: #FFFFFF;  /* 固定白色背景 */
@@ -175,7 +175,7 @@ class GameAssistant(QMainWindow):
         
         # 选择按钮
         btn = QPushButton()
-        btn.setIcon(QIcon(r"E:\zzzHollow脚本\src\icon\文件夹.ico"))
+        btn.setIcon(QIcon(r"Source\文件夹.ico"))#E:\zzzHollow脚本\src\icon\文件夹.ico
         btn.setStyleSheet("""
          QPushButton {
                 background-color: #FFFFFF;  /* 固定白色背景 */
@@ -253,7 +253,7 @@ class GameAssistant(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(r"E:\zzzHollow脚本\src\icon\配置@3x.ico"))
+    app.setWindowIcon(QIcon(r"Source\配置@3x.ico"))#E:\zzzHollow脚本\src\icon\配置@3x.ico
     ex = GameAssistant()
     ex.show()
     sys.exit(app.exec_())
