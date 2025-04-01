@@ -65,19 +65,20 @@ class LevelSystem:
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
                 time.sleep(0.5)  # 等待视角调整完成
                 
+                # 按W键靠近目标
+                self.keyboard.press('w')
+                time.sleep(1)  # 靠近1秒
+                self.keyboard.release('w')
+                print("已靠近目标")
+                
                 # 按F键与目标交互
                 self.keyboard.press('f')
                 time.sleep(0.5)
                 self.keyboard.release('f')
                 print("已与目标交互")
                 
-                # 等待交互完成
+                # 等待进入下一层
                 time.sleep(2)
-                
-                # 后退
-                self.keyboard.press('s')
-                time.sleep(2)
-                self.keyboard.release('s')
                 
                 # 释放锁
                 lock[0] = 1
