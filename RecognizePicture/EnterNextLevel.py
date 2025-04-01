@@ -7,12 +7,12 @@ import threading
 import sys
 import ctypes
 
-#1#
+
 class LevelSystem:
     def __init__(self):
         self.rec = Recognize()  # 独立实例
         self.keyboard = pynput.keyboard.Controller()
-        self.confidence = 0.7  # 确保拼写正确，并且有默认值
+        self.confidence = 0.3  # 确保拼写正确，并且有默认值
         self.running = False
         self.thread = None
 
