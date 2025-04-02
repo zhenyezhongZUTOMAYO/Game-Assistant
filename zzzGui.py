@@ -171,10 +171,11 @@ class GameAssistant(QMainWindow):
         group = QGroupBox("文件地址")
         layout = QHBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
-        
+
         # 输入框
         self.file_path = QLineEdit()
         self.file_path.setPlaceholderText("请选择文件路径...")
+        self.load_existing_file_path()
         
         # 选择按钮
         btn = QPushButton()
@@ -193,20 +194,44 @@ class GameAssistant(QMainWindow):
         layout.addWidget(btn, 2)
         group.setLayout(layout)
         return group
-    #槽函数
+    
+    def load_existing_file_path(self):
+        """初始化加载文件路径"""
+        config_file = "Source/file_path.text"
+       
+        try:
+            # 检查文件是否存在
+            if os.path.exists(config_file):
+                with open(config_file, 'r', encoding='utf-8') as f:
+                    first_line = f.readline().strip()
+                    # 判断内容有效性（示例：路径需真实存在）
+                    if first_line and os.path.exists(first_line):
+                        self.file_path.setText(first_line)
+        except Exception as e:
+            QMessageBox.warning(None, "配置错误", f"读取配置文件失败: {str(e)}")
+
     def browse_file(self):
-        default_path = r"C:"  # 你的默认路径
-        path, _ = QFileDialog.getOpenFileName(
-            self,
-            "选择文件",
-            default_path,
-            "All Files (*)"
+        """文件选择并保存路径"""
+        options = QFileDialog.Options()
+        file_path, _ = QFileDialog.getOpenFileName(
+            None, "选择文件", "", "All Files (*);;Text Files (*.txt)", options=options
         )
         
-        if path and os.path.isfile(path):
-            self.file_path.setText(path)
-        elif path:  # 路径存在但不是文件
-            QMessageBox.warning(self, "错误", "请选择有效文件！")
+        if file_path:
+            self.file_path.setText(file_path)
+            self.save_current_path(file_path)  # 保存新路径
+
+    def save_current_path(self, path):
+        """保存路径到配置文件"""
+        try:
+            # 自动创建缺失目录
+            os.makedirs(os.path.dirname("Source/file_path.text"), exist_ok=True)
+           
+            
+            with open("src/file_path.text", 'w', encoding='utf-8') as f:
+                f.write(path + "\n")  # 添加换行符保持格式统一
+        except Exception as e:
+            QMessageBox.critical(None, "保存失败", f"路径保存失败: {str(e)}")
 
     def create_target_group(self):
         group = QGroupBox("目标刷取")
