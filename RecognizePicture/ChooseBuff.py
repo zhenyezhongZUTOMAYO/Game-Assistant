@@ -126,6 +126,7 @@ class BuffSelector:
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ChooseOne.png",
                 "actions": [
                     {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png", "name": "选择一个buff", "delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png","name": "选择一个buff", "delay": 1},
                     {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Gear.png", "name": "选择一个战备","delay": 1},
                 ],
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
