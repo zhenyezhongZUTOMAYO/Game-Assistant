@@ -195,6 +195,20 @@ class GameAssistant(QMainWindow):
         layout.addWidget(btn, 2)
         group.setLayout(layout)
         return group
+    #槽函数
+    def browse_file(self):
+        default_path = r"C:"  # 你的默认路径
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            "选择文件",
+            default_path,
+            "All Files (*)"
+        )
+        
+        if path and os.path.isfile(path):
+            self.file_path.setText(path)
+        elif path:  # 路径存在但不是文件
+            QMessageBox.warning(self, "错误", "请选择有效文件！")
 
     def browse_file(self):
         default_path = r"C:"  # 你的默认路径
@@ -289,6 +303,7 @@ class GameAssistant(QMainWindow):
                 QMessageBox.critical(self, "权限错误", "没有权限或文件被其他程序使用", QMessageBox.Ok)
             except Exception as e:
                 QMessageBox.critical(self, "错误", f"操作失败：{str(e)}", QMessageBox.Ok)
+
         if self.running:
             subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
                            creationflags=subprocess.CREATE_NO_WINDOW)

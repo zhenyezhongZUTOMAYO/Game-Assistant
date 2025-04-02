@@ -104,6 +104,14 @@ class BuffSelector:
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2
             },
+            "Gearup": {
+                "entry_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Gearup.png",
+                "actions": [
+                    {"image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Gearup.png","name": "战备升级","delay": 1},
+                ],
+                "exit_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Confirm.png",
+                "cooldown": 2
+            },
             "ChooseTwo": {
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ChooseTwo.png",
                 "actions": [
@@ -127,6 +135,7 @@ class BuffSelector:
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ChooseOne.png",
                 "actions": [
                     {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png", "name": "选择一个buff", "delay": 1},
+                    {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Buff.png","name": "选择一个buff", "delay": 1},
                     {"image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Gear.png", "name": "选择一个战备","delay": 1},
                 ],
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
@@ -140,6 +149,24 @@ class BuffSelector:
                      "delay": 1},
                 ],
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}ExitStart.png",
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
+            "Next": {
+                "entry_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Next.png",
+                "actions": [
+                    {"image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Next.png","name": "选择路线","delay": 1},
+                ],
+                "exit_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}NextConfirm0.png",
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
+            "TheEnd": {
+                "entry_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}TheEnd.png",
+                "actions": [
+                    {
+                        "image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}TheEnd.png",
+                        "name": "选择路线", "delay": 1},
+                ],
+                "exit_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Finish.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
         }
