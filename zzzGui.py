@@ -187,11 +187,26 @@ class GameAssistant(QMainWindow):
         )
         btn.setFixedSize(32, 42)
         btn.setIconSize(QSize(24, 24))
+        btn.clicked.connect(self.browse_file)
         
         layout.addWidget(self.file_path, 8)
         layout.addWidget(btn, 2)
         group.setLayout(layout)
         return group
+    #槽函数
+    def browse_file(self):
+        default_path = r"C:"  # 你的默认路径
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            "选择文件",
+            default_path,
+            "All Files (*)"
+        )
+        
+        if path and os.path.isfile(path):
+            self.file_path.setText(path)
+        elif path:  # 路径存在但不是文件
+            QMessageBox.warning(self, "错误", "请选择有效文件！")
 
     def create_target_group(self):
         group = QGroupBox("目标刷取")
@@ -253,6 +268,27 @@ class GameAssistant(QMainWindow):
             }
         """% ("#000000" if self.running else "#000000")) 
             #% ("#FF4444" if self.running else "#497CB5"))  # 根据状态改变边框颜色
+        #启动exe文件
+        
+        zzz_path=self.file_path.text().strip()
+        if not zzz_path:
+            QMessageBox.warning(self, "警告", "文件路径不能为空！", QMessageBox.Ok)
+            return
+        try:
+            with open(zzz_path,'rb') as f:
+                header = f.read(2)
+                if header != b'MZ':
+                    QMessageBox.warning(self, "警告", "非有效的EXE文件", QMessageBox.Ok)
+                    return
+                
+                #加入确认逻辑
+                os.startfile(zzz_path)
+        except PermissionError:
+            QMessageBox.critical(self,"权限错误","没有权限或文件被其他程序使用",QMessageBox.Ok)
+        except Exception as e:
+            QMessageBox.critical(self,"错误",f"操作失败：{str(e)}",QMessageBox.Ok)
+           #exe启动
+        
         if self.running:
             subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
                            creationflags=subprocess.CREATE_NO_WINDOW)
