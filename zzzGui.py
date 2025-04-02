@@ -197,7 +197,7 @@ class GameAssistant(QMainWindow):
     
     def load_existing_file_path(self):
         """初始化加载文件路径"""
-        config_file = "Source/file_path.text"
+        config_file = "Source/file_path.txt"
        
         try:
             # 检查文件是否存在
@@ -225,7 +225,7 @@ class GameAssistant(QMainWindow):
         """保存路径到配置文件"""
         try:
             # 自动创建缺失目录
-            os.makedirs(os.path.dirname("Source/file_path.text"), exist_ok=True)
+            os.makedirs(os.path.dirname("Source/file_path.txt"), exist_ok=True)
            
             
             with open("src/file_path.text", 'w', encoding='utf-8') as f:
