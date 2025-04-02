@@ -3,8 +3,7 @@ import ctypes
 import sys
 import time
 import Recognize
-import SpeakNpc
-from main import  *
+from main import *
 
 import cv2
 import numpy as np
@@ -73,20 +72,21 @@ def detectGanTanHao():
     # time.sleep(1)
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
-    image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"
+    while True:
+        image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "Inter.png"
 
-    try:
-        # 在屏幕上查找图片
-        location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+        try:
+            # 在屏幕上查找图片
+            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
 
-        if location is not None:
-            # 获取图片的中心坐标
-            x1, y1 = pyautogui.center(location)
-            print(f"找到图片，坐标位于: ({x1}, {y1})")
-        else:
-            print("未找到图片")
-    except Exception as e:
-        print(f"发生错误: {e}")
+            if location is not None:
+                # 获取图片的中心坐标
+                x1, y1 = pyautogui.center(location)
+                print(f"找到图片，坐标位于: ({x1}, {y1})")
+            else:
+                print("未找到图片")
+        except Exception as e:
+            print(f"发生错误: {e}")
     # win=[0]*22
     # win[0]=20
     # win_sum=0
@@ -137,7 +137,13 @@ if __name__=="__main__":
     # time.sleep(2)
     # spk=SpeakNpc.SpeakNpc()
     # spk.isBuff()
-    detectGanTanHao()
+    # detectGanTanHao()
+    time.sleep(3)
+    pyautogui.click()
+    pyautogui.click()
+    pyautogui.click()
+    pyautogui.click()
+    pyautogui.click()
     # match_pos = locate_with_alpha("D:\\Git\\Game-Assistant\\Source\\3840GanTan111.png", confidence=0.8)
     # if match_pos:
     #     x, y, w, h = match_pos

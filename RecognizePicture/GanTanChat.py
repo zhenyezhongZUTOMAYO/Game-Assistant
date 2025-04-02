@@ -3,6 +3,9 @@ import pynput
 import pyautogui
 import threading
 import time
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 class GanTanChat:
     def __init__(self):
         self.rec=Recognize.Recognize()
@@ -13,6 +16,7 @@ class GanTanChat:
         self.lock[0] = 0  #锁住圆点
         # print("锁住原点")
         rec.end=True
+        rec.keyboard.release('w')
         rec.keyboard.release('w')
         keyboard = pynput.keyboard.Controller()
         if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
@@ -90,7 +94,7 @@ class GanTanChat:
         self.lock[1]=0
         # print("trackingImage")
         # print(self.rec.end)
-        rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",confidence,1)
+        rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",confidence,0.7)
         # print("trackingImageEnd")
         thread_b.join()
 

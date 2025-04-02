@@ -5,6 +5,8 @@ import os
 import threading
 import pynput
 import ctypes
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 class Recognize:
 
     def __init__(self):

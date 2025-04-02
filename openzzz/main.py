@@ -31,10 +31,17 @@ def openZzz():
     size_t=0
     if target_res[0]/target_res[1]!=16/9:
         size_t=(target_res[1]-target_res[0]/16*9)/2
+    # pyautogui.click(convert_coordinates(100, 100, original_res, target_res))  # 第一次登录点击
+    # sleep(1)
+    # pyautogui.click(convert_coordinates(100, 100, original_res, target_res))  # 第二次登录点击
+    # sleep(1)
     keyboard=pynput.keyboard.Controller()
     keyboard.press(pynput.keyboard.Key['f2'])
     sleep(0.5)
     keyboard.release(pynput.keyboard.Key['f2'])
+    # sleep(2)
+    # pyautogui.press('f2')  # 替代 pynput 的键盘控制
+    # sleep(2)
     pyautogui.click(convert_coordinates(1819,197,original_res,target_res))#(x,y)作战
     sleep(1)
     pyautogui.click(convert_coordinates(442,618,original_res,target_res))#(x,y)零号空洞
@@ -52,7 +59,10 @@ def openZzz():
     pyautogui.click(convert_coordinates(2274,1372-size_t,original_res,target_res))#(x,y)出战
     
 if __name__=="__main__":
-    sleep(3)
+    # keyboard = pynput.keyboard.Controller()
+    # keyboard.press(pynput.keyboard.Key.f2)
+    # sleep(0.5)
+    # keyboard.release(pynput.keyboard.Key.f2)
     openZzz()
 # pyautogui.keyUp('alt')
 

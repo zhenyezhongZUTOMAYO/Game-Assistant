@@ -1,9 +1,36 @@
 import Recognize
 import threading
 import pyautogui
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import time
 import ctypes
 from Recognize import rec
+
+def convert_coordinates(x, y, original_res, target_res):
+    """
+    将坐标从原分辨率转换到目标分辨率
+    :param x: 原坐标x
+    :param y: 原坐标y
+    :param original_res: 原分辨率 (width, height)
+    :param target_res: 目标分辨率 (width, height)
+    :return: 转换后的坐标 (new_x, new_y)
+    """
+
+    original_width, original_height = original_res
+    target_width, target_height = target_res
+
+    # 计算缩放比例
+    scale_x = target_width / original_width
+    scale_y = target_height / original_height
+
+    # 转换坐标
+    new_x = int(x * scale_x)
+    new_y = int(y * scale_y)
+
+    return new_x, new_y
+
 class YuanDian:
     def __init__(self):
         self.rec = Recognize.Recognize()
@@ -56,6 +83,8 @@ class YuanDian:
         center_x = screen_width // 2
         center_y = screen_height // 2
         stop=0
+        stick=0
+        move=True
         while True:
             #添加锁机制,如果一个函数运行时不希望其他程序识别时启用锁
             if lock[0]==0:
@@ -72,7 +101,15 @@ class YuanDian:
             if self.rec.real:
                 # print("正在操作")
                 stop=0
-                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
+                if abs(self.rec.x-center_x)>convert_coordinates(900,0,(3840,2160),rec.resolutionRatio)[0] or abs(self.rec.y-center_y)>(0,300,(3840,2160),rec.resolutionRatio)[1]:
+                    stick+=1
+                    if stick>3:
+                        ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), ctypes.c_int(int((self.rec.y - center_y) // 2)))
+                    move=False
+                else:
+                    stick=0
+                    move=True
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x)//2)), 0)
             else:
                 stop+=1
                 if stop>3:
@@ -82,7 +119,12 @@ class YuanDian:
                 self.rec.vb()
                 # print("操作完成-误操作")
                 continue
-            self.rec.keyboard.press('w')
-            time.sleep(1)
-            self.rec.keyboard.release('w')
+            if move:
+                self.rec.keyboard.press('w')
+                time.sleep(1)
+                self.rec.keyboard.release('w')
             self.rec.vb()
+if __name__=="__main__":
+    yd=YuanDian()
+    lock=[1,1]
+    yd.trackingYuanDian(lock)
