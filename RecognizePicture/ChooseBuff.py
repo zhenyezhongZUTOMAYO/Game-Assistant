@@ -158,6 +158,16 @@ class BuffSelector:
                 "exit_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}NextConfirm0.png",
                 "cooldown": 2  # 模式执行后的冷却时间
             },
+            "TheEnd": {
+                "entry_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}TheEnd.png",
+                "actions": [
+                    {
+                        "image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}TheEnd.png",
+                        "name": "选择路线", "delay": 1},
+                ],
+                "exit_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Finish.png",
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
         }
         # 验证所有图片文件是否存在
         # self._validate_image_files()
