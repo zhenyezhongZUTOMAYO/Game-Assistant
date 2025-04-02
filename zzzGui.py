@@ -1,8 +1,9 @@
 import sys
+import subprocess
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor
-
+from totaltrigger import TotalTrigger
 #Version 1  by cy 2025/3/26
 
 #  ======next task======= 
@@ -16,7 +17,9 @@ class GameAssistant(QMainWindow):
         super().__init__()
         self.running = False  # 运行状态标志
         self.initUI()
-        
+        self.tr=TotalTrigger()
+        self.process=None
+
     def initUI(self):
         self.setWindowTitle('游戏助手')
         self.setGeometry(300, 300, 1000, 600)
@@ -250,6 +253,19 @@ class GameAssistant(QMainWindow):
             }
         """% ("#000000" if self.running else "#000000")) 
             #% ("#FF4444" if self.running else "#497CB5"))  # 根据状态改变边框颜色
+        if self.running:
+            subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
+                           creationflags=subprocess.CREATE_NO_WINDOW)
+            self.process=subprocess.Popen([
+                "powershell",
+                "Start-Process",
+                "python.exe",
+                "-Verb", "RunAs",
+                "-ArgumentList", f"'{__file__[0:__file__.find("Game-Assistant")] + "Game-Assistant\\totaltrigger.py"}'"
+            ])
+        else:
+            self.process.terminate()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
