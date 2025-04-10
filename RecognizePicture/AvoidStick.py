@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import pyautogui
 import time
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # 设置检测间隔时间（秒）
 CHECK_INTERVAL = 1

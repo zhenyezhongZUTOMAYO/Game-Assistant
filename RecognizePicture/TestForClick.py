@@ -29,25 +29,26 @@ def on_click(x, y, button, pressed):
     if pressed:
         print(f'鼠标点击坐标: ({x}, {y})，按钮: {button}')
 
-# # 创建鼠标监听器
-# listener = mouse.Listener(on_click=on_click)
-#
-# print("开始监听鼠标点击，按ESC键停止...")
-#
-# # 启动监听器
-# listener.start()
-#
-# # 保持程序运行
-# try:
-#     while listener.is_alive():
-#         pass
-# except KeyboardInterrupt:
-#     pass
-# finally:
-#     # 停止监听器
-#     listener.stop()
-#     print("\n鼠标监听已停止")
+
 if __name__ =="__main__":
-    print(convert_coordinates(1980, 1963,(3840,2160),(2560,1440)))
-    print(convert_coordinates(3415, 1747,(3840,2160),(2560,1440)))
-    print(convert_coordinates(2070, 1355,(3840,2160),(2560,1440)))
+    # 创建鼠标监听器
+    listener = mouse.Listener(on_click=on_click)
+
+    print("开始监听鼠标点击，按ESC键停止...")
+
+    # 启动监听器
+    listener.start()
+
+    # 保持程序运行
+    try:
+        while listener.is_alive():
+            pass
+    except KeyboardInterrupt:
+        pass
+    finally:
+        # 停止监听器
+        listener.stop()
+        print("\n鼠标监听已停止")
+    # print(convert_coordinates(1980, 1963,(3840,2160),(2560,1440)))
+    # print(convert_coordinates(3415, 1747,(3840,2160),(2560,1440)))
+    # print(convert_coordinates(2070, 1355,(3840,2160),(2560,1440)))

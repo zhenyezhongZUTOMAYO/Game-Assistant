@@ -1,6 +1,7 @@
 import Recognize
 import ctypes
 import sys
+import os
 from EnterNextLevel import  LevelSystem
 from Recognize import rec
 import pynput
@@ -10,6 +11,7 @@ import time
 import ChooseBuff
 import GanTanChat
 import SumRecognize
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 def method(rec,location):
     keyboard = pynput.keyboard.Controller()
     keyboard.press('f')

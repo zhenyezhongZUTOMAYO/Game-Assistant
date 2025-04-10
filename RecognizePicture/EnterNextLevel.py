@@ -6,6 +6,7 @@ from Recognize import Recognize
 import threading
 import sys
 import ctypes
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 
 class LevelSystem:
@@ -61,7 +62,7 @@ class LevelSystem:
                         # print(f"self.rec.sa:{self.rec.sa}")
                         # print(f"self.rec.sb:{self.rec.sb}")
                         self.rec.end = False
-                        self.rec.trakingImage(image_path_1,sleep=0.6)
+                        self.rec.trakingImage(image_path_1,sleep=0.4)
                         # print(f"追踪结束{i}")
                         if image_path_1 == self.rec.source_path + "Game-Assistant\\Source\\" + str(
                                 self.rec.resolutionRatio[0]) + f"{next[6]}.png":
