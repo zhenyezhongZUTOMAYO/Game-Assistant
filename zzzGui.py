@@ -1,19 +1,29 @@
 import sys
 import os
 import subprocess
+
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor
 from totaltrigger import TotalTrigger
+from qfluentwidgets import(
+    SpinBox,ComboBox,CardWidget,setTheme,Theme,NavigationInterface,
+    NavigationItemPosition,PrimaryPushButton,TitleLabel,BodyLabel,
+    TransparentToolButton,FluentIcon,LineEdit,ToolButton,InfoBar,
+    InfoBarPosition,MessageBox,FluentWindow,GroupHeaderCardWidget,
+    setThemeColor
+)
 #Version 1  by cy 2025/3/26
 
 #  ======next task======= 
 # modify class QComBox
 # modify class QSpinBox 
 # color setting
+
+
 #  =====================
 
-class GameAssistant(QMainWindow):
+class GameAssistant(FluentWindow):
     def __init__(self):
         super().__init__()
         self.running = False  # 运行状态标志
@@ -21,21 +31,38 @@ class GameAssistant(QMainWindow):
         self.tr=TotalTrigger()
         self.process=None
         self.start=True
+        self.create_action_buttons()
+        
 
     def initUI(self):
+        self.COLOR_PALETTE = {# #98F5FF
+    "primary": "#0078D4",       # 主色调
+    "secondary": "#6B5B95",     # 辅助色
+    "success": "#4CAF50",       # 成功状态
+    "warning": "#FF9800",       # 警告状态
+    "error": "#F44336",         # 错误状态
+    "text_primary": "#212121",  # 主要文本
+    "text_secondary": "#757575" # 次要文本
+}
+        self.FONT_CONFIG = {
+    "title": ("微软雅黑", 16, QFont.DemiBold),
+    "subtitle": ("微软雅黑", 14, QFont.Normal),
+    "body": ("Segoe UI", 12),
+    "button": ("Segoe UI", 13, QFont.Medium)
+}
         self.setWindowTitle('游戏助手')
-        self.setGeometry(300, 300, 1000, 600)
-        
-        # 主窗口容器
-        main_widget = QWidget()
-        main_widget.setObjectName("MainWidget")
-        self.setCentralWidget(main_widget)
-        
-        # 主布局
-        main_layout = QHBoxLayout(main_widget)
-        main_layout.setContentsMargins(20, 20, 20, 20)
-        main_layout.setSpacing(20)
 
+        self.resize(1000,600)
+        setTheme(Theme.LIGHT)
+        setThemeColor(self.COLOR_PALETTE["primary"])
+
+        main_widget=QWidget()
+        main_widget.setObjectName("MainWidget")
+        # 主布局
+        self.main_layout=QHBoxLayout(main_widget)
+        self.main_layout.setContentsMargins(20, 20, 20, 20)
+        self.main_layout.setSpacing(20)
+        
         # 左侧区域 
         left_widget = QWidget()
         left_layout = QVBoxLayout(left_widget)
@@ -43,164 +70,142 @@ class GameAssistant(QMainWindow):
         left_layout.setSpacing(15)
 
         # 使用说明区块
-        self.using_group = self.create_instruction_group()
+        self.using_card = self.create_instruction_card()
         
         # 文件地址区块
-        self.file_group = self.create_file_group()
+        self.file_card = self.create_file_card()
         
         # 目标刷取区块
-        self.target_group = self.create_target_group()
+        self.target_card = self.create_target_card()
         
         # 角色选择区块
-        self.role_group = self.create_role_group()
-        
+        self.role_card = self.create_role_card()
+
+  
+        #group_layout.addWidget(self.create_instruction_card())
+        #group_layout.addWidget(self.create_file_card())
+        #group_layout.addWidget(self.create_target_card())
+        #group_layout.addWidget(self.create_role_card())
+
         # 开始运行按钮
-        self.start_btn = QPushButton("开始运行")
+        self.start_btn = PrimaryPushButton("开始运行")
         self.start_btn.setObjectName("startButton")
         self.start_btn.clicked.connect(self.toggle_running)
         
         # 组装左侧布局
-        left_layout.addWidget(self.using_group)
-        left_layout.addWidget(self.file_group)
-        left_layout.addWidget(self.target_group)
-        left_layout.addWidget(self.role_group)
+        left_layout.addWidget(self.using_card)
+        left_layout.addWidget(self.file_card)
+        left_layout.addWidget(self.target_card)
+        left_layout.addWidget(self.role_card)
         left_layout.addWidget(self.start_btn)
+
         left_layout.addStretch(1)
 
         # 右侧区域 
         right_widget = QWidget()
         right_layout = QVBoxLayout(right_widget)
-        right_layout.addWidget(QLabel("运行状态显示区域（预留）"))
+        right_layout.addWidget(TitleLabel("运行状态"))
 
         right_layout.addStretch(1)
 
         # 主布局比例设置
-        main_layout.addWidget(left_widget, 5)  
-        main_layout.addWidget(right_widget, 5)
+        self.main_layout.addWidget(left_widget, 5)  
+        self.main_layout.addWidget(right_widget, 5)
 
-        # 全局样式 
-        self.setStyleSheet("""
-            QWidget {
-                background-color: white;
-                font-family: '微软雅黑';
-            }
-            QGroupBox {
-                border: 1px solid #e0e0e0;
-                border-radius: 8px;
-                margin-top: 1ex;
-                font-size: 14px;
-                color: #333;
-                padding: 12px;
-            }
-            QGroupBox::title {
-                subcontrol-origin: margin;
-                left: 10px;
-                padding: 0 5px;
-            }
-            QLineEdit, QComboBox {
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                padding: 6px;
-                min-height: 28px;
-            }
-            QPushButton {
-                background-color: #f8f8f8;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                padding: 8px 16px;
-                color: #333;
-                min-width: 80px;
-            }
-            QPushButton:hover {
-                background-color: #f0f0f0;
-            }
-            QPushButton:pressed {
-                background-color: #e8e8e8;
-            }
-            QPushButton#startButton {
-                background-color: #4CAF50;
-                color: white;
-                font-size: 16px;
-                padding: 12px;
-                border-radius: 8px;
-                border: none;
-            }
-            QPushButton#startButton:hover {
-                background-color: #45a049;
-            }
-            QPushButton#startButton:checked {
-                background-color: #f44336;
-            }
-            QSpinBox {
-                padding: 4px;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-            }
-            QSpinBox::up-button, QSpinBox::down-button {
-                width: 20px;
-            }
-        """)
+        self.addSubInterface(
+            interface=main_widget,
+            icon=FluentIcon.HOME,
+            text="主界面",
+            position=NavigationItemPosition.TOP
+        )
 
-    def create_instruction_group(self):
-        group = QGroupBox("使用说明")
-        layout = QHBoxLayout()
+ 
+    def create_instruction_card(self):
+        card=CardWidget()#'使用说明'
+        layout = QHBoxLayout(card)
         layout.setContentsMargins(0, 0, 0, 0)
         
         # 文本部分
         text_widget = QWidget()
         text_layout = QVBoxLayout(text_widget)
-        text_layout.addWidget(QLabel("使用说明"))
-        text_layout.addWidget(QLabel("1. 请先阅读说明文档2. 配置必要参数\n3. 点击开始运行"))
+        title = TitleLabel("使用说明")
+        self.apply_typography(title, "title")
+        text_layout.addWidget(title)
+        body = BodyLabel("1. 请先阅读说明文档\n2. 配置必要参数\n3. 点击开始运行")
+        self.apply_typography(body, "body")
+        text_layout.addWidget(body)
         
         # 按钮部分
-        btn = QPushButton("前往")
-        btn.setIcon(QIcon("Source/文档@3x.ico"))#E:/zzzHollow脚本/src/icon/文档@3x.ico
-        btn.setStyleSheet("""
-         QPushButton {
-                background-color: #FFFFFF;  /* 固定白色背景 */
-            }
-        """
-        )
-        #btn.setIconSize(QSize(32,32))
+        btn = TransparentToolButton(FluentIcon.DOCUMENT)
+        btn.clicked.connect(self.showDocumentation)#///未实现部分
         btn.setFixedSize(80, 60)
         
         layout.addWidget(text_widget)
         layout.addWidget(btn)
-        group.setLayout(layout)
-        return group
 
-    def create_file_group(self):
-        group = QGroupBox("文件地址")
-        layout = QHBoxLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
+        return card
+
+    def create_file_card(self):
+        card = CardWidget()#"文件地址"
+        layout = QHBoxLayout(card)
+        layout.setContentsMargins(15, 15, 15, 15)  # 统一边距
+        layout.setSpacing(10)  # 元素间距
+        #layout.setContentsMargins(0, 0, 0, 0)
 
         # 输入框
-        self.file_path = QLineEdit()
-        self.file_path.setPlaceholderText("请选择文件路径...")
-        self.load_existing_file_path()
+        self.file_path = LineEdit()
+        self.file_path.setPlaceholderText("请选择游戏客户端路径...")
+        self.file_path.setStyleSheet(f"""
+        LineEdit {{
+            border: 1px solid {self.COLOR_PALETTE['primary']}30;
+            border-radius: 6px;
+            padding: 6px;
+            background-color: #FFFFFF;
+        }}
+        LineEdit:hover {{
+            border-color: {self.COLOR_PALETTE['primary']}60;
+        }}
+    """)
+        #游戏启动
+        self.game_start=ToolButton(FluentIcon.PLAY)
+        self.game_start.clicked.connect(self.start_game)
         
-        # 选择按钮
-        btn = QPushButton()
-        btn.setIcon(QIcon(r"Source\文件夹.ico"))#E:\zzzHollow脚本\src\icon\文件夹.ico
-        btn.setStyleSheet("""
-         QPushButton {
-                background-color: #FFFFFF;  /* 固定白色背景 */
-            }
-        """
-        )
-        btn.setFixedSize(32, 42)
-        btn.setIconSize(QSize(24, 24))
-        btn.clicked.connect(self.browse_file)
+        # 选择文件按钮
+        self.btn = TransparentToolButton(FluentIcon.FOLDER)
+        self.btn.setFixedSize(40,40)
+
+        self.btn.clicked.connect(self.browse_file)
         
-        layout.addWidget(self.file_path, 8)
-        layout.addWidget(btn, 2)
-        group.setLayout(layout)
-        return group
+        layout.addWidget(self.file_path, 70)
+        layout.addWidget(self.btn, 15)
+        layout.addWidget(self.game_start,15)
+
+        return card
+    #可以加入关闭游戏的
+    def start_game(self):
+        if self.start:
+            zzz_path = self.file_path.text().strip()
+            if not zzz_path:
+                QMessageBox.warning(self, "警告", "文件路径不能为空！", QMessageBox.Ok)
+                return
+            try:
+                with open(zzz_path, 'rb') as f:
+                    header = f.read(2)
+                    if header != b'MZ':
+                        QMessageBox.warning(self, "警告", "非有效的EXE文件", QMessageBox.Ok)
+                        return
+
+                    # 加入确认逻辑
+                    os.startfile(zzz_path)
+                    self.start=False
+            except PermissionError:
+                QMessageBox.critical(self, "权限错误", "没有权限或文件被其他程序使用", QMessageBox.Ok)
+            except Exception as e:
+                QMessageBox.critical(self, "错误", f"操作失败：{str(e)}", QMessageBox.Ok)
     
     def load_existing_file_path(self):
         """初始化加载文件路径"""
         config_file = "Source/file_path.txt"
-       
         try:
             # 检查文件是否存在
             if os.path.exists(config_file):
@@ -210,10 +215,10 @@ class GameAssistant(QMainWindow):
                     if first_line and os.path.exists(first_line):
                         self.file_path.setText(first_line)
         except Exception as e:
-            QMessageBox.warning(None, "配置错误", f"读取配置文件失败: {str(e)}")
+            self.show_warning( "配置错误", f"读取配置文件失败: {str(e)}")
 
     def browse_file(self):
-        """文件选择并保存路径"""
+        
         options = QFileDialog.Options()
         file_path, _ = QFileDialog.getOpenFileName(
             None, "选择文件", "", "All Files (*);;Text Files (*.txt)", options=options
@@ -247,87 +252,74 @@ class GameAssistant(QMainWindow):
         if path and os.path.isfile(path):
             self.file_path.setText(path)
         elif path:  # 路径存在但不是文件
-            QMessageBox.warning(self, "错误", "请选择有效文件！")
+            self.show_warning( "错误", "请选择有效文件！")
 
-    def create_target_group(self):
-        group = QGroupBox("目标刷取")
-        layout = QHBoxLayout()
+    def create_target_card(self):
+        card = CardWidget()#"目标刷取"
+        layout = QHBoxLayout(card)
         
         # 输入框
-        self.target_input = QSpinBox()
+        self.target_input = SpinBox()
         self.target_input.setRange(0, 9999)
         self.target_input.setValue(100)
         
+        layout.addWidget(BodyLabel('目标次数:'))
         layout.addWidget(self.target_input)
-        #layout.addLayout(btn_layout)
-        group.setLayout(layout)
-        return group
+        card.setLayout(layout)
+        return card
 
-    def create_role_group(self):
-        group = QGroupBox("角色选择")
-        layout = QHBoxLayout()
+    def create_role_card(self):
+        card = CardWidget()#"角色选择"
+        layout = QHBoxLayout(card)
         
-        # 下拉框
-        #对于combobox组件的修改
-        self.role_combo = QComboBox()
-        #这里的item
+        self.role_combo = ComboBox()
         self.role_combo.addItems(["角色1", "角色2", "角色3"])
-        
-        layout.addWidget(QLabel("选择角色："))
 
+        layout.addWidget(BodyLabel("选择角色："))
         layout.addWidget(self.role_combo)
-        group.setLayout(layout)
-        return group
+        
+        return card
+    def create_action_buttons(self):
+    # 动态按钮颜色#{self.COLOR_PALETTE['primary']}
+        self.start_btn.setStyleSheet(f"""
+            PrimaryPushButton {{
+                 background-color: {self.COLOR_PALETTE['primary']};                     
+                border-radius: 8px;
+                padding: 12px 24px;
+                min-width: 120px;
+            }}
+            PrimaryPushButton:hover {{
+                background-color: {self.COLOR_PALETTE['primary']}DD;
+            }}
+            PrimaryPushButton:pressed {{
+                background-color: {self.COLOR_PALETTE['primary']}BB;
+            }}
+        """)
+        # 图标按钮统一处理
+        # icon_buttons = [self.btn, self.game_start]
+        # for btn in icon_buttons:
+        #     btn.setIconSize(QSize(20, 20))
+        #     btn.setStyleSheet(f"""
+        #         TransparentToolButton {{
+        #             border-radius: 8px;
+        #             padding: 8px;
+        #         }}
+        #         TransparentToolButton:hover {{
+        #             background-color: {self.COLOR_PALETTE['primary']}10;
+        #         }}
+        #     """)
+        
 
     def toggle_running(self):
-        """
-        self.running = not self.running
-        self.start_btn.setText("停止运行" if self.running else "开始运行")
-        self.start_btn.setStyleSheet("""
-        #   background-color: %s;
-        """ % ("#DADFE4" if self.running else "#497CB5"))
-        """
-        self.running = not self.running
-        self.start_btn.setText("停止运行" if self.running else "开始运行")
-        #self.start_btn.setContentsMargins(100,100,100,100)
-        #self.start_btn.setSizePolicy(50,50)
-        self.start_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #FFFFFF;  /* 固定白色背景 */
-                color: #000000;            /* 黑色字体 */
-                border: 1px solid %s;      /* 动态边框颜色 */
-                border-radius: 10px;       /* 圆角半径 */
-                padding: 12px 16px;         /* 内边距 */
-                font-size: 14px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #F5F5F5;  /* 悬停状态 */
-            }
-            QPushButton:pressed {
-                background-color: #EEEEEE;  /* 按下状态 */
-            }
-        """% ("#000000" if self.running else "#000000")) 
-            #% ("#FF4444" if self.running else "#497CB5"))  # 根据状态改变边框颜色
-        if self.start:
-            zzz_path = self.file_path.text().strip()
-            if not zzz_path:
-                QMessageBox.warning(self, "警告", "文件路径不能为空！", QMessageBox.Ok)
-                return
-            try:
-                with open(zzz_path, 'rb') as f:
-                    header = f.read(2)
-                    if header != b'MZ':
-                        QMessageBox.warning(self, "警告", "非有效的EXE文件", QMessageBox.Ok)
-                        return
+        self.running =not self.running
+        self.start_btn.setText('停止运行'if self.running else '开始运行')
+        self.start_btn.setProperty('isRunning',self.running)
+        self.start_btn.setStyle(QApplication.style())
 
-                    # 加入确认逻辑
-                    os.startfile(zzz_path)
-                    self.start=False
-            except PermissionError:
-                QMessageBox.critical(self, "权限错误", "没有权限或文件被其他程序使用", QMessageBox.Ok)
-            except Exception as e:
-                QMessageBox.critical(self, "错误", f"操作失败：{str(e)}", QMessageBox.Ok)
+        if self.running:
+            self.show_success("","开始运行")
+        else:
+            self.show_success("","停止运行")
 
         if self.running:
             subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
@@ -342,6 +334,36 @@ class GameAssistant(QMainWindow):
         else:
             self.process.terminate()
 
+    def show_success(self,title,content):
+        InfoBar.success(
+            title=title,content=content,orient=Qt.Horizontal,
+            isClosable=True,position=InfoBarPosition.TOP,duration=2000,
+            parent=self
+        )
+    def show_warning(self,title,content):
+        InfoBar.warning(
+            title=title,
+            content=content,duration=2000,
+            parent=self
+        ) 
+    def showDocumentation(self):
+        """显示说明文档"""
+        content = """
+        <h3>游戏助手使用说明</h3>
+        <p>1. 请确保已安装游戏客户端</p>
+        <p>2. 配置正确的客户端路径</p>
+        <p>3. 选择需要刷取的角色</p>
+        <p>4. 设置目标刷取次数</p>
+        """
+        w = MessageBox('使用说明', content, self)
+        w.exec()
+    def apply_typography(self,widget, font_type):
+        font = QFont(*self.FONT_CONFIG[font_type])
+        widget.setFont(font)
+        if font_type == "title":
+            widget.setStyleSheet(f"color: {self.COLOR_PALETTE['text_primary']};")
+        elif font_type == "subtitle":
+            widget.setStyleSheet(f"color: {self.COLOR_PALETTE['text_secondary']};")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
