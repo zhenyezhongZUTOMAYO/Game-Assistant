@@ -1,7 +1,6 @@
 import sys
 import os
 import subprocess
-
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor
@@ -11,7 +10,7 @@ from qfluentwidgets import(
     NavigationItemPosition,PrimaryPushButton,TitleLabel,BodyLabel,
     TransparentToolButton,FluentIcon,LineEdit,ToolButton,InfoBar,
     InfoBarPosition,MessageBox,FluentWindow,GroupHeaderCardWidget,
-    setThemeColor
+    setThemeColor,CompactSpinBox
 )
 #Version 1  by cy 2025/3/26
 
@@ -167,7 +166,7 @@ class GameAssistant(FluentWindow):
         }}
     """)
         #游戏启动
-        self.game_start=ToolButton(FluentIcon.PLAY)
+        self.game_start=TransparentToolButton(FluentIcon.PLAY)
         self.game_start.clicked.connect(self.start_game)
         
         # 选择文件按钮
@@ -259,12 +258,12 @@ class GameAssistant(FluentWindow):
         layout = QHBoxLayout(card)
         
         # 输入框
-        self.target_input = SpinBox()
+        self.target_input = CompactSpinBox()#Compact
         self.target_input.setRange(0, 9999)
         self.target_input.setValue(100)
         
-        layout.addWidget(BodyLabel('目标次数:'))
-        layout.addWidget(self.target_input)
+        layout.addWidget(BodyLabel('目标次数:'),20)
+        layout.addWidget(self.target_input,80)
         card.setLayout(layout)
         return card
 
