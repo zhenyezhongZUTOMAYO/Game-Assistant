@@ -305,8 +305,8 @@ class GameAssistant(QMainWindow):
                 QMessageBox.critical(self, "错误", f"操作失败：{str(e)}", QMessageBox.Ok)
 
         if self.running:
-            subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
-                           creationflags=subprocess.CREATE_NO_WINDOW)
+            # subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
+            #                creationflags=subprocess.CREATE_NO_WINDOW)
             self.process=subprocess.Popen([
                 "powershell",
                 "Start-Process",

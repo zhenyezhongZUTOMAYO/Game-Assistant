@@ -14,6 +14,7 @@ class GanTanChat:
 
     def method(self,rec,location):
         self.lock[0] = 0  #锁住圆点
+        self.lock[1] = 0
         # print("锁住原点")
         rec.end=True
         rec.keyboard.release('w')
@@ -36,10 +37,11 @@ class GanTanChat:
         keyboard.release('f')
         self.Speak()
         # print(f"sa={self.rec.sa}\nsb={self.rec.sb}")
-
+        self.lock[1]=0
         keyboard.press('s')
         time.sleep(1.7)
         keyboard.release('s')
+        self.lock[1]=1
         self.lock[0]=1  #释放原点
         # print("释放原点")
 
@@ -97,6 +99,3 @@ class GanTanChat:
         rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",confidence,0.7)
         # print("trackingImageEnd")
         thread_b.join()
-
-    def test(self):
-        self.lock[0]=1

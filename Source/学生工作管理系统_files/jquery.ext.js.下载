@@ -1,0 +1,173 @@
+/**
+ * Created by liwj on 2015-1-9.
+ */
+
+$.extend({
+    alert: function(msg, status) {
+        if(status!=null && status=="true"){
+            layer.alert(msg,{icon:1, title:'提示'});
+        }
+        else{
+            layer.alert(msg,{icon:0, title:'提示'});
+        }
+
+    },
+    confirm: function(msg,callback) {
+        layer.confirm(msg,{icon: 3, title:'提示'},function(index){
+            layer.close(index);
+            callback();
+        });
+    },
+    msg:function(msg){
+        layer.msg(msg);
+    },
+    edit:function(url){
+        $("form[id^='hiddenForm_']").remove();
+        var timestamp = (new Date()).getTime();
+        var hiddenFormId = "hiddenForm_"+timestamp;
+        var formStr = "<form id='"+hiddenFormId+"' action='"+url+"' method='post'>";
+        $("input:hidden,input:text,select").each(function () {
+            var name = $(this).attr("name");//获取name属性
+            var value=$(this).val();
+            if(null!=name && null != value){
+                formStr += "<input type='hidden' name='"+name+"' value='"+value+"'/>";
+            }
+        });
+        $('input:radio,input:checkbox').filter(':checked').each(function () {
+            var name = $(this).attr("name");//获取name属性
+            var value=$(this).val();
+            if(null!=name && null != value){
+                formStr += "<input type='hidden' name='"+name+"' value='"+value+"'/>";
+            }
+        });
+        formStr += "</form>";
+        $("BODY").append(formStr);
+        $("#"+hiddenFormId).submit();
+    },
+    download:function(url, params){
+        $("form[id^='downloadForm_']").remove();
+        var timestamp = (new Date()).getTime();
+        var hiddenFormId = "hiddenForm_"+timestamp;
+        var formStr = "<form id='"+hiddenFormId+"' action='"+url+"' method='post'>";
+        if(params!=null){
+            for(var key in params){
+                if("undefined"== typeof(params[key])||null==key||null==params[key]){
+                    continue;
+                }
+                formStr += "<input type='hidden' name='"+key+"' value='"+params[key]+"'/>";
+            }
+        }
+        formStr += "</form>";
+        $("BODY").append(formStr);
+        $("#"+hiddenFormId).submit().remove();
+    },
+    remove:function(url, callback){
+        $.ajax({
+            type:"POST",
+            url:url,
+            data:getWhereStr(),
+            cache:false,
+            async:false,
+            dataType:"json",
+            success: function(dataResult){
+                if(dataResult.errcode=="0"){
+                    $.msg(dataResult.errmsg);
+                }
+                else{
+                    $.msg(dataResult.errmsg);
+                }
+                callback();
+            }
+        });
+    },
+    removeForTab:function(url, formId, callback){
+        $.ajax({
+            type:"POST",
+            url:url,
+            data:getFormWhereStr(formId),
+            cache:false,
+            async:false,
+            dataType:"json",
+            success: function(dataResult){
+                if(dataResult.errcode=="0"){
+                    $.msg(dataResult.errmsg);
+                }
+                else{
+                    $.msg(dataResult.errmsg);
+                }
+                callback();
+            }
+        });
+    },
+    dialog: function (url,title,width,height,callback,closeBtn) {
+        if(title==null){title="";}
+        var dialog_width = 800;
+        var dialog_height = 600;
+        var dialog_closeBtn = 1;
+        if(width!=null){dialog_width=parseInt(width);}
+        if(height!==null){dialog_height=parseInt(height);}
+        var window_width = $(window).innerWidth()-10;
+        var window_height = $(window).innerHeight()-10;
+        if(window_width<dialog_width){
+            dialog_width=window_width;
+        }
+        if(window_height<dialog_height){
+            dialog_height=window_height;
+        }
+        if(closeBtn!=null){
+            dialog_closeBtn=closeBtn;
+        }
+        layer.open({
+            type: 2,
+            title: title,
+            shade: [0.2, '#000'],
+            //border: [0],
+            area: [dialog_width+"px" , dialog_height+"px"],
+            content: url,
+            scrollbar: false,
+            closeBtn: dialog_closeBtn,
+            end:function (index, layero) {
+                if(callback){
+                    callback();
+                }
+            }
+        });
+    },
+    close:function(){
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    },
+    divDialog: function(domId,title){
+        if(title==null){title="";}
+        layer.open({
+            type: 1,
+            title: [
+                title,
+                'border:none; background:#909ebb; color:#fff;'
+            ],
+            shade: [0.2, '#000'],
+            area: ['auto', 'auto'],
+            border: [0],
+            content: domId,
+            close: function(index){
+                $('body').css("overflow","auto");
+            }
+        });
+        $('body').css("overflow","hidden");
+    },
+    divClose:function(){
+        layer.closeAll();
+    },
+    loading:function(msg){
+        if(msg==null){msg="正在加载中，请稍候...";}
+        var index = layer.msg("<i class='ace-icon fa fa-spinner'></i>&nbsp;"+msg, {
+            shade: 0.5,
+            time:1000000
+        });
+        return index;
+    },
+    closeLoading:function(index){
+        layer.close(index);
+    }
+
+});

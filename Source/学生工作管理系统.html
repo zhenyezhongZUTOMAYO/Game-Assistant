@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<!-- saved from url=(0114)http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&xzqr=true&_tsp_=1743847514234 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>学生工作管理系统</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet" href="./学生工作管理系统_files/bootstrap.css">
+<link rel="stylesheet" href="./学生工作管理系统_files/font-awesome.css">
+<link rel="stylesheet" href="./学生工作管理系统_files/chosen.css">
+
+<link rel="stylesheet" href="./学生工作管理系统_files/jquery-ui.css">
+
+<link rel="stylesheet" href="./学生工作管理系统_files/amazeui.min.css">
+<link rel="stylesheet" href="./学生工作管理系统_files/amazeui.ext.css">
+<link rel="stylesheet" href="./学生工作管理系统_files/admin.css">
+<!-- text fonts -->
+<link rel="stylesheet" href="./学生工作管理系统_files/ace-fonts.css">
+<!-- ace styles -->
+<link rel="stylesheet" href="./学生工作管理系统_files/ace.css">
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="/xg/static/ace/assets/css/ace-part2.css" />
+<![endif]-->
+<link rel="stylesheet" href="./学生工作管理系统_files/ace-rtl.css">
+<!--[if lte IE 9]>
+<link rel="stylesheet" href="/xg/static/ace/assets/css/ace-ie.css" />
+<![endif]-->
+<link rel="stylesheet" href="./学生工作管理系统_files/iconfont.css">
+<link rel="stylesheet" href="./学生工作管理系统_files/style.css">
+<link rel="stylesheet" href="./学生工作管理系统_files/style2.css">
+
+<!-- ace settings handler -->
+<script src="./学生工作管理系统_files/ace-extra.js.下载"></script>
+<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+<!--[if lte IE 8]>
+<script src="/xg/static/ace/assets/js/html5shiv.js"></script>
+<script src="/xg/static/ace/assets/js/respond.js"></script>
+<![endif]-->
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/xg/static/ace/assets/js/jquery.js'>"+"<"+"/script>");
+</script><script src="./学生工作管理系统_files/jquery.js.下载"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/xg/static/js/jquery-1.12.4.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='/xg/static/ace/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+</script>
+<script type="text/javascript" src="./学生工作管理系统_files/bootstrap.js.下载"></script>
+<script type="text/javascript" src="./学生工作管理系统_files/layer.js.下载"></script><link rel="stylesheet" href="./学生工作管理系统_files/layer.css" id="layui_layer_skinlayercss" style="">
+<script type="text/javascript" src="./学生工作管理系统_files/jquery.ext.js.下载"></script>
+<script type="text/javascript" src="./学生工作管理系统_files/validate.js.下载"></script>
+
+
+<script type="text/javascript" src="./学生工作管理系统_files/echarts-all.js.下载"></script>
+
+<script type="text/javascript" src="./学生工作管理系统_files/common.js.下载"></script>
+<script type="text/javascript" src="./学生工作管理系统_files/WdatePicker.js.下载"></script><link href="./学生工作管理系统_files/WdatePicker.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="./学生工作管理系统_files/jquery.editable-select.min.css">
+<script type="text/javascript" src="./学生工作管理系统_files/jquery.editable-select.min.js.下载"></script>
+
+<script src="./学生工作管理系统_files/jquery.uploadifive.min.js.下载" type="text/javascript"></script>
+<script src="./学生工作管理系统_files/jquery.uploadifive.js.下载" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="./学生工作管理系统_files/uploadifive.css">
+
+<link rel="stylesheet" href="./学生工作管理系统_files/jquery.editable-select.min.css">
+<script type="text/javascript" src="./学生工作管理系统_files/jquery.editable-select.min.js.下载"></script>
+
+<!-- page specific plugin scripts -->
+<link rel="stylesheet" href="./学生工作管理系统_files/jquery.validate.css">
+<!--[if lte IE 8]>
+<script src="/xg/static/ace/assets/js/excanvas.js"></script>
+<![endif]-->
+<script src="./学生工作管理系统_files/jquery-ui.js.下载"></script>
+<script src="./学生工作管理系统_files/jquery-ui.custom.js.下载"></script>
+<script src="./学生工作管理系统_files/jquery.ui.touch-punch.js.下载"></script>
+<script src="./学生工作管理系统_files/chosen.jquery.js.下载"></script>
+
+<script src="./学生工作管理系统_files/bootbox.js.下载"></script>
+<script src="./学生工作管理系统_files/jquery.validate.js.下载"></script>
+<script src="./学生工作管理系统_files/additional-methods.js.下载"></script>
+<script src="./学生工作管理系统_files/messages_zh.min.js.下载"></script>
+<!-- ace scripts -->
+<script src="./学生工作管理系统_files/ace-elements.js.下载"></script>
+<script src="./学生工作管理系统_files/ace.js.下载"></script>
+
+<script type="text/javascript"> ace.vars['base'] = '/xg/static/ace'; </script>
+<script src="./学生工作管理系统_files/js.cookie.js.下载"></script>
+<script src="./学生工作管理系统_files/jquery.cookie.js.下载"></script>
+<script src="./学生工作管理系统_files/pagination.js.下载"></script>
+<script src="./学生工作管理系统_files/grid.js.下载"></script>
+
+<!--ztree -->
+<link rel="stylesheet" href="./学生工作管理系统_files/metro.css" type="text/css">
+<script type="text/javascript" src="./学生工作管理系统_files/jquery.ztree.all-3.5.min.js.下载"></script>
+
+<script src="./学生工作管理系统_files/jquery.inputlimiter.1.3.1.js.下载"></script>
+
+<script type="text/javascript" src="./学生工作管理系统_files/bootstrap-multiselect.js.下载"></script>
+<link rel="stylesheet" href="./学生工作管理系统_files/bootstrap-multiselect.css" type="text/css">
+<link rel="stylesheet" href="./学生工作管理系统_files/bootstrap-duallistbox.css">
+<script type="text/javascript" src="./学生工作管理系统_files/dropzone.js.下载"></script>
+<link rel="stylesheet" href="./学生工作管理系统_files/dropzone.css" type="text/css">
+<script src="./学生工作管理系统_files/bootstrap-tag.js.下载"></script>
+
+<link rel="stylesheet" href="./学生工作管理系统_files/jquery.tagsinput.css" type="text/css">
+<script src="./学生工作管理系统_files/jquery.tagsinput.js.下载"></script>
+<script type="text/javascript" src="./学生工作管理系统_files/tinymce.min.js.下载"></script>
+<script type="text/javascript" src="./学生工作管理系统_files/config.js.下载"></script>
+<script type="text/javascript">
+    function initProcess(applyId, view) {
+        if (applyId) {
+            loadGrid("processDiv", addNoCache("/xg/process/toInstanceInfo?applyId=" + applyId + "&view=" + view), "");
+        }
+    }
+</script>    <link rel="stylesheet" href="./学生工作管理系统_files/smart_wizard.css">
+    <link rel="stylesheet" href="./学生工作管理系统_files/mystyle.css">
+    <script type="text/javascript">
+        function logout(){
+            $.confirm("确认退出系统吗？",function(){
+                window.location.href = "/xg/logout";
+            });
+        }
+        function alertMsg(errcode,errmsg){
+            if(errcode!=null&&errcode=="0"){
+                $.msg(errmsg);
+            }
+            else{
+                $.msg(errmsg);
+            }
+        }
+        function todo(url, submenuid, menuid){
+            var formStr = "<form id='hiddenTargetForm' action='/xg"+url+"' method='post'>";
+            formStr += "<input type='hidden' name='_menuid_' value='"+menuid+"'/>";
+            formStr += "<input type='hidden' name='_submenuid_' value='"+submenuid+"'/>";
+            formStr += "</form>";
+            $("BODY").append(formStr);
+            $.loading();
+            $("#hiddenTargetForm").submit();
+        }
+        function changePassword(){
+            $.ajax({
+                type: "POST",
+                url: addNoCache("/xg/isChcekCas"),
+                cache: false,
+                dataType: "json",
+                success: function (dataResult) {
+                    if (dataResult.errcode == "0") {
+                        window.open(dataResult.data);
+                    }else {
+                        $.dialog("/xg/user/password","修改密码", "500","300");
+                    }
+                }
+            });
+
+        }
+        function switchRole(roleid){
+            window.location.href = "/xg/switchRole?current_roleid="+roleid;
+        }
+        function isNeedChangePwd() {
+            $.ajax({
+                type: "POST",
+                url: addNoCache("/xg/user/isNeedChangePwd"),
+                cache: false,
+                dataType: "json",
+                success: function (dataResult) {
+                    if (dataResult.errcode != "0") {
+                        $.dialog("/xg/user/password","修改密码", "500","300",null,0);
+                    }
+                }
+            });
+        }
+        $(document).ready(function(){
+            isNeedChangePwd();
+        });
+    </script>
+</head>
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default navbar-fixed-top student">
+    <div class="navbar-container  container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#" class="navbar-brand">
+                <small>
+                    学生工作管理系统
+                </small>
+            </a>
+        </div>
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+            <li class="light-blue">
+                <a data-toggle="dropdown" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#" class="dropdown-toggle">
+								<span class="user-info" style="line-height:30px;">
+									欢迎,仝展华
+								</span>
+                    <i class="ace-icon fa fa-caret-down"></i>
+                </a>
+                <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                    <li>
+                        <a href="javascript:changePassword()">
+                            <i class="ace-icon fa fa-lock"></i>
+                            修改密码
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:logout()">
+                            <i class="ace-icon fa fa-power-off"></i>
+                            退出
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            </ul>
+        </div>
+        <nav role="navigation" class="navbar-menu pull-right collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li id="li_home" class="active">
+                <a href="javascript:todo(&#39;/desktop/index&#39;,&#39;home&#39;)">
+                    首页
+                </a>
+                </li>
+                    <li id="li_menu_myservice">
+                            <a href="javascript:todo(&#39;/desktop/myService&#39;,&#39;menu_myservice&#39;,&#39;&#39;)">
+                                我的服务
+                            </a>
+                    </li>
+                    <li id="li_menu_myInfo">
+                            <a href="javascript:todo(&#39;/desktop/toEdit&#39;,&#39;menu_myInfo&#39;,&#39;&#39;)">
+                                个人档案
+                            </a>
+                    </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+<div class="main-container  container" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="page-content"><style>
+    .text-red {
+        color: #f00;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: "Consolas";
+    }
+</style>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title lighter blue bolder smaller" style="padding-bottom: 12px;">当前申请：2025-2026学年家庭经济困难学生认定</h4>
+            </div>
+            <form id="dForm" method="post" action="http://202.114.207.127/xg/stdPoorApply/apply" class="form-horizontal" enctype="multipart/form-data" novalidate="novalidate">
+                <input type="hidden" name="token" value="1e791355-9c8f-408b-93d2-6f4d8406aee5">
+                <input type="hidden" name="xz" value="1">
+                        <input name="applyId" value="" id="applyId" type="hidden">
+                <input name="pc.id" value="084b3ee6abf646fc8ff4b6160d86e02d" id="pc" type="hidden">
+                <input name="applyUserId" value="20231001002" type="hidden">
+
+                <h5 class="header blue bolder smaller" style="padding-bottom: 12px;font-size: 17px">基本信息<span style="color: red">(如已下信息不全，请点击右上角的个人档案进行补充，学制除外)</span></h5>
+                <table class="table-no-border" style="font-size:16px;width: 80%;margin: 0 auto;">
+                    <tbody><tr>
+                        <td class="align-right" width="15%">学号：</td>
+                        <td width="18%"> 20231001002</td>
+                        <td class="align-right" width="15%">姓名：</td>
+                        <td width="18%"> 仝展华</td>
+                        <td class="align-right" width="15%">性别：</td>
+                        <td width="18%">男</td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="15%">民族：</td>
+                        <td width="18%">汉族</td>
+                        <td class="align-right" width="15%">政治面貌：</td>
+                        <td width="21%">群众</td>
+                        <td class="align-right" width="15%">身份证号：</td>
+                        <td width="18%">140802200607180276</td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="15%">学院：</td>
+                        <td width="18%">计算机学院</td>
+                        <td class="align-right" width="15%">专业：</td>
+                        <td width="18%">软件工程</td>
+                        <td class="align-right" width="15%">班级：</td>
+                        <td width="18%">197232</td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="15%">入学年月：</td>
+                        <td width="18%">20230901</td>
+                        <td class="align-right" width="15%">年级：</td>
+                        <td width="18%">2023</td>
+                        <td class="align-right" width="15%">学制：</td>
+                        <td width="18%">4</td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="15%">学历层次：</td>
+                        <td width="18%">本科</td>
+                        <td class="align-right" width="15%">联系电话：</td>
+                        <td width="18%">15535942827</td>
+                        <td class="align-right" width="15%">邮政编码：</td>
+                        <td width="18%">044000</td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="15%">家庭联系电话：</td>
+                        <td width="18%"></td>
+                        <td class="align-right" width="15%">家庭详细地址：</td>
+                        <td width="52%" colspan="3">山西省运城市盐湖区都市绿洲9号楼701</td>
+                    </tr>
+                </tbody></table>
+                <h5 class="header blue bolder smaller" style="padding-bottom: 12px;font-size: 17px">家庭经济情况</h5>
+                <table class="table-no-border" style="font-size:13px;width: 95%;margin: 0 auto;">
+                    <tbody><tr>
+                        <td class="align-right" width="18%">是否低保：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfdb" onchange="optChangeDis(&#39;sfdb&#39;,&#39;sfdbfile&#39;,&#39;低保&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfdb" checked="" onchange="optChangeDis(&#39;sfdb&#39;,&#39;sfdbfile&#39;,&#39;低保&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="sfdbfile" class="form-control " disabled="disabled"><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="请选择上传图片文件"><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;sfdbfile&#39;)" value="上传">
+                            <span id="sfdbfiles" name="sfdbfiles">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否低保边缘人口：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfdbbyrk" onchange="optChangeDis(&#39;sfdbbyrk&#39;,&#39;sfdbbyrkfile&#39;,&#39;低保边缘人口&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfdbbyrk" checked="" onchange="optChangeDis(&#39;sfdbbyrk&#39;,&#39;sfdbbyrkfile&#39;,&#39;低保边缘人口&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="sfdbbyrkfile" class="form-control " disabled="disabled"><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="请选择上传图片文件"><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;sfdbbyrkfile&#39;)" value="上传">
+                            <span id="sfdbbyrkfiles" name="sfdbbyrkfiles">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否烈士子女：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfjlshfyzn" onchange="optChangeDis(&#39;sfjlshfyzn&#39;,&#39;sfjlshfyznfile&#39;,&#39;烈士子女&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfjlshfyzn" checked="" onchange="optChangeDis(&#39;sfjlshfyzn&#39;,&#39;sfjlshfyznfile&#39;,&#39;烈士子女&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="sfjlshfyznfile" class="form-control " disabled="disabled"><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="请选择上传图片文件"><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;sfjlshfyznfile&#39;)" value="上传">
+                            <span id="sfjlshfyznfiles" name="sfjlshfyznfiles">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否残疾人子女：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfcjrzn" onchange="optChangeDis(&#39;sfcjrzn&#39;,&#39;sfcjrznfile&#39;,&#39;是否残疾人子女&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfcjrzn" checked="" onchange="optChangeDis(&#39;sfcjrzn&#39;,&#39;sfcjrznfile&#39;,&#39;是否残疾人子女&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="sfcjrznfile" class="form-control" disabled="disabled"><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="请选择上传图片文件"><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;sfcjrznfile&#39;)" value="上传">
+                            <span id="sfcjrznfiles" name="sfcjrznfiles">
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-right" width="18%">家庭是否遭受自然灾害：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="jtsfzszrzh" onchange="optChangeDis2(&#39;jtsfzszrzh&#39;,&#39;jtsfzszrzhfile&#39;,&#39;zrzhjtqkms&#39;,&#39;遭受自然灾害&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="jtsfzszrzh" checked="" onchange="optChangeDis2(&#39;jtsfzszrzh&#39;,&#39;jtsfzszrzhfile&#39;,&#39;zrzhjtqkms&#39;,&#39;遭受自然灾害&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="jtsfzszrzhfile" class="form-control" disabled="disabled"><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="请选择上传图片文件"><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;jtsfzszrzhfile&#39;)" value="上传">
+                            <span id="jtsfzszrzhfiles" name="jtsfzszrzhfiles">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">自然灾害具体情况描述：</td>
+                        <td width="82%" colspan="5">
+                            <textarea id="zrzhjtqkms" name="zrzhjtqkms" maxlength="100" class="required col-xs-12 col-sm-12" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)" placeholder="填写自然灾害具体情况描述，内容不能超过100个字符。若“家庭是否遭受自然灾害”项填“否”，则该项不能填写，请自行检查。" disabled="disabled" aria-required="true"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">家庭是否遭受疫情：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="jtsfzsyq" onchange="optChangeDis2(&#39;jtsfzsyq&#39;,&#39;jtsfzsyqfile&#39;,&#39;zrzhjtqkms&#39;,&#39;遭受自然灾害&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="jtsfzsyq" checked="" onchange="optChangeDis2(&#39;jtsfzsyq&#39;,&#39;jtsfzsyqfile&#39;,&#39;zrzhjtqkms&#39;,&#39;遭受自然灾害&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="jtsfzsyqfile" class="form-control" disabled="disabled"><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="请选择上传图片文件"><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;jtsfzsyqfile&#39;)" value="上传">
+                            <span id="jtsfzsyqfiles" name="jtsfzsyqfiles">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">家庭遭受疫情具体情况描述：</td>
+                        <td width="82%" colspan="5">
+                            <textarea id="jtzsyqjtqkms" name="jtzsyqjtqkms" maxlength="40" class="col-xs-12 col-sm-12 valid" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)" placeholder="填写家庭遭受疫情具体情况描述，内容不能超过40个字符。若“家庭是否遭受疫情”项填“否”，则该项不能填写，请自行检查。"></textarea>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <table class="table-no-border" style="font-size:13px;width: 95%;margin: 0 auto;">
+                    <tbody><tr>
+                        <td class="align-right" width="18%">是否脱贫家庭学生：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sftpjtxs" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sftpjtxs" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%">是否脱贫不稳定家庭学生：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sftpbwdjtxs" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sftpbwdjtxs" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否边缘易致贫家庭学生：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfbyyzpjtxs" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfbyyzpjtxs" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%">是否边突发严重困难学生：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfbtfyzknxs" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfbtfyzknxs" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">家庭是否遭受突发意外事件：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="jtsfzstfywsj" onchange="optChangeDis(&#39;jtsfzstfywsj&#39;,&#39;tfywsjjtms&#39;,&#39;遭受突发意外事件&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="jtsfzstfywsj" checked="" onchange="optChangeDis(&#39;jtsfzstfywsj&#39;,&#39;tfywsjjtms&#39;,&#39;遭受突发意外事件&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%"></td>
+                        <td width="32%"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-right" width="18%">突发意外事件具体描述：</td>
+                        <td width="82%" colspan="5">
+                                    <textarea id="tfywsjjtms" name="tfywsjjtms" maxlength="100" class="required col-xs-12 col-sm-12 valid" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)" placeholder="填写突发意外事件具体描述，内容不能超过100个字符。若“家庭是否遭受突发意外事件”项填“否”，则该项不能填写，请自行检查。" aria-required="true" aria-invalid="false"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-right" width="18%">是否孤儿：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfgr" onchange="optChangeSfge(&#39;sfgr&#39;,&#39;孤儿&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfgr" checked="" onchange="optChangeSfge(&#39;sfgr&#39;,&#39;孤儿&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%">是否单亲家庭子女：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfdqjtzn" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfdqjtzn" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否事实无人抚养儿童：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfsswrfy" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfsswrfy" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%"></td>
+                        <td width="32%"></td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">本人是否残疾：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfcj" onchange="optChangeDis(&#39;sfcj&#39;,&#39;cjlb&#39;,&#39;本人残疾&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfcj" checked="" onchange="optChangeDis(&#39;sfcj&#39;,&#39;cjlb&#39;,&#39;本人残疾&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%">本人残疾类别：</td>
+                        <td width="32%">
+<select id="cjlb" name="cjlb" class="chosen-select col-xs-10 col-sm-10" data-placeholder="请选择" onchange="" disabled="disabled">    <option value=""></option>                <option value="视力残疾">视力残疾</option>                <option value="听力残疾">听力残疾</option>                <option value="智力残疾">智力残疾</option>                <option value="言语残疾">言语残疾</option>                <option value="精神残疾">精神残疾</option>                <option value="其他残疾">其他残疾</option></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">原建档立卡（脱贫家庭学生）：</td>
+                        <td width="32%">
+<select id="yjdlktpjtxs" name="yjdlktpjtxs" class="chosen-select col-xs-10 col-sm-10" data-placeholder="请选择" onchange="" style="display: none;">    <option value=""></option>                <option value="未脱贫">未脱贫</option>                <option value="已脱贫（继续享受政策）">已脱贫（继续享受政策）</option>                <option value="返贫">返贫</option></select><div class="chosen-container chosen-container-single" style="width: 302px;" title="" id="yjdlktpjtxs_chosen"><a class="chosen-single chosen-default" tabindex="-1"><span>请选择</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"><li class="active-result" data-option-array-index="1" style="">未脱贫</li><li class="active-result" data-option-array-index="2" style="">已脱贫（继续享受政策）</li><li class="active-result" data-option-array-index="3" style="">返贫</li></ul></div></div><script type="text/javascript">
+    $("#yjdlktpjtxs").chosen({allow_single_deselect:true});
+</script>
+
+                        </td>
+                        <td class="align-right" width="18%">是否父母丧失劳动能力：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sffmssldnl" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sffmssldnl" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否支出型困难家庭：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfzcxknjt" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfzcxknjt" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%"></td>
+                        <td width="32%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">备注：</td>
+                        <td colspan="3">
+                            <span>支出型困难家庭学生的认定概念：主要指学生消费支出明显低于本地或本校学生平均水平，学生及其家庭仅能提供其在校期间部分学习和生活基本支出，其余部分需要依靠国家资助政策补充。
+                                也包括单亲家庭且与学生共同生活的父（母）亲经济收入低于当地平均收入水平的，以及因遭受自然灾害、突发意外事件而导致家庭经济比较困难的学生。
+                                还包括 共同生活的家庭成员人均年收入低于上年度户籍所在地居民人均可支配收入；家庭财产状况符合相关规定；家庭收入扣减认定的医疗、教育、残疾康复和因灾、因意外事故等刚性支出后，人均年收入低于户籍所在地年最低生活保障标准；
+                                未纳入最低生活保障、特困供养或者低保边缘家庭救助范围。</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否低收入家庭：</td>
+                        <td width="32%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfdsrjt" onchange="">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfdsrjt" checked="" onchange="">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>家庭<span style="color: red">人均</span>年收入：</td>
+                        <td width="32%">
+                                    <input type="text" name="rjnsr" id="rjnsr" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" placeholder="输入家庭人均年收入，不得为0，可以填1" maxlength="6" class="valid">&nbsp;元
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-right" width="18%">是否家中有大病患者：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfjzydbhz" onchange="optChangeDis(&#39;sfjzydbhz&#39;,&#39;sfjzydbhzfile&#39;,&#39;家中有大病患者&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfjzydbhz" checked="" onchange="optChangeDis(&#39;sfjzydbhz&#39;,&#39;sfjzydbhzfile&#39;,&#39;家中有大病患者&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="sfjzydbhzfile" class="form-control"><span class="ace-file-container selected" data-title="重选"><span class="ace-file-name" data-title="微信图片_20250405182022.jpg"><i class=" ace-icon fa fa-picture-o file-image"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;sfjzydbhzfile&#39;)" value="上传">
+                            <span id="sfjzydbhzfiles" name="sfjzydbhzfiles"><span class="delete_div" id="filenamesfjzydbhzfile"><a onclick="onShow(&#39;sfjzydbhzfile&#39;)">微信图片_20250405182022.jpg</a>&nbsp;&nbsp;<a href="javascript:deleteFile(&#39;sfjzydbhzfile&#39;,&#39;/img/d1/96/d132afcca283886039d1ed482f895796.jpg&#39;)"><i class="fa fa-trash-o orange"></i></a></span></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>家庭主要收入来源类型：</td>
+                        <td width="32%">
+<select id="srlylx" name="srlylx" class="chosen-select required
+                                    col-xs-10 col-sm-10" data-placeholder="请选择" onchange="" style="display: none;" aria-required="true">    <option value=""></option>                <option value="工资、奖金、津贴、补贴和其他劳动收入">工资、奖金、津贴、补贴和其他劳动收入</option>                <option value="离退休金、基本养老金、基本生活费、失业保险金">离退休金、基本养老金、基本生活费、失业保险金</option>                <option value="继承、接受赠予、出租或出售家庭财产获得的收入">继承、接受赠予、出租或出售家庭财产获得的收入</option>                <option value="存款及利息，有价证券及红利、股票、博彩收入">存款及利息，有价证券及红利、股票、博彩收入</option>                <option value="经商、办厂以及从事种植业、养殖业、加工业扣除必要成本后的收入">经商、办厂以及从事种植业、养殖业、加工业扣除必要成本后的收入</option>                <option value="赡养费、抚(扶)养费">赡养费、抚(扶)养费</option>                <option value="自谋职业收入">自谋职业收入</option>                <option value="其他应当计入家庭的收入">其他应当计入家庭的收入</option></select><div class="chosen-container chosen-container-single" style="width: 302px;" title="" id="srlylx_chosen"><a class="chosen-single chosen-single-with-deselect" tabindex="-1"><span>工资、奖金、津贴、补贴和其他劳动收入</span><abbr class="search-choice-close"></abbr><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"><li class="active-result" data-option-array-index="1" style="">工资、奖金、津贴、补贴和其他劳动收入</li><li class="active-result" data-option-array-index="2" style="">离退休金、基本养老金、基本生活费、失业保险金</li><li class="active-result" data-option-array-index="3" style="">继承、接受赠予、出租或出售家庭财产获得的收入</li><li class="active-result" data-option-array-index="4" style="">存款及利息，有价证券及红利、股票、博彩收入</li><li class="active-result" data-option-array-index="5" style="">经商、办厂以及从事种植业、养殖业、加工业扣除必要成本后的收入</li><li class="active-result" data-option-array-index="6" style="">赡养费、抚(扶)养费</li><li class="active-result" data-option-array-index="7" style="">自谋职业收入</li><li class="active-result" data-option-array-index="8" style="">其他应当计入家庭的收入</li></ul></div></div><script type="text/javascript">
+    $("#srlylx").chosen({allow_single_deselect:true});
+</script>
+
+                        </td>
+                        <td class="align-right" width="18%">家庭欠债金额：</td>
+                        <td width="32%">
+                                    <input type="text" name="jtqzje" class="number valid" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" placeholder="输入家庭欠债金额，可以为空，若填写，则必须为数字且大于0" maxlength="6">&nbsp;元
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>家庭欠债原因：</td>
+                        <td width="82%" colspan="5">
+                                    <textarea name="jtqzyy" maxlength="60" class="required col-xs-12 col-sm-12 valid" placeholder="填写学生家庭欠债原因，内容不能超过60个字符，例如“助学贷款”。" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)" aria-required="true" aria-invalid="false"></textarea><label id="jtqzyy-error" class="error" for="jtqzyy" style="display: none;"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>家庭人口数：</td>
+                        <td width="32%">
+                                    <input id="jtrks" type="text" name="jtrks" value="2" class="required number valid" maxlength="2" placeholder="输入家庭人口数" aria-required="true">
+                            (与家庭成员信息保持一致)
+                        </td>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>劳动力人口数：</td>
+                        <td width="32%">
+                                    <input type="text" name="ldlrks" class="number valid" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" maxlength="2" placeholder="输入劳动力人口数">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>家庭成员失业人数：</td>
+                        <td width="32%">
+                                    <input type="text" name="jtcysyrs" class="number valid" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" placeholder="输入家庭成员失业人数">
+                        </td>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>赡养人口数：</td>
+                        <td width="32%">
+                                    <input type="text" name="zyrks" class="number valid" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" placeholder="输入赡养人口数">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>家庭适龄就学子女数：</td>
+                        <td width="32%">
+                                    <input type="text" name="jtsljxzns" class="number valid" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" placeholder="输入家庭适龄就学子女数">
+                        </td>
+                        <td class="align-right" width="18%"></td>
+                        <td width="32%"></td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">其他信息(非必填)：</td>
+                        <td width="82%" colspan="5">
+                                <textarea name="qtxx" maxlength="100" class="col-xs-12 col-sm-12 valid" placeholder="填写其他一些影响重大但未在列的家庭经济信息，长度不超过100个字符。" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">是否特困供养：</td>
+                        <td width="20%">
+            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="是" id="" name="sfnctkgy" onchange="optChangeDis(&#39;sfnctkgy&#39;,&#39;sfnctkgyfile&#39;,&#39;特困供养&#39;)">                    <span class="lbl"> 是</span>                </label>            </div>            <div class="radio inline">                <label>                    <input type="radio" class="ace" value="否" id="" name="sfnctkgy" checked="" onchange="optChangeDis(&#39;sfnctkgy&#39;,&#39;sfnctkgyfile&#39;,&#39;特困供养&#39;)">                    <span class="lbl"> 否</span>                </label>            </div>                        </td>
+                        <td class="align-right" width="20%">
+                            <label class="ace-file-input"><input type="file" id="sfnctkgyfile" class="form-control " disabled="disabled"><span class="ace-file-container" data-title="选择"><span class="ace-file-name" data-title="请选择上传图片文件"><i class=" ace-icon fa fa-upload"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                        </td>
+                        <td width="42%">
+                            <input type="button" onclick="uploadFile(&#39;sfnctkgyfile&#39;)" value="上传">
+                            <span id="sfnctkgyfiles" name="sfnctkgyfiles">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%">其他(非必填)：</td>
+                        <td width="82%" colspan="5">
+                                <textarea name="qt" maxlength="40" class="col-xs-12 col-sm-12 valid" placeholder="请填写农村特困供养、农村低保户、建档立卡相关信息，内容不能超过40个字符。" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>申请困难认定原因综述：</td>
+                        <td width="82%" colspan="5">
+                                    <textarea name="sqknrdyyzs" maxlength="30" class="required col-xs-12 col-sm-12 valid" placeholder="请用30字以内的文字描述申请困难认定的原因。" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)" aria-required="true"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>自评家庭经济情况：</td>
+                        <td width="32%">
+<select id="kndj" name="kndj" class="chosen-select col-xs-6 col-sm-6
+                                    required" data-placeholder="请选择" onchange="" style="display: none;" aria-required="true">    <option value=""></option>                <option value="特别困难">特别困难</option>                <option value="困难">困难</option>                <option value="一般困难">一般困难</option>                <option value="不困难">不困难</option></select><div class="chosen-container chosen-container-single" style="width: 181px;" title="" id="kndj_chosen"><a class="chosen-single chosen-single-with-deselect" tabindex="-1"><span>困难</span><abbr class="search-choice-close"></abbr><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"><li class="active-result" data-option-array-index="1" style="">特别困难</li><li class="active-result" data-option-array-index="2" style="">困难</li><li class="active-result" data-option-array-index="3" style="">一般困难</li><li class="active-result" data-option-array-index="4" style="">不困难</li></ul></div></div><script type="text/javascript">
+    $("#kndj").chosen({allow_single_deselect:true});
+</script>
+
+                        </td>
+                        <td class="align-right" width="18%">困难类型：</td>
+                        <td width="32%">
+                                    <input type="text" id="knlx" name="knlx" readonly="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>本人月消费情况：</td>
+                        <td width="32%">
+                                    <input type="text" name="yxfqk" id="yxfqk" class="required valid" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" placeholder="输入本人月消费情况" aria-required="true">&nbsp;元
+                        </td>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>本人食堂月消费金额：</td>
+                        <td width="32%">
+                                    <input type="text" name="brstyxfje" class="required number valid" oninput="value=value.replace(/[^\d]/g,&#39;&#39;)" placeholder="输入本人食堂月消费金额" aria-required="true">&nbsp;元
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-right" width="18%"><span style="color: red">*</span>上一学年贷款、受助及获奖情况：</td>
+                        <td width="82%" colspan="5">
+                                    <textarea id="qnqk" name="qnqk" oninput="value=value.replace(/[^\u4e00-\u9fa5\u3002\uff0ca-zA-Z]+/g,&#39;&#39;)" class="required col-xs-12 col-sm-12 valid" aria-required="true"></textarea>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="align-right" width="18%"><span style="color: red">*</span>图片格式）家庭情况调查表：</td>
+                            <td class="align-right" width="18%">
+                                <label class="ace-file-input"><input type="file" id="jtqkdcbfile" class="form-control"><span class="ace-file-container selected" data-title="重选"><span class="ace-file-name" data-title="微信图片_20250405191429.jpg"><i class=" ace-icon fa fa-picture-o file-image"></i></span></span><a class="remove" href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#"><i class=" ace-icon fa fa-times"></i></a></label>
+                            </td>
+                            <td width="32%">
+                                <input type="button" onclick="uploadFile(&#39;jtqkdcbfile&#39;)" value="上传">
+                                <span id="jtqkdcbfiles" name="jtqkdcbfiles">
+                            </span>
+                            </td>
+                        </tr>
+                </tbody></table>
+
+                <h5 class="header blue bolder smaller" style="padding-bottom: 12px;font-size: 17px">家庭成员信息<span style="color: red">(家庭成员信息数量=所填写家庭人口数-1，家庭成员应只包括父母和未结婚的兄弟姐妹；如果父母离异的，不共同生活的一方不能算在家庭中；如果祖父母或外祖父母由父亲或母亲独立赡养，可填写，否则不应填写)</span></h5>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul id="am-ul-process-hj" class="list-unstyled spaced">
+                            <li>
+                                <div class="row">
+                                    <div class="col-sm-1 text-center">
+                                        <span onclick="addHj();" style="cursor: pointer;"><i class="fa fa-plus bigger-80"></i></span>
+                                    </div>
+                                    <div class="col-sm-1">姓名</div>
+                                    <div class="col-sm-1">关系</div>
+                                    <div class="col-sm-1">年龄</div>
+                                    <div class="col-sm-2">工作（学习）单位</div>
+                                    <div class="col-sm-2">职业</div>
+                                    <div class="col-sm-2">年收入</div>
+                                    <div class="col-sm-2">健康情况</div>
+                                </div>
+                            </li>
+                        <li>
+                    <div class="row">
+                        <div class="col-sm-1 text-center">
+                            <span onclick="$(this).parents(&#39;li&#39;).remove();" style="cursor: pointer;"><i class="fa fa-trash bigger-80"></i></span>
+                            <input type="hidden" name="familyId">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="fxm" value="" class="width-80" placeholder="请输入姓名">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="gx" value="" class="width-80" placeholder="请输入关系">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="number" name="nl" value="" class="width-80 number valid" placeholder="请输入年龄">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="dw" value="" class="width-80" placeholder="请输入家属工作（学习）单位">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="fzy" value="" class="width-80" placeholder="请输入家属职业">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="nsr" value="" class="width-80 number error" placeholder="请输入家属年收入"><label id="nsr-error" class="error" for="nsr">请输入正确的数字</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="jkzk" value="" class="width-80" placeholder="请输入家属健康情况">
+                        </div>
+                    </div>
+                </li><li>
+                    <div class="row">
+                        <div class="col-sm-1 text-center">
+                            <span onclick="$(this).parents(&#39;li&#39;).remove();" style="cursor: pointer;"><i class="fa fa-trash bigger-80"></i></span>
+                            <input type="hidden" name="familyId">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="fxm" value="" class="width-80" placeholder="请输入姓名">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="gx" value="" class="width-80" placeholder="请输入关系">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="number" name="nl" value="" class="width-80 number" placeholder="请输入年龄">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="dw" value="" class="width-80" placeholder="请输入家属工作（学习）单位">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="fzy" value="" class="width-80" placeholder="请输入家属职业">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="nsr" value="" class="width-80 number" placeholder="请输入家属年收入">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="jkzk" value="" class="width-80" placeholder="请输入家属健康情况">
+                        </div>
+                    </div>
+                </li><li>
+                    <div class="row">
+                        <div class="col-sm-1 text-center">
+                            <span onclick="$(this).parents(&#39;li&#39;).remove();" style="cursor: pointer;"><i class="fa fa-trash bigger-80"></i></span>
+                            <input type="hidden" name="familyId">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="fxm" value="" class="width-80" placeholder="请输入姓名">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="gx" value="" class="width-80" placeholder="请输入关系">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="number" name="nl" value="" class="width-80 number" placeholder="请输入年龄">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="dw" value="" class="width-80" placeholder="请输入家属工作（学习）单位">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="fzy" value="" class="width-80" placeholder="请输入家属职业">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="nsr" value="" class="width-80 number" placeholder="请输入家属年收入">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="jkzk" value="" class="width-80" placeholder="请输入家属健康情况">
+                        </div>
+                    </div>
+                </li></ul>
+                    </div>
+                </div>
+                <div id="am-li-process-hj" style="display:none">
+                    <div class="row">
+                        <div class="col-sm-1 text-center">
+                            <span onclick="$(this).parents(&#39;li&#39;).remove();" style="cursor: pointer;"><i class="fa fa-trash bigger-80"></i></span>
+                            <input type="hidden" name="familyId">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="fxm" value="" class="width-80" placeholder="请输入姓名">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" name="gx" value="" class="width-80" placeholder="请输入关系">
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="number" name="nl" value="" class="width-80 number" placeholder="请输入年龄">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="dw" value="" class="width-80" placeholder="请输入家属工作（学习）单位">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="fzy" value="" class="width-80" placeholder="请输入家属职业">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="nsr" value="" class="width-80 number" placeholder="请输入家属年收入">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="jkzk" value="" class="width-80" placeholder="请输入家属健康情况">
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 20px;"></div>
+                <div id="F">
+                    <input type="hidden" id="filessfdbfile" name="sfdbfile">
+                    <input type="hidden" id="filessfdbbyrkfile" name="sfdbbyrkfile">
+                    <input type="hidden" id="filessfnctkgyfile" name="sfnctkgyfile">
+                    <input type="hidden" id="filessfjlshfyznfile" name="sfjlshfyznfile">
+                    <input type="hidden" id="filessfjzydbhzfile" name="sfjzydbhzfile" value="%7B%22fileName%22:%22%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250405182022.jpg%22,%22path%22:%22/img/d1/96/d132afcca283886039d1ed482f895796.jpg%22%7D">
+                    <input type="hidden" id="filessfcjrznfile" name="sfcjrznfile">
+                    <input type="hidden" id="filesjtsfzszrzhfile" name="jtsfzszrzhfile">
+                    <input type="hidden" id="filesjtqkdcbfile" name="jtqkdcbfile">
+                    <input type="hidden" id="filesjtsfzsyqfile" name="jtsfzsyqfile">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-inner">
+        <div class="footer-content" id="page-footer">
+                    <button type="button" class="btn btn-info" onclick="save()">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        提交
+                    </button>
+            <button type="button" class="btn" onclick="back()">
+                <i class="ace-icon fa fa-arrow-left bigger-110"></i>
+                返回
+            </button>
+        </div>
+    </div>
+</div>
+<input id="sfbcscFile" value="true" type="hidden">
+<input id="jtqkdcbkg" value="true" type="hidden">
+</div>
+</div>
+</div>
+<a href="http://202.114.207.127/xg/stdPoorApply/toApply?pcId=084b3ee6abf646fc8ff4b6160d86e02d&amp;xzqr=true&amp;_tsp_=1743847514234#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse display">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+</div>
+
+
+<script type="text/javascript">
+    var _windowHeight = $(window).innerHeight()-210;
+    if($("#jdcsideMenu").innerHeight()>_windowHeight){
+        $("#jdcsideMenu").css("height",_windowHeight);
+    }
+    $('#ace-settings-btn').on(ace.click_event, function(e){
+        e.preventDefault();
+        $(this).toggleClass('open');
+        $('#ace-settings-box').toggleClass('open');
+    })
+</script>
+<script type="text/javascript">
+    var breadcrumbHtml = '';
+    $("#breadcrumbItem").html(breadcrumbHtml);
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        tinymce.init(
+                TinymceConfig.init('/xg',{
+                    selector: '#remark',
+                    height: 400
+                })
+
+        );
+        tinymce.init(
+                TinymceConfig.init('/xg',{
+                    selector: '#knyy',
+                    height: 400
+                })
+
+        );
+
+        optChangeDis('sfdb','sfdbfile','低保');
+        optChangeDis('sfdbbyrk','sfdbbyrkfile','低保边缘人口');
+        optChangeDis('sfnctkgy','sfnctkgyfile','特困供养');
+        optChangeDis('sfjlshfyzn','sfjlshfyznfile','烈士子女');
+        optChangeDis('sfjzydbhz','sfjzydbhzfile','家中有大病患者');
+        optChangeDis('sfcjrzn','sfcjrznfile','残疾人子女');
+        optChangeDis('jtsfzszrzh','zrzhjtqkms','遭受自然灾害');
+        optChangeDis2('jtsfzszrzh','jtsfzszrzhfile','zrzhjtqkms','遭受自然灾害');
+        optChangeDis('jtsfzstfywsj','tfywsjjtms','遭受突发意外事件');
+        optChangeDis('jtsfzsyq','jtsfzsyqfile','遭受疫情');
+        optChangeDis('sfcj','cjlb','本人残疾');
+        optChangeSfge('sfgr','孤儿');
+        /*optChangeKnlx('sfdqjtzn','单亲');
+//        optChangeKnlx('sfcj','本人残疾');
+        optChangeKnlx('sfcjrzn','父母残疾');
+        optChangeKnlx('sffmssldnl','父母丧失劳动能力');
+        optChangeKnlx('sfdsrjt','低收入家庭');*/
+    });
+
+
+    function removeFile(obj, id, path){
+        $.ajax({
+            type: "POST",
+            url: "/xg/resource/removeFile",
+            data: {id:id, path:path},
+            cache: false,
+            dataType: "JSON",
+            success: function (dataResult) {
+                if (dataResult.errcode  == '0') {
+                    $("#span_" + id).remove();
+                    $("#a_" + id).remove();
+                    $("#aa_" + id).remove();
+                }
+                else {
+                    $.msg(dataResult.errmsg);
+                }
+            },
+            error: function () {
+                $.msg("删除失败");
+            }
+        });
+    }
+    function save() {
+        if (check('fxm', 'nsr')) {
+
+
+            var radioSfcj=$("input[name='sfcj']:checked").val();
+            if (radioSfcj=="是") {
+                var cjlb = $("#cjlb").val();
+                if (cjlb == "" || cjlb == null) {
+                    $.msg("请选择本人残疾类别！");
+                    return false;
+                }
+            }else{
+                $("#cjlb").val("");
+            }
+            var srlylx = $("#srlylx").val();
+            if (srlylx == "") {
+                $.msg("请选择家庭主要收入来源类型！");
+                return false;
+            }
+            var kndj = $("#kndj").val();
+            if (kndj == "" || kndj == null) {
+                $.msg("请选择困难等级！");
+                return false;
+            }
+            var sfgr = $("input[name='sfgr']:checked").val();
+            if(sfgr == "是") {
+                var sfdqjtzn = $("input[name='sfdqjtzn']:checked").val();
+                if(sfdqjtzn == "是") {
+                    $.msg("是否孤儿和单亲不能同时选是！");
+                    return false;
+                }
+            }
+
+            /* if($("input[name='files']").length<1){
+             $.msg("请上传《家庭情况调查表》照片！");
+             return false;
+             }*/
+            if ($("#dForm").valid()) {
+                if(!checkFileUpload()){
+                    return false;
+                }
+                if ($("#rjnsr").val()==0) {
+                    $.msg("家庭年收入金额请填写大于0的数字，没有可不填！");
+                    return false;
+                }
+                if ($("#jtqzje").val()==0) {
+                    $.msg("家庭欠债金额请填写大于0的数字，没有可不填！");
+                    return false;
+                }
+                if ($("#ldlrks").val() == 0 || $("#jtcysyrs").val() == 0 ||
+                    $("#zyrks").val() == 0 || $("#jtsljxzns").val() == 0) {
+                    $.msg("人口数请填写大于0的数字，没有可不填！");
+                    return false;
+                }
+                var jtrks = $("#jtrks").val()-1;
+                var lis = $("#am-ul-process-hj li").length-1;
+                if(jtrks!=lis){
+                    $.msg("家庭成员信息总数与家庭人口数不对应，请如实填全！");
+                    return false;
+                }
+                $('#dForm').submit();
+            }
+        }
+    }
+
+    function back() {
+        window.location.href = addNoCache("/xg/desktop/index");
+    }
+
+    var add_index_js = 200;
+    function addHj() {
+        var lihtml = $("#am-li-process-hj").html();
+        lihtml = lihtml.replace(/iiiiid/g, add_index_js + "");
+        $("#am-ul-process-hj").append("<li>" + lihtml + "</li>");
+        add_index_js = add_index_js + 1;
+    }
+
+    function checkCount(name) {
+        var batchChecks = document.getElementsByName(name);
+        if (batchChecks.length == 1) {
+            $.msg("请填写至少一条家庭信息");
+            return false;
+        }
+        return true;
+    }
+
+    function check(name1, name2) {
+        var jtrks = $("#jtrks").val();
+        var sfgr = $("input[name='sfgr']:checked").val();
+        if(sfgr == "是" && jtrks == 1) {
+            //如果是孤儿，并且家庭人口数为1时
+            return true;
+        }
+        else {
+            if (checkCount(name1)) {
+                var fxmChecks = document.getElementsByName(name1);
+                var nsrChecks = document.getElementsByName(name2);
+                var nlChecks = document.getElementsByName("nl");
+                var gxChecks = document.getElementsByName("gx");
+                var dwChecks = document.getElementsByName("dw");
+                var fzyChecks = document.getElementsByName("fzy");
+                var jkzkChecks = document.getElementsByName("jkzk");
+                for (var i = 0; i <= fxmChecks.length - 2; i++) {
+                    if (fxmChecks[i].value == "" || nsrChecks[i].value == "" || nlChecks[i].value == "" || gxChecks[i].value == ""
+                            || dwChecks[i].value == "" || fzyChecks[i].value == "" || jkzkChecks[i].value == "") {
+                        $.msg("家庭信息均不能为空");
+                        return false;
+                    }else {
+                        var nl = nlChecks[i].value;
+                        if(nl.length>=3){
+                            $.msg("年龄长度过长！");
+                            return false;
+                        }
+                        if(nl>120){
+                            $.msg("年龄过大，请检查！");
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        }
+    }
+
+
+    function optChangeSfge(radioId,knlx){
+        if(radioId=='sfgr'){
+            var radioValue=$("input[name='"+radioId+"']:checked").val();
+            if (radioValue=="是") {
+                $("#jtrks").val("1");
+                $("#jtrks").attr("readonly", true);
+            } else {
+
+                $("#jtrks").val("");
+                $("#jtrks").attr("readonly", false);
+            }
+
+        }
+
+
+    }
+
+
+    function optChangeKnlx(radioId,knlx){
+        if(radioId=='sfgr'){
+            $("#jtrks").val("1");
+            $("#jtrks").attr("disabled", true);
+        }
+        var radioValue=$("input[name='"+radioId+"']:checked").val();
+        var knlxVal = $("#knlx").val();//困难类型的值
+        var valList;//困难类型的值转数组
+        if(knlxVal != ""){
+            valList = knlxVal.split(",");
+        }
+        if (radioValue=="是") {
+            var addVal = "";//需要增加的值
+            if(valList!=null && valList.length>0){
+                for(var i=0;i<valList.length;i++){
+                    addVal+=valList[i]+",";
+                }
+            }
+            $("#knlx").val(addVal+knlx);
+        } else {
+            var newVal = new Array() ;//新的值
+            if(valList!=null && valList.length>0){
+                for(var j=0;j<valList.length;j++){
+                    if(valList[j]!=knlx){
+                        newVal.push(valList[j]);
+                    }
+                }
+            }
+            var delVal = "";
+            if (newVal.length>0) {
+                delVal = newVal.join(",");
+            }
+            $("#knlx").val(delVal);
+        }
+    }
+
+    function optChangeDis(radioId, targetId,knlx) {
+        var radioValue=$("input[name='"+radioId+"']:checked").val();
+        var knlxVal = $("#knlx").val();//困难类型的值
+        var valList;//困难类型的值转数组
+        if(knlxVal != ""){
+            valList = knlxVal.split(",");
+        }
+        if (radioValue=="是") {
+            $("#" + targetId).attr("disabled", false);
+            var addVal = "";//需要增加的值
+            if(valList!=null && valList.length>0){
+                for(var i=0;i<valList.length;i++){
+                    addVal+=valList[i]+",";
+                }
+            }
+            $("#knlx").val(addVal+knlx);
+        } else {
+            $("#" + targetId).attr("disabled", true);
+            $("#" + targetId).val("");
+            var newVal = new Array() ;//新的值
+            if(valList!=null && valList.length>0){
+                for(var j=0;j<valList.length;j++){
+                    if(valList[j]!=knlx){
+                        newVal.push(valList[j]);
+                    }
+                }
+            }
+            var delVal = "";
+            if (newVal.length>0) {
+                delVal = newVal.join(",");
+            }
+            $("#knlx").val(delVal);
+        }
+    }
+
+    function optChangeDis2(radioId, targetId,targetId1,knlx) {
+        var radioValue=$("input[name='"+radioId+"']:checked").val();
+        var knlxVal = $("#knlx").val();//困难类型的值
+        var valList;//困难类型的值转数组
+        if(knlxVal != ""){
+            valList = knlxVal.split(",");
+        }
+        if (radioValue=="是") {
+            $("#" + targetId).attr("disabled", false);
+            $("#" + targetId1).attr("disabled", false);
+            var addVal = "";//需要增加的值
+            if(valList!=null && valList.length>0){
+                for(var i=0;i<valList.length;i++){
+                    if(knlx!=valList[i]){
+                        addVal+=valList[i]+",";
+                    }
+                }
+            }
+            $("#knlx").val(addVal+knlx);
+        } else {
+            $("#" + targetId).attr("disabled", true);
+            $("#" + targetId1).attr("disabled", true);
+            $("#" + targetId).val("");
+            $("#" + targetId1).val("");
+            var newVal = new Array() ;//新的值
+            if(valList!=null && valList.length>0){
+                for(var j=0;j<valList.length;j++){
+                    if(valList[j]!=knlx){
+                        newVal.push(valList[j]);
+                    }
+                }
+            }
+            var delVal = "";
+            if (newVal.length>0) {
+                delVal = newVal.join(",");
+            }
+            $("#knlx").val(delVal);
+        }
+    }
+
+    function deleteFile(id,path) {
+        $.ajax({
+            type: "POST",
+            url: "/xg/resource/removeFile",
+            data: {path: path},
+            cache: false,
+            dataType: "JSON",
+            success: function (dataResult) {
+                $("#files" + id).val("");
+                $("#filename" + id).remove();
+            }
+        });
+    }
+
+
+    function uploadFile(id) {
+        var formData = new FormData();
+        var files = $('#' + id)[0].files;//获取到文件路径
+        var str = $('#' + id).val();
+        if (files.length == 0) {
+            $.msg('请选择文件');
+            return;
+        } else {
+            if(window.ActiveXObject) {
+                var image=new Image();
+                image.src=str;
+                if(image.fileSize==-1){
+                    alert("请使用IE10以上,谷歌浏览器或浏览器极速模式访问此网页!");
+                    return;
+                }
+                if(image.fileSize<102400){
+                    alert("上传的照片大小不能小于100KB，请重新上传");
+                    return;
+                }
+            } else{
+                var size = document.getElementById(id).files[0].size;
+                if(size<102400) {
+                    alert("上传的照片大小不能小于100KB，请重新上传");
+                    return;
+                }
+            }
+            formData.append("file", files[0]);
+            $.ajax({
+                type: "POST",
+                url: "/xg/upload/uploadFile",
+                data: formData,
+                cache: false,
+                processData : false,
+                dataType: "JSON",
+                contentType: false, //必须
+                success: function (dataResult) {
+                    var d = eval(dataResult);
+                    var fileId = new Date().getTime();
+                    var json = {"fileName": d.fileName, "path": d.path};
+                    var d = JSON.stringify(json);
+                    $("#files" + id).val(encodeURI(d));
+                    /*var d = "<input type='hidden' value='" + JSON.stringify(json) + "' id=\"file" + id + "\" name= \""+id+"\" >";
+                    $("#F").append(d);*/
+                    $("#"+id+"s").empty();
+                    $("#"+id+"s").append("<span class=\"delete_div\" id=\"filename" + id + "\"><a onclick=\"onShow('"+id+"')\">" + json.fileName + "</a>&nbsp;&nbsp;<a href=\"javascript:deleteFile('" + id + "','"+json.path+"')\"><i class=\"fa fa-trash-o orange\"></i></a></span>");
+                    $.msg('上传成功');
+                }
+            });
+        }
+    }
+
+
+    function onShow(id) {
+        var file =  $("#files"+id).val();
+        $.dialog(addNoCache("/xg/stdPoorApply/toShowImage?file="+encodeURI(file)), "查看图片", "1000", "800");
+    }
+
+    function checkFileUpload(){
+        var sfbxscFile=$("#sfbcscFile").val();
+        if(sfbxscFile=="true"){
+
+            var radioSfdb=$("input[name='sfdb']:checked").val();
+            if (radioSfdb=="是") {
+                var sfdbFile = $("#filessfdbfile").val();
+                if (sfdbFile == "" || sfdbFile == null) {
+                    $.msg("请选择上传低保的凭证图片！");
+                    return false;
+                }
+            }
+
+            var radioSfdbbyrk=$("input[name='sfdbbyrk']:checked").val();
+            if (radioSfdbbyrk=="是") {
+                var sfdbbyrkFile = $("#filessfdbbyrkfile").val();
+                if (sfdbbyrkFile == "" || sfdbbyrkFile == null) {
+                    $.msg("请选择上传低保边缘人口的凭证图片！");
+                    return false;
+                }
+            }
+
+            var radioSfnctkgy=$("input[name='sfnctkgy']:checked").val();
+            if (radioSfnctkgy=="是") {
+                var sfnctkgyFile = $("#filessfnctkgyfile").val();
+                if (sfnctkgyFile == "" || sfnctkgyFile == null) {
+                    $.msg("请选择上传特困供养的凭证图片！");
+                    return false;
+                }
+            }
+
+            var radioSfjlshfyzn=$("input[name='sfjlshfyzn']:checked").val();
+            if (radioSfjlshfyzn=="是") {
+                var sfjlshfyznFile = $("#filessfjlshfyznfile").val();
+                if (sfjlshfyznFile == "" || sfjlshfyznFile == null) {
+                    $.msg("请选择上传烈士子女的凭证图片！");
+                    return false;
+                }
+            }
+
+            var radioSfjzydbhz=$("input[name='sfjzydbhz']:checked").val();
+            if (radioSfjzydbhz=="是") {
+                var sfjzydbhzFile = $("#filessfjzydbhzfile").val();
+                if (sfjzydbhzFile == "" || sfjzydbhzFile == null) {
+                    $.msg("请选择上传家中有大病患者的凭证图片！");
+                    return false;
+                }
+            }
+
+            var radioSfcjrzn=$("input[name='sfcjrzn']:checked").val();
+            if (radioSfcjrzn=="是") {
+                var sfcjrznFile = $("#filessfcjrznfile").val();
+                if (sfcjrznFile == "" || sfcjrznFile == null) {
+                    $.msg("请选择上传残疾人子女的凭证图片！");
+                    return false;
+                }
+            }
+
+            var radioJtsfzszrzh=$("input[name='jtsfzszrzh']:checked").val();
+            if (radioJtsfzszrzh=="是") {
+                var jtsfzszrzhFile = $("#filesjtsfzszrzhfile").val();
+                if (jtsfzszrzhFile == "" || jtsfzszrzhFile == null) {
+                    $.msg("请选择上传家庭遭受自然灾害的凭证图片！");
+                    return false;
+                }
+            }
+
+            var radioJtsfzsyq=$("input[name='jtsfzsyq']:checked").val();
+            if (radioJtsfzsyq=="是") {
+                var jtsfzsyqFile = $("#filesjtsfzsyqfile").val();
+                if (jtsfzsyqFile == "" || jtsfzsyqFile == null) {
+                    $.msg("请选择上传家庭遭受疫情的凭证图片！");
+                    return false;
+                }
+            }
+
+            var jtqkdcbkg=$("#jtqkdcbkg").val();
+            if(jtqkdcbkg=="true"){
+                var jtqkdcbFile = $("#filesjtqkdcbfile").val();
+                if (jtqkdcbFile == "" || jtqkdcbFile == null) {
+                    $.msg("请选择上传家庭情况调查表的凭证图片！");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    $('#sfcjrznfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#sfdbfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#sfdbbyrkfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#sfnctkgyfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#sfjlshfyznfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#sfjzydbhzfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#jtsfzszrzhfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#jtqkdcbfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+    $('#jtsfzsyqfile').ace_file_input({
+        no_file:'请选择上传图片文件',
+        btn_choose:'选择',
+        btn_change:'重选',
+        droppable:false,
+        allowExt: ['jpg', 'jpeg', 'gif', 'png', 'bmp']    //该属性只是对文件后缀的控制
+    }).on('file.error.ace', function (event, info) {
+        $.msg("请上传图片格式文件！");
+    });
+
+</script>
+
+<div id="_my97DP" style="position: absolute; top: -1970px; left: -1970px;"><iframe style="width: 201px; height: 216px;" src="./学生工作管理系统_files/My97DatePicker.html" frameborder="0" border="0" scrolling="no"></iframe></div></body></html>
