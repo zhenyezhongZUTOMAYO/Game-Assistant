@@ -47,6 +47,7 @@ class YuanDian:
                 next = [2, 3, 9, 15, 18]
                 self.rec.real=False
                 for i in next:
+
                     image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(
                         rec.resolutionRatio[0]) + f"Direction{i}.png"
 
@@ -60,6 +61,7 @@ class YuanDian:
                             self.rec.real=True
                             self.rec.va()
                             print(f"{i}:  第{i}张图片找到图片，坐标位于: ({self.rec.x}, {self.rec.y})")
+                            break
                         else:
                             pass
                             # print("未找到图片")
@@ -105,15 +107,19 @@ class YuanDian:
                     stick+=1
                     if stick>3:
                         ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), ctypes.c_int(int((self.rec.y - center_y) // 2)))
+                        stick=0
                     move=False
+                    lock[2]=1
+
                 else:
                     stick=0
                     move=True
+                    lock[2]=0
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x)//2)), 0)
             else:
                 stop+=1
                 if stop>3:
-                    # print("原点未识别到")
+                    print("原点未识别到")
                     self.rec.end=True
                     lock[1]=1
                 self.rec.vb()

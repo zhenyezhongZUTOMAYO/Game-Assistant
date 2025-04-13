@@ -8,6 +8,7 @@ import EnterNextLevel
 import Recognize
 import time
 import threading
+import AvoidStick
 class SumRecognize:
     def __init__(self):
         #初始化类
@@ -17,12 +18,14 @@ class SumRecognize:
         self.level=EnterNextLevel.LevelSystem()
         self.gantan.BuffSelector=self.buff
         self.rec=Recognize.Recognize()
+        self.avoid=AvoidStick.AvoidStick()
         #初始化锁
         self.lock=[]
-        for i in range(0,2):
+        for i in range(0,3):
             self.lock.append(1)
         self.gantan.lock=self.lock
         self.buff.lock=self.lock
+        self.avoid.lock=self.lock
 
 
     def GanTan(self):
@@ -43,6 +46,8 @@ class SumRecognize:
         thread.append(thread_yd)
         thread_level=threading.Thread(target=self.level.start,args=[self.lock,])
         thread.append(thread_level)
+        thread_avoid=threading.Thread(target=self.avoid.Solve)
+        thread.append(thread_avoid)
         self.buff.start()
         for thr in thread:
             thr.start()

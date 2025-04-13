@@ -78,16 +78,17 @@ def Speak():
 
 
 def CommunicateToNpc(confidence=0.8):
-    global task_completed
-    task_completed = False
-    # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
-
-    thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Inter.png",method])
-    # thread_a.start()
-    thread_b.start()
-    rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",confidence)
-    while not task_completed:
-        AvoidStick.solve() 
+    pass
+    # global task_completed
+    # task_completed = False
+    # # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
+    #
+    # thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Inter.png",method])
+    # # thread_a.start()
+    # thread_b.start()
+    # rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",confidence)
+    # while not task_completed:
+    #     AvoidStick.solve()
     #print("任务完成，继续游戏")
     # 撞墙检测逻辑
 
@@ -116,10 +117,11 @@ if __name__=="__main__":
     # buff.start()
     # gantan=GanTanChat.GanTanChat()
     # gantan.BuffSelector=buff
-    # rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",gantan.CommunicateToNpc())
+    # rec.ToRecognizeIfThen(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",gantan.CommunicateToNpc(rec,None))
+
     # rec.ToRecognizeIfThen(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",gantan.CommunicateToNpc())
-    # sum=SumRecognize.SumRecognize()
-    # sum.start()
+    sum=SumRecognize.SumRecognize()
+    sum.start()
     # thread=[]
     # sum.lock[0]=1
     # thread_yd = threading.Thread(target=sum.YuanDian,)
@@ -134,6 +136,6 @@ if __name__=="__main__":
     # sum.lock[0]=1
     # sum.YuanDian()
     # rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Direction.png")
-    level_system = LevelSystem()  # 创建进入下一层实例
-    lock=[0,1]
-    level_system.start(lock)  # 开始检测入口
+    # level_system = LevelSystem()  # 创建进入下一层实例
+    # lock=[0,1]
+    # level_system.start(lock)  # 开始检测入口

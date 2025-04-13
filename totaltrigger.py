@@ -38,7 +38,7 @@ class TotalTrigger:
         """启动所有系统"""
         try:
             # 启动游戏
-            self.start_game()
+            # self.start_game()
             # pyautogui.click(100, 100)  # 先点击一个安全位置确保窗口激活
             # sleep(1)
             self.sumr.lock[0]=0
