@@ -6,6 +6,7 @@ import threading
 import pynput
 import ctypes
 import sys
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 class Recognize:
 
@@ -17,7 +18,7 @@ class Recognize:
         self.end=False#外部函数操控内部图象识别是否停止的变量
         self.real=False#是否捕获到目标
         self.keyboard = pynput.keyboard.Controller()
-        self.source_path = __file__[0:__file__.find("Game-Assistant")]
+        self.source_path = __file__[0:__file__.find("Game-Assistant")]#获取根目录路径
         self.resolutionRatio=pyautogui.size()
 
     def pa(self):
@@ -140,7 +141,7 @@ class Recognize:
                     return
 
 
-
+#找到图像线程就结束
     def trakingImage(self,image_path,confidence=0.8,sleep=1):
         """
         通过调用ToRecognizeConWhere来实现图像追d踪(比较强大)
@@ -154,6 +155,7 @@ class Recognize:
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2
         center_y = screen_height // 2
+
         while True:
             self.pa()
             # print("进入操作")
@@ -161,9 +163,10 @@ class Recognize:
                 self.vb()
                 # print("退出操作")
                 return False
-            if self.real:
+            if self.real:#不断找到位置
                 # print("正在操作")
-                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)
+                #模拟鼠标的移动
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)  
             else:
                 self.vb()
                 # print("操作完成-误操作")

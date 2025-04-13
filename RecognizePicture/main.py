@@ -10,6 +10,7 @@ import threading
 import time
 import ChooseBuff
 import GanTanChat
+import AvoidStick
 import SumRecognize
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 def method(rec,location):
@@ -77,12 +78,19 @@ def Speak():
 
 
 def CommunicateToNpc(confidence=0.8):
+    global task_completed
+    task_completed = False
     # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
 
     thread_b=threading.Thread(target=rec.ToRecognizeIfThen , args=[rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"Inter.png",method])
     # thread_a.start()
     thread_b.start()
     rec.trakingImage(rec.source_path+"Game-Assistant\\Source\\"+str(rec.resolutionRatio[0])+"GanTan.png",confidence)
+    while not task_completed:
+        AvoidStick.solve() 
+    #print("任务完成，继续游戏")
+    # 撞墙检测逻辑
+
     # screen_width, screen_height =pyautogui.size()
     # center_x=screen_width // 2
     # center_y=screen_height // 2
