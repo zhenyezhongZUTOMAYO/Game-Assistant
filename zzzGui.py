@@ -2,8 +2,9 @@ import sys
 import os
 import subprocess
 from PyQt5.QtWidgets import *
+import RecognizePicture.Output
 from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor
+from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor, QTextCursor
 from totaltrigger import TotalTrigger
 from qfluentwidgets import(
     SpinBox,ComboBox,CardWidget,setTheme,Theme,NavigationInterface,
@@ -98,14 +99,19 @@ class GameAssistant(FluentWindow):
         left_layout.addWidget(self.role_card)
         left_layout.addWidget(self.start_btn)
 
-        left_layout.addStretch(1)
+        #left_layout.addStretch(1)
 
         # 右侧区域 
         right_widget = QWidget()
         right_layout = QVBoxLayout(right_widget)
-        right_layout.addWidget(TitleLabel("运行状态"))
 
-        right_layout.addStretch(1)
+        self.logViewer = RecognizePicture.Output.LogViewer("log")
+        self.output = RecognizePicture.Output.Output()
+        self.output.set_log_viewer(self.logViewer)
+        sys.stdout = self.output
+        right_layout.setContentsMargins(20, 20, 20, 20)
+        right_layout.addWidget(self.logViewer)
+        #right_layout.addStretch(1)
 
         # 主布局比例设置
         self.main_layout.addWidget(left_widget, 5)  
@@ -117,8 +123,14 @@ class GameAssistant(FluentWindow):
             text="主界面",
             position=NavigationItemPosition.TOP
         )
+        
+        self.addSubInterface(
+            interface=self.logViewer,
+            icon=FluentIcon.MESSAGE,
+            text="运行日志",
+            position=NavigationItemPosition.BOTTOM
+        )
 
- 
     def create_instruction_card(self):
         card=CardWidget()#'使用说明'
         layout = QHBoxLayout(card)
@@ -363,10 +375,38 @@ class GameAssistant(FluentWindow):
             widget.setStyleSheet(f"color: {self.COLOR_PALETTE['text_primary']};")
         elif font_type == "subtitle":
             widget.setStyleSheet(f"color: {self.COLOR_PALETTE['text_secondary']};")
+    
+    def append_log(self,text):
+        #获得滚动位置
+        scrollbar=self.logViewer.logText.verticalScrollBar()
+        at_buttom=scrollbar.value()==scrollbar.maximum()
+
+        cursor=self.logViewer.logText.textCursor()
+        cursor.movePosition(QTextCursor.End)
+
+        if "Error" in text:
+            self.logViewer.logText.setTextColor(QColor(196,43,28))
+        elif "Warring" in text:
+            self.logViewer.logText.setTextColor(QColor(255, 184, 0))
+        else:
+            self.logViewer.logText.setTextColor(QColor(0, 0, 0))
+        cursor.insertText(text)
+
+        #自动滚动
+        if at_buttom:
+            cursor.movePosition(QTextCursor.End)
+            self.logViewer.logText.setTextCursor(cursor)
+        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(r"Source\配置@3x.ico"))#E:\zzzHollow脚本\src\icon\配置@3x.ico
+
     ex = GameAssistant()
+
     ex.show()
+    for i in range(100):
+        print("INFO: 程序启动成功")
+        print("Warning: 检测到低电量")
+        print("Error: 文件打开失败")
     sys.exit(app.exec_())
