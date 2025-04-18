@@ -11,6 +11,7 @@ class GanTanChat:
         self.rec=Recognize.Recognize()
         self.BuffSelector=None
         self.lock=[0,0]
+        self.avoidNpc=0#闪避Npc一定次数不必闪避
 
     def method(self,rec,location):
         self.lock[0] = 0  #锁住圆点
@@ -22,22 +23,27 @@ class GanTanChat:
         rec.keyboard.release('w')
         keyboard = pynput.keyboard.Controller()
         if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
-            keyboard.press('s')
-            time.sleep(1)
-            keyboard.release('s')
-            keyboard.press('a')
-            time.sleep(0.4)
-            keyboard.release('a')
+            if self.avoidNpc <= 2:
+                keyboard.press('s')
+                time.sleep(1)
+                keyboard.release('s')
+                keyboard.press('a')
+                time.sleep(0.4)
+                keyboard.release('a')
+                self.avoidNpc += 1
             rec.end = False  # 外部函数操控内部图象识别是否停止的变量
             rec.real = False  # 是否捕获到目标
             return
         # print("准备互动")
         # print("互动")
+        #代表此次追踪Npc已结束
+        self.avoidNpc=0
         keyboard.press('f')
         time.sleep(0.5)
         keyboard.release('f')
         self.Speak()
         # print(f"sa={self.rec.sa}\nsb={self.rec.sb}")
+        #以防万一再锁一次
         self.lock[1]=0
         self.lock[2]=0
         keyboard.press('s')

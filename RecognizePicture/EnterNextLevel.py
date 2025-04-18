@@ -36,7 +36,7 @@ class LevelSystem:
     #     return False
     def RecognizeTarget(self,lock):
         print("开始识别    门")
-        next = ["DaiJiaZhiJian", "OuRan","ZhiYouHuiTan","levelEntrance","Break", "BangBu","Timestamp", "WuShang","YingBi","ZhanBei","Boss","Boss1"]
+        next = ["DaiJiaZhiJian", "OuRan","ZhiYouHuiTan","levelEntrance","Break", "BangBu","JiShi","TimeStamp","WuShang","YingBi","ZhanBei","Boss","Boss1"]
         while True:
                 # self.rec.pb()
                 # if self.rec.end:
