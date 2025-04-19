@@ -60,6 +60,7 @@ class YuanDian:
                             # 获取图片的中心坐标
                             self.rec.x, self.rec.y = pyautogui.center(location)
                             self.rec.real=True
+                            self.signal[2]=0
                             self.rec.va()
                             print(f"{i}:  第{i}张图片找到图片，坐标位于: ({self.rec.x}, {self.rec.y})")
                             break
@@ -73,6 +74,7 @@ class YuanDian:
 
                     # print("识别成功")
                 if not self.rec.real:
+                    print("-原点未识别到")
                     self.rec.va()
                     # print("识别失败")
                     if self.rec.end:
@@ -111,7 +113,7 @@ class YuanDian:
                         ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), ctypes.c_int(int((self.rec.y - center_y) // 2)))
                         stick=0
                     move=False
-                    lock[2]=1
+                    lock[2]=0
 
                 else:
                     stick=0
@@ -121,10 +123,12 @@ class YuanDian:
             else:
                 self.signal[2]=1
                 stop+=1
+                lock[1]=1
+                lock[2]=1
                 if stop>3:
                     print("原点未识别到")
                     self.rec.end=True
-                    lock[1]=1
+
                 self.rec.vb()
                 # print("操作完成-误操作")
                 continue

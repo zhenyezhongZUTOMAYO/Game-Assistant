@@ -123,6 +123,9 @@ if __name__=="__main__":
     # rec.ToRecognizeIfThen(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",gantan.CommunicateToNpc())
     sum=SumRecognize.SumRecognize()
     sum.start()
+
+    # a =  "ppppp1"
+    # print(f"{a[-1]=="1"}")
     # while True:
     #     ctypes.windll.user32.mouse_event(0x0001, 5, 0)
     #     time.sleep(0.1)

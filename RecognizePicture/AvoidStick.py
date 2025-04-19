@@ -18,7 +18,7 @@ CHECK_INTERVAL = 1
 THRESHOLD = 300000000
 
 # 设置连续低差异值的次数阈值
-STUCK_THRESHOLD = 2
+STUCK_THRESHOLD = 1
 
 class AvoidStick:
     def __init__(self):
@@ -62,6 +62,7 @@ class AvoidStick:
         while True:
             self.solve()
             while self.lock[2]==0:
+                print("防卡Sleep")
                 time.sleep(1)
 
     def solve(self):
