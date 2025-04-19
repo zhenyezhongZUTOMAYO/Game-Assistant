@@ -17,6 +17,7 @@ class Recognize:
         self.sb=1 #执行完操作的个数
         self.end=False#外部函数操控内部图象识别是否停止的变量
         self.real=False#是否捕获到目标
+        self.signal=[1]
         self.keyboard = pynput.keyboard.Controller()
         self.source_path = __file__[0:__file__.find("Game-Assistant")]#获取根目录路径
         self.resolutionRatio=pyautogui.size()
@@ -142,7 +143,7 @@ class Recognize:
 
 
 #找到图像线程就结束
-    def trakingImage(self,image_path,confidence=0.8,sleep=1):
+    def trakingImage(self,image_path,confidence=0.8,sleep=1,signal=0):
         """
         通过调用ToRecognizeConWhere来实现图像追d踪(比较强大)
         通过self.end关闭
@@ -166,8 +167,14 @@ class Recognize:
             if self.real:#不断找到位置
                 # print("正在操作")
                 #模拟鼠标的移动
+
+                self.signal[signal]=0
+                print(f"Recognize.signal:{self.signal}")
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)  
             else:
+
+                self.signal[signal]=1
+                print("将signal赋值为1")
                 self.vb()
                 # print("操作完成-误操作")
                 continue

@@ -16,6 +16,7 @@ class LevelSystem:
         self.confidence = 0.8  # 确保拼写正确，并且有默认值
         self.running = False
         self.thread = None
+        self.signal = []
 
     # def RecognizeTarget(self):
     #     """识别目标的方法"""
@@ -56,6 +57,7 @@ class LevelSystem:
                     if self.rec.ToRecognizeWhere(image_path_1):
                         if lock[1] == 0:
                             break
+                        self.signal[1]=0
                         print(f"成功识别{i}")
                         thread_a=threading.Thread(target=self.rec.ToRecognizeIfThen,args=[self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Inter.png",self.method])
                         thread_a.start()
@@ -63,12 +65,14 @@ class LevelSystem:
                         # print(f"self.rec.sb:{self.rec.sb}")
                         self.rec.end = False
                         self.rec.trakingImage(image_path_1,sleep=0.4)
+                        self.signal[1] = 1
                         # print(f"追踪结束{i}")
                         if image_path_1 == self.rec.source_path + "Game-Assistant\\Source\\" + str(
                                 self.rec.resolutionRatio[0]) + f"{next[6]}.png":
                             self.rec.ToRecognizeIfThen(self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Confirm0.png",lambda rec,location:{
                                 pyautogui.click(location)
                             })
+                        self.signal[1]=1
                     # try:
                     #     # 在屏幕上查找图片
                     #     location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
@@ -169,11 +173,13 @@ class LevelSystem:
     #         self.rec.vb()
 
     def method(self,rec,location):
+        self.signal[1] = 1
         keyboard = pynput.keyboard.Controller()
         self.rec.keyboard.release('w')
         keyboard.press('f')
         time.sleep(0.5)
         keyboard.release('f')
+        self.signal[1] = 1
         self.rec.end=True
 
     def start(self,lock):

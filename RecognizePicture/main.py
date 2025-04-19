@@ -109,6 +109,7 @@ def CommunicateToNpc(confidence=0.8):
     # thread_d.start()
     #点击对话箭头（上面两行）
 if __name__=="__main__":
+    # pass
     # if not is_admin():
     #     run_as_admin()
     #     sys.exit()  # 退出当前非管理员权限的进程
@@ -122,6 +123,9 @@ if __name__=="__main__":
     # rec.ToRecognizeIfThen(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",gantan.CommunicateToNpc())
     sum=SumRecognize.SumRecognize()
     sum.start()
+    # while True:
+    #     ctypes.windll.user32.mouse_event(0x0001, 5, 0)
+    #     time.sleep(0.1)
     # thread=[]
     # sum.lock[0]=1
     # thread_yd = threading.Thread(target=sum.YuanDian,)

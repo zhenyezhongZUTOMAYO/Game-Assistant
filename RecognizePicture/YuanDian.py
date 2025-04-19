@@ -35,6 +35,7 @@ class YuanDian:
     def __init__(self):
         self.rec = Recognize.Recognize()
         self.location=None
+        self.signal=[]
 
     def RecognizeYuanDian(self):
         while True:
@@ -102,6 +103,7 @@ class YuanDian:
                 return False
             if self.rec.real:
                 # print("正在操作")
+                self.signal[2]=0
                 stop=0
                 if abs(self.rec.x-center_x)>convert_coordinates(900,0,(3840,2160),rec.resolutionRatio)[0] or abs(self.rec.y-center_y)>(0,300,(3840,2160),rec.resolutionRatio)[1]:
                     stick+=1
@@ -117,6 +119,7 @@ class YuanDian:
                     lock[2]=0
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x)//2)), 0)
             else:
+                self.signal[2]=1
                 stop+=1
                 if stop>3:
                     print("原点未识别到")

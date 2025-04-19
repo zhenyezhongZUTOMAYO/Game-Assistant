@@ -12,8 +12,10 @@ class GanTanChat:
         self.BuffSelector=None
         self.lock=[0,0]
         self.avoidNpc=0#闪避Npc一定次数不必闪避
+        self.signal=[]
 
     def method(self,rec,location):
+        self.signal[0]=0
         self.lock[0] = 0  #锁住圆点
         self.lock[1] = 0
         self.lock[2] = 0
@@ -33,6 +35,7 @@ class GanTanChat:
                 self.avoidNpc += 1
             rec.end = False  # 外部函数操控内部图象识别是否停止的变量
             rec.real = False  # 是否捕获到目标
+            self.signal[0]=1
             return
         # print("准备互动")
         # print("互动")
@@ -53,6 +56,7 @@ class GanTanChat:
         self.lock[0]=1  #释放原点
         self.lock[2]=1
         # print("释放原点")
+        self.signal[0]=1
 
     def Speak(self):
         """
@@ -94,6 +98,7 @@ class GanTanChat:
         print("开始识别     Gantan")
         # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
         rec=Recognize.Recognize()
+        rec.signal=self.signal
         thread_b = threading.Thread(target=rec.ToRecognizeIfThen, args=[
             self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Inter.png", self.method,
             confidence])
@@ -107,6 +112,17 @@ class GanTanChat:
         # print(self.rec.end)
         # thread_avoidStick=threading.Thread(target=Solve,args=[rec,])
         # thread_avoidStick.start()
-        rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",confidence,0.7)
+        rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",confidence,0.7,signal=0)
         # print("trackingImageEnd")
         thread_b.join()
+
+    #测试
+    # def test(self):
+    #     rec = Recognize.Recognize()
+    #     rec.signal=self.signal
+    #     thread_test=threading.Thread(target=rec.trakingImage,args=[rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",0.8,0.7,0])
+    #     thread_test.start()
+    #     time.sleep(2)
+    #     rec.end=True
+    #     print(self.signal[0])
+

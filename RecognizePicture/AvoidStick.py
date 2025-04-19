@@ -15,7 +15,7 @@ CHECK_INTERVAL = 1
 
 # 设置屏幕变化的阈值（像素差异总和）
 # 这个值可以根据实际情况进行调整
-THRESHOLD = 10000000
+THRESHOLD = 300000000
 
 # 设置连续低差异值的次数阈值
 STUCK_THRESHOLD = 2

@@ -9,6 +9,7 @@ import Recognize
 import time
 import threading
 import AvoidStick
+import EmptyRound
 class SumRecognize:
     def __init__(self):
         #初始化类
@@ -19,6 +20,16 @@ class SumRecognize:
         self.gantan.BuffSelector=self.buff
         self.rec=Recognize.Recognize()
         self.avoid=AvoidStick.AvoidStick()
+        self.emt=EmptyRound.EmptyRound()
+        self.signal=[]
+        for i in range(0,4):
+            self.signal.append(1)
+        self.gantan.signal=self.signal
+        self.level.signal=self.signal
+        self.yd.signal=self.signal
+        # self.gantan.test()
+        # print(f"gantan.signal{self.signal[0]}")
+        self.emt.signal=self.signal
         #初始化锁
         self.lock=[]
         for i in range(0,3):
@@ -48,6 +59,8 @@ class SumRecognize:
         thread.append(thread_level)
         thread_avoid=threading.Thread(target=self.avoid.Solve)
         thread.append(thread_avoid)
+        thread_emt=threading.Thread(target=self.emt.LookRound)
+        thread.append(thread_emt)
         self.buff.start()
         for thr in thread:
             thr.start()
