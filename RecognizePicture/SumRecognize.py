@@ -42,6 +42,18 @@ class SumRecognize:
         self.emt.lock=self.lock
         self.level.lock=self.lock
         self.ft.lock=self.lock
+        print("*******gantan.lock*******")
+        print(self.gantan.lock)
+        print("*******buff.lock*******")
+        print(self.buff.lock)
+        print("*******avoid.lock*******")
+        print(self.avoid.lock)
+        print("*******emt.lock*******")
+        print(self.emt.lock)
+        print("*******level.lock*******")
+        print(self.ft.lock)
+        print("*******level.lock*******")
+        print(self.ft.lock)        
 
     def Fight(self):
         while True:
@@ -76,8 +88,23 @@ class SumRecognize:
         self.buff.start()
         for thr in thread:
             thr.start()
+        # while True:
+        #     print("*******gantan.lock*******")
+        #     print(self.gantan.lock)
+        #     print("*******buff.lock*******")
+        #     print(self.buff.lock)
+        #     print("*******avoid.lock*******")
+        #     print(self.avoid.lock)
+        #     print("*******emt.lock*******")
+        #     print(self.emt.lock)
+        #     print("*******level.lock*******")
+        #     print(self.ft.lock)
+        #     print("*******level.lock*******")
+        #     print(self.ft.lock)
+        #     time.sleep(5)
         for thr in thread:
             thr.join()
+
 
     # def test(self):
     #     print(self.lock[0])

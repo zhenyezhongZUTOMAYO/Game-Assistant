@@ -99,7 +99,7 @@ class GameAssistant(FluentWindow):
         left_layout.addWidget(self.role_card)
         left_layout.addWidget(self.start_btn)
 
-        #left_layout.addStretch(1)
+        left_layout.addStretch(1)
 
         # 右侧区域 
         right_widget = QWidget()
@@ -109,9 +109,9 @@ class GameAssistant(FluentWindow):
         self.output = RecognizePicture.Output.Output()
         self.output.set_log_viewer(self.logViewer)
         sys.stdout = self.output
-        right_layout.setContentsMargins(20, 20, 20, 20)
+        right_layout.setContentsMargins(0, 0, 0, 0)
+        right_layout.setSpacing(15)
         right_layout.addWidget(self.logViewer)
-        #right_layout.addStretch(1)
 
         # 主布局比例设置
         self.main_layout.addWidget(left_widget, 5)  
@@ -123,9 +123,12 @@ class GameAssistant(FluentWindow):
             text="主界面",
             position=NavigationItemPosition.TOP
         )
-        
+        self.logViewerx = RecognizePicture.Output.LogViewer("log")
+        self.outputx = RecognizePicture.Output.Output()
+        self.outputx.set_log_viewer(self.logViewerx)
+        sys.stdout = self.outputx
         self.addSubInterface(
-            interface=self.logViewer,
+            interface=self.logViewerx,
             icon=FluentIcon.MESSAGE,
             text="运行日志",
             position=NavigationItemPosition.BOTTOM
@@ -406,7 +409,9 @@ if __name__ == '__main__':
 
     ex.show()
     for i in range(100):
-        print("INFO: 程序启动成功")
+        print("Info: 程序启动成功")
         print("Warning: 检测到低电量")
         print("Error: 文件打开失败")
+        print("suffix: 运行结束")
+        print("InfoABC")
     sys.exit(app.exec_())

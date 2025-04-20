@@ -24,8 +24,10 @@ class Output(QObject):
     # 采用时间+信息输出
     def write(self, text):
         timestamp = QDateTime.currentDateTime().toString("HH:mm:ss")
-        self.new_output.emit(f"{timestamp} {text}")
+        # self.new_output.emit(f"{timestamp} {text}")
         if self.log_viewer:
+            if not text.endswith("\n"):
+                text += "\n"
             self.log_viewer.appendLog(f"{timestamp} {text}")
         self.original_stdout.write(text)
 
@@ -80,6 +82,12 @@ class LogViewer(CardWidget):
                 font: 14px 'Segoe UI';
             }
         """)
+
+        font=self.logEdit.font()
+        font.setFamily("Consolas")
+        font.setPointSize(12)
+        self.logEdit.setFont(font)
+
         self.scrollArea.setWidget(self.logEdit)
 
         # 移除 ScrollArea 的黑框
@@ -128,13 +136,20 @@ class LogViewer(CardWidget):
 
         # 设置文本颜色
         format = QTextCharFormat()
-        if "ERROR" in text:
+        if "Error" in text:
+            text = text.replace("Error", "")
             format.setForeground(QColor(196, 43, 28))
-        elif "WARNING" in text:
+        elif "Warning" in text:
+            text = text.replace("Warning", "")
             format.setForeground(QColor(255, 184, 0))
-        else:
+        elif "Info" in text:
+            text = text.replace("Info", "")
             format.setForeground(QColor(0, 122, 204) if not isDarkTheme() else QColor(96, 205, 255))
-
+        else:
+            return
+        block_format=cursor.blockFormat()
+        block_format.setAlignment(Qt.AlignCenter)
+        cursor.setBlockFormat(block_format)
         cursor.insertText(text, format)
 
         # 保持500行限制

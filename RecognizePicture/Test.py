@@ -171,6 +171,9 @@ if __name__=="__main__":
     # spk=SpeakNpc.SpeakNpc()
     # spk.isBuff()
     detectGanTanHao()
+    # while True:
+    #         print("测试")
+    #         time.sleep(1)
     # time.sleep(3)
     # pyautogui.click()
     # pyautogui.click()
