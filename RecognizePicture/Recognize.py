@@ -18,6 +18,7 @@ class Recognize:
         self.end=False#外部函数操控内部图象识别是否停止的变量
         self.real=False#是否捕获到目标
         self.signal=[1]
+        self.lock=[0]
         self.keyboard = pynput.keyboard.Controller()
         self.source_path = __file__[0:__file__.find("Game-Assistant")]#获取根目录路径
         self.resolutionRatio=pyautogui.size()
@@ -112,7 +113,7 @@ class Recognize:
 
 
 
-    def ToRecognizeIfThen(self,image_path,Function,confidence=0.8):
+    def ToRecognizeIfThen(self,image_path,Function,confidence=0.8,lock=0):
         """
         用来识别图像是否存在,若不存在一直识别,直到存在执行Fuction(location,self)
         location是坐标,self返回这个类的对象,方便调用self.end来关闭正在一直识别的那个函数
@@ -127,6 +128,10 @@ class Recognize:
             location = None
             try:
                 # print(f"尝试识别: {image_path}")  # 新增路径打印
+                if self.lock[lock]>0:
+                    while self.lock[lock]>0:
+                        time.sleep(1)
+                    break
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 # print(f"识别结果: {location}")  # 调试输出
                 if location is not None:
@@ -143,7 +148,7 @@ class Recognize:
 
 
 #找到图像线程就结束
-    def trakingImage(self,image_path,confidence=0.8,sleep=1,signal=0):
+    def trakingImage(self,image_path,confidence=0.8,sleep=1,signal=0,lock=0):
         """
         通过调用ToRecognizeConWhere来实现图像追d踪(比较强大)
         通过self.end关闭
@@ -170,6 +175,10 @@ class Recognize:
 
                 self.signal[signal]=0
                 print(f"Recognize.signal:{self.signal}")
+                if self.lock[lock]>0:
+                    while self.lock[lock]>0:
+                        time.sleep(1)
+                    break
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)  
             else:
 

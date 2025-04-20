@@ -14,15 +14,20 @@ class EmptyRound:
 
     def __init__(self):
         self.signal=[]#什么都没识别到就是1
+        self.lock=[]
 
     def LookRound(self):
         while True:
-
             if self.signal[0]&self.signal[1]&self.signal[2]&self.signal[3] :
-                time.sleep(5)
+                time.sleep(3)
+                self.lock[0]+=1
                 while self.signal[0]&self.signal[1]&self.signal[2]&self.signal[3]:
+                    if self.lock[1]>0:
+                        while self.lock[1]>0:
+                            time.sleep(1)
+                        break
                     print(f"self.signal:{self.signal}")
                     ctypes.windll.user32.mouse_event(0x0001,10, 0)
                     time.sleep(0.1)
-
+                self.lock[0]-=1
 

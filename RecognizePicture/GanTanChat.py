@@ -5,20 +5,21 @@ import threading
 import time
 import sys
 import os
+import ctypes
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 class GanTanChat:
     def __init__(self):
         self.rec=Recognize.Recognize()
         self.BuffSelector=None
         self.lock=[0,0]
+        self.keyboard = pynput.keyboard.Controller()
         self.avoidNpc=0#闪避Npc一定次数不必闪避
         self.signal=[]
+        self.one=False
 
     def method(self,rec,location):
         self.signal[0]=0
-        self.lock[0] = 0  #锁住圆点
-        self.lock[1] = 0
-        self.lock[2] = 0
+        self.lock[0]+=1
         # print("锁住原点")
         rec.end=True
         rec.keyboard.release('w')
@@ -33,9 +34,12 @@ class GanTanChat:
                 time.sleep(0.4)
                 keyboard.release('a')
                 self.avoidNpc += 1
-            rec.end = False  # 外部函数操控内部图象识别是否停止的变量
+            rec.end = True  # 外部函数操控内部图象识别是否停止的变量
             rec.real = False  # 是否捕获到目标
             self.signal[0]=1
+            self.lock[0]-=1
+            self.lock[2]-=1
+            self.lock[3]-=1
             return
         # print("准备互动")
         # print("互动")
@@ -47,16 +51,15 @@ class GanTanChat:
         self.Speak()
         # print(f"sa={self.rec.sa}\nsb={self.rec.sb}")
         #以防万一再锁一次
-        self.lock[1]=0
-        self.lock[2]=0
         keyboard.press('s')
         time.sleep(1.7)
         keyboard.release('s')
-        self.lock[1]=1
-        self.lock[0]=1  #释放原点
-        self.lock[2]=1
+        self.signal[0] = 1
+        self.lock[0] -= 1
+        self.lock[2] -= 1
+        self.lock[3] -= 1
+        print(f"释放圆点{self.lock[3]}")
         # print("释放原点")
-        self.signal[0]=1
 
     def Speak(self):
         """
@@ -107,14 +110,43 @@ class GanTanChat:
 
         rec.end=False
         #将识别门锁住
-        self.lock[1]=0
+
         # print("trackingImage")
         # print(self.rec.end)
         # thread_avoidStick=threading.Thread(target=Solve,args=[rec,])
         # thread_avoidStick.start()
-        rec.trakingImage(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png",confidence,0.7,signal=0)
+        screen_width, screen_height = pyautogui.size()
+        center_x = screen_width // 2
+        center_y = screen_height // 2
+        stop=0
+        while True:
+            if self.rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"):
+                if not self.one:
+                    self.lock[2]+=1
+                    self.lock[3]+=1
+                    self.one =True
+                if rec.end:
+                    break
+                self.signal[0]=0
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
+                self.keyboard.press('w')
+                time.sleep(0.5)
+                self.keyboard.release('w')
+            elif self.rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
+                if rec.end:
+                    break
+                self.signal[0]=0
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
+                self.keyboard.press('w')
+                time.sleep(0.5)
+                self.keyboard.release('w')
+            else:
+                stop+=1
+                if stop>3:
+                    self.signal[0]=1
+                    break
+
         # print("trackingImageEnd")
-        thread_b.join()
 
     #测试
     # def test(self):
