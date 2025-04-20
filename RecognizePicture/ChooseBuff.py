@@ -336,14 +336,14 @@ class BuffSelector:
                 if self.rec.ToRecognizeWhere(config["entry_image"]):
                     self.current_mode = mode_name
                     print("buff设置为True")
-                    if mode_name=="ChoosePath":
-                        self.lock[1] = 0
+                    self.lock[0]+=1
+                    self.lock[1]+=1
                     self.buff=True
                     if self._execute_mode_actions(config):
                         last_mode_time = time.time()
                     print("buff设置为False")
-                    if mode_name=="ChoosePath":
-                        self.lock[1] = 1
+                    self.lock[0] -= 1
+                    self.lock[1] -= 1
                     self.buff = False
                     break
             self.va()

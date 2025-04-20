@@ -15,10 +15,10 @@ CHECK_INTERVAL = 1
 
 # 设置屏幕变化的阈值（像素差异总和）
 # 这个值可以根据实际情况进行调整
-THRESHOLD = 10000000
+THRESHOLD = 300000000
 
 # 设置连续低差异值的次数阈值
-STUCK_THRESHOLD = 2
+STUCK_THRESHOLD = 1
 
 class AvoidStick:
     def __init__(self):
@@ -61,14 +61,15 @@ class AvoidStick:
     def Solve(self):
         while True:
             self.solve()
-            while self.lock[2]==0:
+            while self.lock[0]>0:
+                print("防卡Sleep")
                 time.sleep(1)
 
     def solve(self):
         prev_screen = self.capture_screen()  # 获取初始屏幕截图
         stuck_count = 0  # 初始化撞墙计数
 
-        while self.lock[2]!=0:
+        while self.lock[0]==0:
             time.sleep(CHECK_INTERVAL)  # 等待一段时间
             current_screen = self.capture_screen()  # 获取当前屏幕截图
             diff_sum = self.compare_images(prev_screen, current_screen)  # 比较两张截图的差异

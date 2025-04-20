@@ -9,6 +9,8 @@ import Recognize
 import time
 import threading
 import AvoidStick
+import EmptyRound
+import Fight
 class SumRecognize:
     def __init__(self):
         #初始化类
@@ -19,14 +21,33 @@ class SumRecognize:
         self.gantan.BuffSelector=self.buff
         self.rec=Recognize.Recognize()
         self.avoid=AvoidStick.AvoidStick()
+        self.emt=EmptyRound.EmptyRound()
+        self.ft=Fight.Fight()
+        self.signal=[]
+        for i in range(0,4):
+            self.signal.append(1)
+        self.gantan.signal=self.signal
+        self.level.signal=self.signal
+        self.yd.signal=self.signal
+        # self.gantan.test()
+        # print(f"gantan.signal{self.signal[0]}")
+        self.emt.signal=self.signal
         #初始化锁
         self.lock=[]
-        for i in range(0,3):
-            self.lock.append(1)
+        for i in range(0,4):
+            self.lock.append(0)
         self.gantan.lock=self.lock
         self.buff.lock=self.lock
         self.avoid.lock=self.lock
+        self.emt.lock=self.lock
+        self.level.lock=self.lock
+        self.ft.lock=self.lock
 
+    def Fight(self):
+        while True:
+            if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
+                    self.rec.resolutionRatio[0]) + "Fight.png"):
+                self.ft.Fight()
 
     def GanTan(self):
         while True:
@@ -48,6 +69,10 @@ class SumRecognize:
         thread.append(thread_level)
         thread_avoid=threading.Thread(target=self.avoid.Solve)
         thread.append(thread_avoid)
+        thread_emt=threading.Thread(target=self.emt.LookRound)
+        thread.append(thread_emt)
+        thread_ft=threading.Thread(target=self.Fight)
+        thread.append(thread_ft)
         self.buff.start()
         for thr in thread:
             thr.start()

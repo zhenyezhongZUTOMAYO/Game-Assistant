@@ -16,6 +16,9 @@ class LevelSystem:
         self.confidence = 0.8  # 确保拼写正确，并且有默认值
         self.running = False
         self.thread = None
+        self.signal = []
+        self.lock=[]
+        self.curpaint = ""
 
     # def RecognizeTarget(self):
     #     """识别目标的方法"""
@@ -36,39 +39,41 @@ class LevelSystem:
     #     return False
     def RecognizeTarget(self,lock):
         print("开始识别    门")
-        next = ["DaiJiaZhiJian", "OuRan","ZhiYouHuiTan","levelEntrance","Break", "BangBu","Timestamp", "WuShang","YingBi","ZhanBei","Boss","Boss1"]
+        self.rec.lock=self.lock
+        next = ["DaiJiaZhiJian","DaiJiaZhiJian1", "OuRan","OuRan1","ZhiYouHuiTan",
+                "ZhiYouHuiTan1","levelEntrance","levelEntrance1","Break","Break1", "BangBu","BangBu1",
+                "JiShi","JiShi1","TimeStamp","TimeStamp1","WuShang","WuShang1",
+                "YingBi","YingBi1","ZhanBei","ZhanBei1","Boss","Boss1","AnotherBoss","AnotherBoss1"]
         while True:
                 # self.rec.pb()
                 # if self.rec.end:
                 #     self.rec.va()
                 #     # print("退出")
                 #     return
-                if lock[1] == 0:
-                    self.rec.real = False
-                    while lock[1] == 0:
-                        print("Target被锁住!")
-                        time.sleep(1)
                 for i in next:
                     image_path_1 = self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + f"{i}.png"
                     print(f"正在识别{i}")
 
                     if self.rec.ToRecognizeWhere(image_path_1):
-                        if lock[1] == 0:
-                            break
+                        self.signal[1]=0
+                        self.curpaint=i
                         print(f"成功识别{i}")
-                        thread_a=threading.Thread(target=self.rec.ToRecognizeIfThen,args=[self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Inter.png",self.method])
+                        thread_a=threading.Thread(target=self.rec.ToRecognizeIfThen,args=[self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Inter.png",self.method,0.8,2])
                         thread_a.start()
                         # print(f"self.rec.sa:{self.rec.sa}")
                         # print(f"self.rec.sb:{self.rec.sb}")
                         self.rec.end = False
-                        self.rec.trakingImage(image_path_1,sleep=0.4)
+                        self.rec.trakingImage(image_path_1,sleep=0.4,lock=2)
+                        self.signal[1] = 1
                         # print(f"追踪结束{i}")
-                        if image_path_1 == self.rec.source_path + "Game-Assistant\\Source\\" + str(
-                                self.rec.resolutionRatio[0]) + f"{next[6]}.png":
-                            self.rec.ToRecognizeIfThen(self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Confirm0.png",lambda rec,location:{
-                                pyautogui.click(location)
-                            })
+                        stop=0
+                        while stop<5:
+                            stop+=1
+                            if self.rec.ToRecognizeWhere(self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Confirm0.png"):
+                                pyautogui.click(self.rec.x,self.rec.y)
+                                break
+                        self.signal[1]=1
                     # try:
                     #     # 在屏幕上查找图片
                     #     location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
@@ -169,17 +174,37 @@ class LevelSystem:
     #         self.rec.vb()
 
     def method(self,rec,location):
+        self.signal[1] = 1
         keyboard = pynput.keyboard.Controller()
         self.rec.keyboard.release('w')
-        keyboard.press('f')
-        time.sleep(0.5)
-        keyboard.release('f')
-        self.rec.end=True
+        if self.curpaint[-1]=="1":
+            keyboard.press('f')
+            time.sleep(0.5)
+            keyboard.release('f')
+            self.signal[1] = 1
+            self.rec.end = True
+            return
+        image_path_2 = self.rec.source_path + "Game-Assistant\\Source\\" + str(
+            self.rec.resolutionRatio[0]) + f"{self.curpaint+"1"}.png"
+        if self.rec.ToRecognizeWhere(image_path_2):
+            keyboard.press('f')
+            time.sleep(0.5)
+            keyboard.release('f')
+            self.signal[1] = 1
+            self.rec.end=True
+        else:
+            time.sleep(2)
+            self.Fifexist()
+
+    def Fifexist(self):
+        thread_b = threading.Thread(target=self.rec.ToRecognizeIfThen, args=[self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Inter.png",self.method])
+        thread_b.start()
 
     def start(self,lock):
         """模块启动入口"""
         # print("程序启动")
-        self.RecognizeTarget(lock)
+        while True:
+            self.RecognizeTarget(lock)
         # thread_a=threading.Thread(target=self.rec.ToRecognizeIfThen, args=[self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Inter.png",self.method])
         # thread_a.start()
         # self.trackingTarget()
