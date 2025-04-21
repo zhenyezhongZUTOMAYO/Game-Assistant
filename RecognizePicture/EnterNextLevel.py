@@ -40,10 +40,10 @@ class LevelSystem:
     def RecognizeTarget(self,lock):
         print("开始识别    门")
         self.rec.lock=self.lock
-        next = ["DaiJiaZhiJian","DaiJiaZhiJian1", "OuRan","OuRan1","ZhiYouHuiTan",
-                "ZhiYouHuiTan1","levelEntrance","levelEntrance1","Break","Break1", "BangBu","BangBu1",
-                "JiShi","JiShi1","TimeStamp","TimeStamp1","WuShang","WuShang1",
-                "YingBi","YingBi1","ZhanBei","ZhanBei1","Boss","Boss1","AnotherBoss","AnotherBoss1"]
+        next = ["DaiJiaZhiJian", "OuRan","ZhiYouHuiTan",
+                "levelEntrance","Break", "BangBu",
+                "JiShi","TimeStamp","WuShang",
+                "YingBi","ZhanBei","Boss","AnotherBoss"]
         while True:
                 # self.rec.pb()
                 # if self.rec.end:
@@ -53,20 +53,41 @@ class LevelSystem:
                 for i in next:
                     image_path_1 = self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + f"{i}.png"
-                    print(f"正在识别{i}")
+                    print(f"门正在识别{i}")
 
                     if self.rec.ToRecognizeWhere(image_path_1):
                         self.signal[1]=0
                         self.curpaint=i
-                        print(f"成功识别{i}")
+                        self.rec.sa=0
+                        self.rec.sb=1
+                        self.rec.end=False
+                        print(f"门成功识别{i}")
                         thread_a=threading.Thread(target=self.rec.ToRecognizeIfThen,args=[self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Inter.png",self.method,0.8,2])
                         thread_a.start()
+                        print("调用method")
                         # print(f"self.rec.sa:{self.rec.sa}")
                         # print(f"self.rec.sb:{self.rec.sb}")
                         self.rec.end = False
+                        print("准备tracking")
                         self.rec.trakingImage(image_path_1,sleep=0.4,lock=2)
+                        # print("已经tracking结束")
+                        print(f"追踪结束{i}")
+                        image_path_2 = self.rec.source_path + "Game-Assistant\\Source\\" + str(
+                            self.rec.resolutionRatio[0]) + f"{self.curpaint + "1"}.png"
+                        if self.rec.ToRecognizeWhere(image_path_2):
+                            self.rec.sa = 0
+                            self.rec.sb = 1
+                            self.rec.end = False
+                            print(f"门成功识别{i}")
+                            self.curpaint=i+"1"
+                            thread_a = threading.Thread(target=self.rec.ToRecognizeIfThen, args=[
+                                self.rec.source_path + "Game-Assistant\\Source\\" + str(
+                                    self.rec.resolutionRatio[0]) + "Inter.png", self.method, 0.8, 2])
+                            thread_a.start()
+                            self.rec.end = False
+                            print("准备tracking")
+                            self.rec.trakingImage(image_path_2, sleep=0.4, lock=2)
                         self.signal[1] = 1
-                        # print(f"追踪结束{i}")
                         stop=0
                         while stop<5:
                             stop+=1
@@ -174,6 +195,7 @@ class LevelSystem:
     #         self.rec.vb()
 
     def method(self,rec,location):
+        print("开始method")
         self.signal[1] = 1
         keyboard = pynput.keyboard.Controller()
         self.rec.keyboard.release('w')
@@ -193,17 +215,18 @@ class LevelSystem:
             self.signal[1] = 1
             self.rec.end=True
         else:
-            time.sleep(2)
-            self.Fifexist()
+            self.rec.end = True
 
-    def Fifexist(self):
-        thread_b = threading.Thread(target=self.rec.ToRecognizeIfThen, args=[self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Inter.png",self.method])
-        thread_b.start()
+    # def Fifexist(self):
+    #     print("调用fif")
+    #     thread_b = threading.Thread(target=self.rec.ToRecognizeIfThen, args=[self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Inter.png",self.method])
+    #     thread_b.start()
 
     def start(self,lock):
         """模块启动入口"""
         # print("程序启动")
         while True:
+            print("门启动")
             self.RecognizeTarget(lock)
         # thread_a=threading.Thread(target=self.rec.ToRecognizeIfThen, args=[self.rec.source_path+"Game-Assistant\\Source\\"+str(self.rec.resolutionRatio[0])+"Inter.png",self.method])
         # thread_a.start()

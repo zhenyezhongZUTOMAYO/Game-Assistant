@@ -338,12 +338,14 @@ class BuffSelector:
                     print("buff设置为True")
                     self.lock[0]+=1
                     self.lock[1]+=1
+                    print(f"Buff:防卡上锁{self.lock[0]},空房间环视一周上锁{self.lock[1]}")
                     self.buff=True
                     if self._execute_mode_actions(config):
                         last_mode_time = time.time()
                     print("buff设置为False")
                     self.lock[0] -= 1
                     self.lock[1] -= 1
+                    print(f"Buff:防卡解锁{self.lock[0]},空房间环视一周解锁{self.lock[1]}")
                     self.buff = False
                     break
             self.va()

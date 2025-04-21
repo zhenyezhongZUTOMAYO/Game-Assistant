@@ -95,30 +95,30 @@ def detectGanTanHao():
     # time.sleep(1)
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
-    # while True:
-    #     image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "E.png"
-    #
-    #     try:
-    #         # 在屏幕上查找图片
-    #         location = pyautogui.locateOnScreen(image_path, confidence=0.8)
-    #
-    #         if location is not None:
-    #             # 获取图片的中心坐标
-    #             x1, y1 = pyautogui.center(location)
-    #             print(f"找到图片，坐标位于: ({x1}, {y1})")
-    #         else:
-    #             print("未找到图片")
-    #     except Exception as e:
-    #         print(f"发生错误: {e}")
+    while True:
+        image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "levelEntrance.png"
+
+        try:
+            # 在屏幕上查找图片
+            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+
+            if location is not None:
+                # 获取图片的中心坐标
+                x1, y1 = pyautogui.center(location)
+                print(f"找到图片，坐标位于: ({x1}, {y1})")
+            else:
+                print("未找到图片")
+        except Exception as e:
+            print(f"发生错误: {e}")
     # now=time.time()
     # pyautogui.moveTo(3342,1921)
     # for i in range(0,100):
-        for j in range(0,100):
-            x,y=convert_coordinates(3342, 1900, (3840, 2160), (2560, 1600))
-
-            pixel_color = pyautogui.pixel(x,y)  # (x, y)坐
-            print(pixel_color)
-            time.sleep(1)
+    #     for j in range(0,100):
+    #         x,y=convert_coordinates(3342, 1900, (3840, 2160), (2560, 1600))
+    #
+    #         pixel_color = pyautogui.pixel(x,y)  # (x, y)坐
+    #         print(pixel_color)
+    #         time.sleep(1)
     # print(time.time()-now)
     # win=[0]*22
     # win[0]=20

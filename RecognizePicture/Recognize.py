@@ -26,12 +26,12 @@ class Recognize:
     def pa(self):
         self.sa-=1
         while self.sa<0:
-            time.sleep(0.2)
+            time.sleep(0.5)
 
     def pb(self):
         self.sb-=1
         while self.sb<0:
-            time.sleep(0.2)
+            time.sleep(0.5)
 
     def va(self):
         self.sa+=1
@@ -131,7 +131,8 @@ class Recognize:
                 if self.lock[lock]>0:
                     while self.lock[lock]>0:
                         time.sleep(1)
-                    break
+                        print("Target被锁住!")
+                    return
                 location = pyautogui.locateOnScreen(image_path, confidence=confidence)
                 # print(f"识别结果: {location}")  # 调试输出
                 if location is not None:
@@ -149,6 +150,7 @@ class Recognize:
 
 #找到图像线程就结束
     def trakingImage(self,image_path,confidence=0.8,sleep=1,signal=0,lock=0):
+        print("start")
         """
         通过调用ToRecognizeConWhere来实现图像追d踪(比较强大)
         通过self.end关闭
@@ -161,7 +163,7 @@ class Recognize:
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2
         center_y = screen_height // 2
-
+        stop = 0
         while True:
             self.pa()
             # print("进入操作")
@@ -170,7 +172,7 @@ class Recognize:
                 # print("退出操作")
                 return False
             if self.real:#不断找到位置
-                # print("正在操作")
+                print("正在操作")
                 #模拟鼠标的移动
 
                 self.signal[signal]=0
@@ -178,15 +180,23 @@ class Recognize:
                 if self.lock[lock]>0:
                     while self.lock[lock]>0:
                         time.sleep(1)
-                    break
-                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)  
+                        print("Target被锁住!")
+                    self.vb()
+                    print("Tatget解锁")
+                    return False
+                # print("到这里的第二步")
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)
+                stop=0
             else:
+                print("到这里第一步")
 
-                self.signal[signal]=1
                 print("将signal赋值为1")
                 self.vb()
+                stop += 1
+                if stop>3:
+                    self.signal[signal]=1
+                    return
                 # print("操作完成-误操作")
-                continue
             self.keyboard.press('w')
             time.sleep(sleep)
             self.keyboard.release('w')

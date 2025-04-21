@@ -18,11 +18,12 @@ CHECK_INTERVAL = 1
 THRESHOLD = 300000000
 
 # 设置连续低差异值的次数阈值
-STUCK_THRESHOLD = 1
+STUCK_THRESHOLD = 8
 
 class AvoidStick:
     def __init__(self):
         self.lock=[]
+        self.skip=False
     def capture_screen(self):
         """截取屏幕截图并转换为灰度图像"""
         screenshot = pyautogui.screenshot()  # 截取屏幕
@@ -45,6 +46,10 @@ class AvoidStick:
         keyboard = pynput.keyboard.Controller()
         keyboard_lock = threading.Lock()
         direction = random.choice(['left', 'right'])  # 随机选择方向
+        keyboard.release('w')
+        keyboard.press('s')
+        time.sleep(0.5)
+        keyboard.release('s')
         with keyboard_lock:#键盘加锁
             if direction == 'left':
                 #print("向左移动 0.5 秒")
@@ -61,14 +66,13 @@ class AvoidStick:
     def Solve(self):
         while True:
             self.solve()
-            while self.lock[0]>0:
-                print("防卡Sleep")
+            while self.lock[0] > 0:
+                print(f"防卡Sleep{self.lock}")
                 time.sleep(1)
 
     def solve(self):
         prev_screen = self.capture_screen()  # 获取初始屏幕截图
         stuck_count = 0  # 初始化撞墙计数
-
         while self.lock[0]==0:
             time.sleep(CHECK_INTERVAL)  # 等待一段时间
             current_screen = self.capture_screen()  # 获取当前屏幕截图
@@ -78,11 +82,13 @@ class AvoidStick:
             if diff_sum < THRESHOLD:  # 如果屏幕变化值低于阈值
                 stuck_count += 1
                 print("屏幕几乎不动，可能撞墙！")
-                if stuck_count > STUCK_THRESHOLD:  # 如果连续多次检测到撞墙
+                if stuck_count > STUCK_THRESHOLD or self.skip:  # 如果连续多次检测到撞墙
                     self.handle_stuck()  # 调用撞墙处理函数
+                    self.skip=True
                     stuck_count = 0  # 重置撞墙计数
                     break
             else:
+                self.skip=False
                 stuck_count = 0  # 重置撞墙计数
 
             prev_screen = current_screen  # 更新前一帧截图

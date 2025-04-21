@@ -19,27 +19,29 @@ class GanTanChat:
 
     def method(self,rec,location):
         self.signal[0]=0
-        self.lock[0]+=1
+        self.lock[0] += 1
+        print(f"感叹:3防卡上锁{self.lock[0]}")
         # print("锁住原点")
         rec.end=True
         rec.keyboard.release('w')
         rec.keyboard.release('w')
         keyboard = pynput.keyboard.Controller()
         if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
-            if self.avoidNpc <= 2:
-                keyboard.press('s')
-                time.sleep(1)
-                keyboard.release('s')
-                keyboard.press('a')
-                time.sleep(0.4)
-                keyboard.release('a')
-                self.avoidNpc += 1
+            # if self.avoidNpc <= 2:
+            #     keyboard.press('s')
+            #     time.sleep(1)
+            #     keyboard.release('s')
+            #     keyboard.press('a')
+            #     time.sleep(0.4)
+            #     keyboard.release('a')
+            #     self.avoidNpc += 1
             rec.end = True  # 外部函数操控内部图象识别是否停止的变量
             rec.real = False  # 是否捕获到目标
             self.signal[0]=1
             self.lock[0]-=1
             self.lock[2]-=1
             self.lock[3]-=1
+            print(f"感叹:1防卡解锁{self.lock[0]},门解锁{self.lock[2]},圆点解锁{self.lock[3]}")
             return
         # print("准备互动")
         # print("互动")
@@ -58,7 +60,8 @@ class GanTanChat:
         self.lock[0] -= 1
         self.lock[2] -= 1
         self.lock[3] -= 1
-        print(f"释放圆点{self.lock[3]}")
+        print(f"感叹:2防卡解锁{self.lock[0]},门解锁{self.lock[2]},圆点解锁{self.lock[3]}")
+        # print(f"释放圆点{self.lock[3]}")
         # print("释放原点")
 
     def Speak(self):
@@ -98,6 +101,7 @@ class GanTanChat:
         # print("Speak结束")
 
     def CommunicateToNpc(self,rec,location,confidence=0.8):
+        self.one=False
         print("开始识别     Gantan")
         # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
         rec=Recognize.Recognize()
@@ -124,6 +128,7 @@ class GanTanChat:
                 if not self.one:
                     self.lock[2]+=1
                     self.lock[3]+=1
+                    print(f"感叹:4门上锁{self.lock[2]},原点上锁{self.lock[3]}")
                     self.one =True
                 if rec.end:
                     break

@@ -19,8 +19,9 @@ class EmptyRound:
     def LookRound(self):
         while True:
             if self.signal[0]&self.signal[1]&self.signal[2]&self.signal[3] :
-                time.sleep(3)
+                time.sleep(12)
                 self.lock[0]+=1
+                print(f"空房间环视一周：防卡上锁{self.lock}")
                 while self.signal[0]&self.signal[1]&self.signal[2]&self.signal[3]:
                     if self.lock[1]>0:
                         while self.lock[1]>0:

@@ -42,11 +42,13 @@ class SumRecognize:
         self.emt.lock=self.lock
         self.level.lock=self.lock
         self.ft.lock=self.lock
+        self.yd.lock=self.lock
 
     def Fight(self):
         while True:
             if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                     self.rec.resolutionRatio[0]) + "Fight.png"):
+                print("识别到战斗开始")
                 self.ft.Fight()
 
     def GanTan(self):
@@ -55,14 +57,18 @@ class SumRecognize:
 
 
     def YuanDian(self):
+        cishu=0
         while True:
+            cishu+=1
+            print(f"圆点启动{cishu}次")
             self.yd.trackingYuanDian(self.lock)
+
 
     def start(self):
         thread=[]
-        # print("start")
-        thread_gantan=threading.Thread(target=self.GanTan,args=[])
-        thread.append(thread_gantan)
+        print("start")
+        # thread_gantan=threading.Thread(target=self.GanTan,args=[])
+        # thread.append(thread_gantan)
         thread_yd=threading.Thread(target=self.YuanDian,)
         thread.append(thread_yd)
         thread_level=threading.Thread(target=self.level.start,args=[self.lock,])
@@ -71,15 +77,16 @@ class SumRecognize:
         thread.append(thread_avoid)
         thread_emt=threading.Thread(target=self.emt.LookRound)
         thread.append(thread_emt)
-        thread_ft=threading.Thread(target=self.Fight)
-        thread.append(thread_ft)
+        # thread_ft=threading.Thread(target=self.Fight)
+        # thread.append(thread_ft)
         self.buff.start()
+        # thread_test=threading.Thread(target=self.test)
+        # thread_test.start()
         for thr in thread:
             thr.start()
         for thr in thread:
             thr.join()
 
-    # def test(self):
-    #     print(self.lock[0])
-    #     self.gantan.test()
-    #     print(self.lock[0])
+    def test(self):
+        time.sleep(12)
+        self.lock[2]-=1
