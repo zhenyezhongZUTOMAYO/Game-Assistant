@@ -39,6 +39,7 @@ class BuffSelector:
         self.thread = None
         self.sa=0
         self.lock=[]
+        self.the_end_complete = False
 
         # 模式配置
         self.modes_config = {
@@ -270,6 +271,8 @@ class BuffSelector:
                 pyautogui.click(self.rec.x, self.rec.y)
                 exit_found = True
                 break
+        if self.current_mode == "TheEnd" and  exit_found:
+            self.the_end_complete = True
 
         return success_count > 0 or exit_found
 
