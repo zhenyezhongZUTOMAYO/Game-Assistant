@@ -6,8 +6,34 @@ import threading
 import pynput
 import ctypes
 import sys
-
+import winsound
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+
+def convert_coordinates(x, y, original_res, target_res):
+    """
+    将坐标从原分辨率转换到目标分辨率
+    :param x: 原坐标x
+    :param y: 原坐标y
+    :param original_res: 原分辨率 (width, height)
+    :param target_res: 目标分辨率 (width, height)
+    :return: 转换后的坐标 (new_x, new_y)
+    """
+
+    original_width, original_height = original_res
+    target_width, target_height = target_res
+
+    # 计算缩放比例
+    scale_x = target_width / original_width
+    scale_y = target_height / original_height
+
+    # 转换坐标
+    new_x = int(x * scale_x)
+    new_y = int(y * scale_y)
+
+    return new_x, new_y
+
+
 class Recognize:
 
     def __init__(self):
@@ -111,7 +137,39 @@ class Recognize:
                 if self.end:
                     return False
 
+    def RecognizeColor(self,position,rgb):
+        x, y = convert_coordinates(position[0], position[1], (2560, 1600), rec.resolutionRatio)
+        pixel = pyautogui.pixel(x, y)
+        # print(f"识别结果: {location}")  # 调试输出
+        if pixel == rgb:
+            return True
 
+    def ToRecognizeColorIfThen(self,Function,lock=0):
+        while True:
+            location = None
+            try:
+                # print(f"尝试识别: {image_path}")  # 新增路径打印
+                if self.lock[lock]>0:
+                    while self.lock[lock]>0:
+                        time.sleep(1)
+                        print("Target被锁住!")
+                    return
+                x, y = convert_coordinates(1936, 1533, (2560, 1600), rec.resolutionRatio)
+                pixel = pyautogui.pixel(x, y)
+                # print(f"识别结果: {location}")  # 调试输出
+                if pixel==(255,255,255):
+                    # print(f"成功识别坐标: {location}")
+                    print("进入函数!")
+                    # winsound.Beep(500,500)
+                    Function(rec=self,location=location)
+                    return
+                else:
+                    time.sleep(0.2)
+            except Exception as e:
+                if location is not None:
+                    import traceback  # 新增完整堆栈打印
+                    print(f"完整异常信息:\n{traceback.format_exc()}")
+                    return
 
     def ToRecognizeIfThen(self,image_path,Function,confidence=0.8,lock=0):
         """
@@ -167,7 +225,7 @@ class Recognize:
         while True:
             self.pa()
             # print("进入操作")
-            if  not thread_a.is_alive():
+            if  not thread_a.is_alive() :
                 self.vb()
                 # print("退出操作")
                 return False
@@ -178,29 +236,33 @@ class Recognize:
                 self.signal[signal]=0
                 print(f"Recognize.signal:{self.signal}")
                 if self.lock[lock]>0:
+                    self.end=True
                     while self.lock[lock]>0:
                         time.sleep(1)
+
                         print("Target被锁住!")
                     self.vb()
                     print("Tatget解锁")
                     return False
                 # print("到这里的第二步")
-                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)/2)),0)
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x-center_x)//2)),0)
                 stop=0
+                self.keyboard.press('w')
+                time.sleep(sleep)
+                self.keyboard.release('w')
+                self.vb()
             else:
                 print("到这里第一步")
 
                 print("将signal赋值为1")
-                self.vb()
+
                 stop += 1
                 if stop>3:
                     self.signal[signal]=1
                     return
                 # print("操作完成-误操作")
-            self.keyboard.press('w')
-            time.sleep(sleep)
-            self.keyboard.release('w')
-            self.vb()
+                self.vb()
+
             # print("操作完成-有操作")
 
     # def click_image(self, image_path):

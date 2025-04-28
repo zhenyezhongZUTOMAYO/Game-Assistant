@@ -141,7 +141,17 @@ class BuffSelector:
                 "exit_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Confirm.png",
                 "cooldown": 2
             },
-
+            "Confirm": {
+                "entry_image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Confirm0.png",
+                "actions": [
+                    {
+                        "image": self.rec.source_path + "Game-Assistant\\Source\\" + f"{self.rec.resolutionRatio[0]}Confirm0.png",
+                        "name": "确认",
+                        "delay": 1},
+                ],
+                "exit_image": "skip",
+                "cooldown": 2  # 模式执行后的冷却时间
+            },
             "ChoosePath": {
                 "entry_image": self.rec.source_path+"Game-Assistant\\Source\\"+f"{self.rec.resolutionRatio[0]}Path.png",
                 "actions": [
@@ -266,7 +276,7 @@ class BuffSelector:
             #     keyboard.release(pynput.keyboard.Key.esc)
             #     exit_found = True
             #     break
-            if self.rec.ToRecognizeWhere(mode_config["exit_image"]):
+            if mode_config["exit_image"] =="skip" or self.rec.ToRecognizeWhere(mode_config["exit_image"]):
                 pyautogui.click(self.rec.x, self.rec.y)
                 exit_found = True
                 break

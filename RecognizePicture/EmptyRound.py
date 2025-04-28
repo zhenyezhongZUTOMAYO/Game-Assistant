@@ -31,4 +31,5 @@ class EmptyRound:
                     ctypes.windll.user32.mouse_event(0x0001,10, 0)
                     time.sleep(0.1)
                 self.lock[0]-=1
+                print(f"空房间环视一周，防卡解锁{self.lock[0]}")
 

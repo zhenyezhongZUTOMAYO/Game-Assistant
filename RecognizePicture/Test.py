@@ -2,9 +2,11 @@ import pyautogui
 import ctypes
 import sys
 import time
+
+import Fight
 import Recognize
 from main import *
-
+import winsound
 import cv2
 import numpy as np
 
@@ -96,11 +98,11 @@ def detectGanTanHao():
     # pyautogui.moveRel(960,0,duration=0.5)
     #指定要查找的图片路径
     while True:
-        image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "levelEntrance.png"
+        image_path = rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "Fight2.png"
 
         try:
             # 在屏幕上查找图片
-            location = pyautogui.locateOnScreen(image_path, confidence=0.8)
+            location = pyautogui.locateOnScreen(image_path, confidence=0.9)
 
             if location is not None:
                 # 获取图片的中心坐标
@@ -167,10 +169,142 @@ def detectGanTanHao():
     #         print(f"发生错误: {e}")
 
 if __name__=="__main__":
+    pass
     # time.sleep(2)
     # spk=SpeakNpc.SpeakNpc()
     # spk.isBuff()
-    detectGanTanHao()
+    # now =time.time()
+    # time.sleep(1)
+    # print(time.time()-now)
+#     next=["D:/Git/Game-Assistant/Source/2560AnotherBoss.png",
+# "D:/Git/Game-Assistant/Source/2560AnotherBoss1.png",
+# "D:/Git/Game-Assistant/Source/2560BangBu.png",
+# "D:/Git/Game-Assistant/Source/2560BangBu1.png",
+# "D:/Git/Game-Assistant/Source/2560BloodLoss.png",
+# "D:/Git/Game-Assistant/Source/2560BloodStore.png",
+# "D:/Git/Game-Assistant/Source/2560Boss.png",
+# "D:/Git/Game-Assistant/Source/2560Boss1.png",
+# "D:/Git/Game-Assistant/Source/2560Break.png",
+# "D:/Git/Game-Assistant/Source/2560Break1.png",
+# "D:/Git/Game-Assistant/Source/2560Buff.png",
+# "D:/Git/Game-Assistant/Source/2560Card.png",
+# "D:/Git/Game-Assistant/Source/2560ChooseOne.png",
+# "D:/Git/Game-Assistant/Source/2560ChooseTwo.png",
+# "D:/Git/Game-Assistant/Source/2560Confirm.png",
+# "D:/Git/Game-Assistant/Source/2560Confirm0 (2).png",
+# "D:/Git/Game-Assistant/Source/2560Confirm0.png",
+# "D:/Git/Game-Assistant/Source/2560ConfirmTwo.png",
+# "D:/Git/Game-Assistant/Source/2560DaiJiaZhiJian.png",
+# "D:/Git/Game-Assistant/Source/2560DaiJiaZhiJian1.png",
+# "D:/Git/Game-Assistant/Source/2560Direction15.png",
+# "D:/Git/Game-Assistant/Source/2560Direction18.png",
+# "D:/Git/Game-Assistant/Source/2560Direction9.png",
+# "D:/Git/Game-Assistant/Source/2560Direction2.png",
+# "D:/Git/Game-Assistant/Source/2560Direction3.png",
+# "D:/Git/Game-Assistant/Source/2560E.png",
+# "D:/Git/Game-Assistant/Source/2560ExitLottery.png",
+# "D:/Git/Game-Assistant/Source/2560ExitStart.png",
+# "D:/Git/Game-Assistant/Source/2560Fight .png",
+# "D:/Git/Game-Assistant/Source/2560Fight1.png",
+# "D:/Git/Game-Assistant/Source/2560Fight2.png",
+# "D:/Git/Game-Assistant/Source/2560FightEnd.png",
+# "D:/Git/Game-Assistant/Source/2560Finish.png",
+# "D:/Git/Game-Assistant/Source/2560GanTan.png",
+# "D:/Git/Game-Assistant/Source/2560GanTan1.png",
+# "D:/Git/Game-Assistant/Source/2560Gear.png",
+# "D:/Git/Game-Assistant/Source/2560Gearup.png",
+# "D:/Git/Game-Assistant/Source/2560GetGear.png",
+# "D:/Git/Game-Assistant/Source/2560GetGift.png",
+# "D:/Git/Game-Assistant/Source/2560Inter.png",
+# "D:/Git/Game-Assistant/Source/2560JiShi.png",
+# "D:/Git/Game-Assistant/Source/2560JiShi1.png",
+# "D:/Git/Game-Assistant/Source/2560levelEntrance.png",
+# "D:/Git/Game-Assistant/Source/2560levelEntrance1.png",
+# "D:/Git/Game-Assistant/Source/2560Lottery.png",
+# "D:/Git/Game-Assistant/Source/2560Next.png",
+# "D:/Git/Game-Assistant/Source/2560NextConfirm0.png",
+# "D:/Git/Game-Assistant/Source/2560Option.png",
+# "D:/Git/Game-Assistant/Source/2560OuRan.png",
+# "D:/Git/Game-Assistant/Source/2560OuRan1.png",
+# "D:/Git/Game-Assistant/Source/2560Path.png",
+# "D:/Git/Game-Assistant/Source/2560Q.png",
+# "D:/Git/Game-Assistant/Source/2560R.png",
+# "D:/Git/Game-Assistant/Source/2560Start.png",
+# "D:/Git/Game-Assistant/Source/2560Start0.png",
+# "D:/Git/Game-Assistant/Source/2560Start1.png",
+# "D:/Git/Game-Assistant/Source/2560Start2.png",
+# "D:/Git/Game-Assistant/Source/2560StartBuff.png",
+# "D:/Git/Game-Assistant/Source/2560Store.png",
+# "D:/Git/Game-Assistant/Source/2560TestSpeak1.png",
+# "D:/Git/Game-Assistant/Source/2560TestSpeak2.png",
+# "D:/Git/Game-Assistant/Source/2560TheEnd.png",
+# "D:/Git/Game-Assistant/Source/2560Timestamp.png",
+# "D:/Git/Game-Assistant/Source/2560Timestamp1.png",
+# "D:/Git/Game-Assistant/Source/2560WuShang.png",
+# "D:/Git/Game-Assistant/Source/2560WuShang1.png",
+# "D:/Git/Game-Assistant/Source/2560YingBi.png",
+# "D:/Git/Game-Assistant/Source/2560YingBi1.png",
+# "D:/Git/Game-Assistant/Source/2560ZC.png",
+# "D:/Git/Game-Assistant/Source/2560ZhanBei.png",
+# "D:/Git/Game-Assistant/Source/2560ZhanBei1.png",
+# "D:/Git/Game-Assistant/Source/2560ZhiYouHuiTan.png",
+# "D:/Git/Game-Assistant/Source/2560ZhiYouHuiTan1.png"]
+#     i=0
+# #     next=["D:/Git/Game-Assistant/Source/2560Fight .png",
+# # "D:/Git/Game-Assistant/Source/2560Fight1.png",
+# # "D:/Git/Game-Assistant/Source/2560Fight2.png"]
+#     # while True:
+#     for i in range(0,73):
+#         print(f"正在识别{next[i]}")
+#         try:
+#             # 在屏幕上查找图片
+#             location = pyautogui.locateOnScreen("D:/Git/Game-Assistant/Source/2560Confirm0.png",confidence=0.8)
+#             if location is not None:
+#                 # 获取图片的中心坐标
+#                 x1, y1 = pyautogui.center(location)
+#                 print(f"找到图片，坐标位于: ({x1}, {y1})")
+#             else:
+#                 print("未找到图片")
+#         except Exception as e:
+#             print(f"发生错误: {e}")
+#     stop = 0
+#     while stop < 10:
+#         stop += 1
+#         if rec.ToRecognizeWhere(
+#                 rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "Confirm0.png"):
+#             pyautogui.click(rec.x, rec.y)
+#             break
+#     ft=Fight.Fight()
+#     while True:
+#         if rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(
+#                 rec.resolutionRatio[0]) + "Fight.png"):
+#             print("识别到战斗开始")
+#             ft.Qsignal = False
+#             ft.Fight()
+#         elif rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(
+#                 rec.resolutionRatio[0]) + "Fight1.png"):
+#             print("识别到战斗开始")
+#             ft.Qsignal = False
+#             ft.Fight()
+#         elif rec.RecognizeColor((2245, 92), (0, 255, 0)):
+#             print("识别到战斗开始")
+#             ft.Qsignal = True
+#             ft.Fight()
+#     x, y = convert_coordinates(310, 166, (2560, 1600),rec.resolutionRatio)
+#     # for i in range(0,100):
+#     pyautogui.moveTo(310, 166)
+    # while True:
+    # # for i in range(0,10):
+    # #     for j in range(-5,5):
+    #     # time.sleep(1)
+    #         pixel = pyautogui.pixel(x, y)
+    #         print(f"{x},{y}")
+    #         # pyautogui.moveTo(1956, 1533)
+    #         print(pixel)
+
+    # detectGanTanHao()
+    # print(ctypes.c_int((int((705-1980)/4))/ 2))
+    # print(ctypes.c_int((705 - 1980) // 2))
     # time.sleep(3)
     # pyautogui.click()
     # pyautogui.click()

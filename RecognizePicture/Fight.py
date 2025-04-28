@@ -16,6 +16,8 @@ class Fight:
         self.rec=Recognize.Recognize()
         self.end=False
         self.lock=[]
+        self.signal=False
+        self.Qsignal=False
 
     def A(self):
         while not self.end:
@@ -38,8 +40,7 @@ class Fight:
             self.mouse.press(pynput.mouse.Button.left)
             time.sleep(0.2)
             self.mouse.release(pynput.mouse.Button.left)
-            if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
-                    self.rec.resolutionRatio[0]) + "FullState.png",0.6):
+            if self.isZA():
                 print("ZA")
                 self.mouse.press(pynput.mouse.Button.left)
                 time.sleep(8)
@@ -50,7 +51,6 @@ class Fight:
     # def ZA(self):
     #     while not self.end:
 
-
     def MS(self):
         while not self.end:
             # print("MS")
@@ -58,6 +58,40 @@ class Fight:
             time.sleep(0.5)
             self.mouse.release(pynput.mouse.Button.right)
             time.sleep(3)
+
+    def isZA(self):
+        def convert_coordinates(x, y, original_res, target_res):
+            """
+            将坐标从原分辨率转换到目标分辨率
+            :param x: 原坐标x
+            :param y: 原坐标y
+            :param original_res: 原分辨率 (width, height)
+            :param target_res: 目标分辨率 (width, height)
+            :return: 转换后的坐标 (new_x, new_y)
+            """
+
+            original_width, original_height = original_res
+            target_width, target_height = target_res
+
+            # 计算缩放比例
+            scale_x = target_width / original_width
+            scale_y = target_height / original_height
+
+            # 转换坐标
+            new_x = int(x * scale_x)
+            new_y = int(y * scale_y)
+
+            return new_x, new_y
+        x,y=(310 , 166)
+        if self.rec.resolutionRatio[0]==3840:
+            x,y=(458,245)
+        elif self.rec.resolutionRatio[0]==2560:
+            x,y=(310, 166)
+        pixel = pyautogui.pixel(x, y)
+        if pixel ==(255,255,255):
+            return True
+        else:
+            return False
 
     def isE(self):
         def convert_coordinates(x, y, original_res, target_res):
@@ -84,7 +118,7 @@ class Fight:
             return new_x, new_y
 
         x, y = convert_coordinates(3342, 1900, (3840, 2160), self.rec.resolutionRatio)
-        pixel =pixel_color = pyautogui.pixel(x, y)
+        pixel = pyautogui.pixel(x, y)
         if pixel ==(255,255,255):
             return False
         else :
@@ -99,20 +133,15 @@ class Fight:
                 self.keyborad.release('e')
 
     def Q(self):
-        while not self.end:
+        while not self.end and self.Qsignal:
             if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + "Q.png"):
+                self.signal=True
                 self.keyborad.press('q')
                 time.sleep(0.5)
                 self.keyborad.release('q')
-                stop=0
-                now=time.time()
-                while stop<25:
-                    stop+=1
-                    self.end=False
-                    print(f"self.end=False{stop}")
-                    time.sleep(0.2)
-                print(f"总计用时{time.time()-now}")
+                time.sleep(8)
+                self.signal=False
 
     def R(self):
         if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
@@ -125,40 +154,57 @@ class Fight:
         while True:
             if not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + "FightEnd.png"):
-                self.end=True
-                time.sleep(6)
+                if not self.signal:
+                    self.end=True
+                    break
+                if self.rec.RecognizeColor(position=(711,1424),rgb=(255,255,0)):
+                    print("QTE")
+                    now = time.time()
+                    while time.time() - now < 3:
+                        self.mouse.press(pynput.mouse.Button.left)
+                        time.sleep(0.5)
+                        self.mouse.release(pynput.mouse.Button.left)
+                time.sleep(1.5)
+                #这是对QTE的缓冲机制
                 if not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + "FightEnd.png"):
-                    break
+                    if not self.signal:
+                        self.end = True
+                        break
+
+
+
         for i in range(0, 4):
             self.lock[i] -= 1
+        print(f"战斗解锁{self.lock}")
+        stop=0
+        while not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
+                self.rec.resolutionRatio[0]) + "ZC.png") and stop<6:
+            stop+=1
+            self.keyborad.press(pynput.keyboard.Key.space)
+            time.sleep(0.5)
+            self.keyborad.release(pynput.keyboard.Key.space)
 
     def ZC(self):
         while not self.end:
+            now =time.time()
+            while (time.time()-now)<20:
+                while not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
+                            self.rec.resolutionRatio[0]) + "ZC.png") and not self.end:
+                    self.keyborad.press(pynput.keyboard.Key.space)
+                    time.sleep(0.5)
+                    self.keyborad.release(pynput.keyboard.Key.space)
             while not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
-                        self.rec.resolutionRatio[0]) + "ZC.png"):
+                        self.rec.resolutionRatio[0]) + "ZC.png") and not self.end:
                 self.keyborad.press(pynput.keyboard.Key.space)
                 time.sleep(0.5)
                 self.keyborad.release(pynput.keyboard.Key.space)
-                if self.end:
-                    break
-            if self.end:
-                break
-            time.sleep(20)
-            if self.end:
-                break
-            while not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
-                        self.rec.resolutionRatio[0]) + "ZC.png"):
-                self.keyborad.press(pynput.keyboard.Key.space)
-                time.sleep(0.5)
-                self.keyborad.release(pynput.keyboard.Key.space)
-                if self.end:
-                    break
             self.keyborad.press(pynput.keyboard.Key.space)
             time.sleep(0.5)
             self.keyborad.release(pynput.keyboard.Key.space)
             if self.end:
                 break
+            time.sleep(1)
             Time=0
             if self.isE():
                 Time+=3
@@ -173,6 +219,7 @@ class Fight:
             self.keyborad.release(pynput.keyboard.Key.space)
             if self.end:
                 break
+            time.sleep(1)
             Time=0
             if self.isE():
                 Time+=3
@@ -200,6 +247,7 @@ class Fight:
     #         time.sleep()
 
     def Fight(self):
+        self.end=False
         thread=[]
         # thread_za=threading.Thread(target=self.ZA)
         # thread.append(thread_za)
@@ -207,8 +255,8 @@ class Fight:
         thread.append(thread_e)
         thread_q=threading.Thread(target=self.Q)
         thread.append(thread_q)
-        thread_ms = threading.Thread(target=self.MS)
-        thread.append(thread_ms)
+        # thread_ms = threading.Thread(target=self.MS)
+        # thread.append(thread_ms)
         thread_end=threading.Thread(target=self.FightEnd)
         thread.append(thread_end)
         thread_a=threading.Thread(target=self.A)

@@ -19,12 +19,9 @@ class GanTanChat:
 
     def method(self,rec,location):
         self.signal[0]=0
-        self.lock[0] += 1
-        print(f"感叹:3防卡上锁{self.lock[0]}")
+        # print(f"感叹:3防卡上锁{self.lock[0]}")
         # print("锁住原点")
         rec.end=True
-        rec.keyboard.release('w')
-        rec.keyboard.release('w')
         keyboard = pynput.keyboard.Controller()
         if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
             # if self.avoidNpc <= 2:
@@ -38,15 +35,19 @@ class GanTanChat:
             rec.end = True  # 外部函数操控内部图象识别是否停止的变量
             rec.real = False  # 是否捕获到目标
             self.signal[0]=1
-            self.lock[0]-=1
             self.lock[2]-=1
             self.lock[3]-=1
+            keyboard.press('w')
+            time.sleep(0.5)
+            keyboard.release('w')
             print(f"感叹:1防卡解锁{self.lock[0]},门解锁{self.lock[2]},圆点解锁{self.lock[3]}")
             return
         # print("准备互动")
         # print("互动")
         #代表此次追踪Npc已结束
+        self.lock[0] += 1
         self.avoidNpc=0
+        print("F!")
         keyboard.press('f')
         time.sleep(0.5)
         keyboard.release('f')
@@ -89,7 +90,7 @@ class GanTanChat:
                 # print("识别不到stop+1")
                 stop += 1
                 print("检测是否正在执行Buff")
-                if stop > 3:
+                if stop > 6:
                     rec.end = True
                     self.BuffSelector.pa()
                     self.BuffSelector.pa()
@@ -106,11 +107,13 @@ class GanTanChat:
         # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
         rec=Recognize.Recognize()
         rec.signal=self.signal
-        thread_b = threading.Thread(target=rec.ToRecognizeIfThen, args=[
-            self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Inter.png", self.method,
-            confidence])
-        # thread_a.start()
+        thread_b = threading.Thread(target=rec.ToRecognizeColorIfThen, args=[self.method])
         thread_b.start()
+        # thread_b = threading.Thread(target=rec.ToRecognizeIfThen, args=[
+        #     self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "Inter.png", self.method,
+        #     confidence])
+        # # thread_a.start()
+        # thread_b.start()
 
         rec.end=False
         #将识别门锁住
@@ -133,7 +136,7 @@ class GanTanChat:
                 if rec.end:
                     break
                 self.signal[0]=0
-                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), 0)
                 self.keyboard.press('w')
                 time.sleep(0.5)
                 self.keyboard.release('w')
@@ -141,7 +144,7 @@ class GanTanChat:
                 if rec.end:
                     break
                 self.signal[0]=0
-                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) / 2)), 0)
+                ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), 0)
                 self.keyboard.press('w')
                 time.sleep(0.5)
                 self.keyboard.release('w')

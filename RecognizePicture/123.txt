@@ -1,0 +1,2547 @@
+self.lockOnestart
+圆点启动1次
+门启动
+开始识别    门
+开始识别    原点
+门正在识别DaiJiaZhiJian
+识别第2张图片
+门正在识别OuRan
+第2张图片未识别到
+识别第3张图片
+门正在识别ZhiYouHuiTan
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 779020814
+[ WARN:1@2.300] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+门正在识别levelEntrance
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动2次
+开始识别    原点
+识别第2张图片
+门正在识别Break
+第2张图片未识别到
+识别第3张图片
+屏幕差异值: 429398680
+第3张图片未识别到
+门正在识别BangBu
+识别第9张图片
+第9张图片未识别到
+va()准备开始操作
+门正在识别JiShi
+开始操作
+屏幕差异值: 385567349
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动3次
+开始识别    原点
+识别第2张图片
+门正在识别TimeStamp
+第2张图片未识别到
+识别第3张图片
+门正在识别WuShang
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 352520770
+门正在识别YingBi
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动4次
+开始识别    原点
+识别第2张图片
+门正在识别ZhanBei
+第2张图片未识别到
+识别第3张图片
+屏幕差异值: 404201016
+门正在识别Boss
+第3张图片未识别到
+识别第9张图片
+门正在识别AnotherBoss
+第9张图片未识别到
+va()准备开始操作
+屏幕差异值: 611657421
+门正在识别DaiJiaZhiJian
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动5次
+开始识别    原点
+识别第2张图片
+门正在识别OuRan
+第2张图片未识别到
+识别第3张图片
+门正在识别ZhiYouHuiTan
+开始识别     Gantan
+屏幕差异值: 345400368
+第3张图片未识别到
+识别第9张图片
+门正在识别levelEntrance
+感叹:4门上锁1,原点上锁1
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动6次
+开始识别    原点
+识别第2张图片
+门正在识别Break
+屏幕差异值: 398987988
+第2张图片未识别到
+[ WARN:1@11.986] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+识别第3张图片
+空房间环视一周：防卡上锁[1, 0, 1, 1]
+门正在识别BangBu
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 321329062
+门正在识别JiShi
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动7次
+开始识别    原点
+识别第2张图片
+门正在识别TimeStamp
+屏幕差异值: 328620323
+感叹:3防卡上锁1
+第2张图片未识别到
+识别第3张图片
+门正在识别WuShang
+屏幕差异值: 313539024
+防卡Sleep[1, 0, 1, 1]
+第3张图片未识别到
+识别第9张图片
+门正在识别YingBi
+防卡Sleep[1, 0, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别ZhanBei
+开始操作
+a:0
+b:1
+检测是否正在执行Buff
+检测到识别进程退出,退出
+圆点启动8次
+开始识别    原点
+识别第2张图片
+门正在识别Boss
+防卡Sleep[1, 0, 1, 1]
+第2张图片未识别到
+识别第3张图片
+门正在识别AnotherBoss
+防卡Sleep[1, 0, 1, 1]
+检测是否正在执行Buff
+第3张图片未识别到
+识别第9张图片
+门正在识别DaiJiaZhiJian
+防卡Sleep[1, 0, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+检测是否正在执行Buff
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+门正在识别OuRan
+圆点启动9次
+开始识别    原点
+识别第2张图片
+防卡Sleep[1, 0, 1, 1]
+门正在识别ZhiYouHuiTan
+buff设置为True
+第2张图片未识别到
+Buff:防卡上锁2,空房间环视一周上锁1
+识别第3张图片
+[模式激活] Start
+正在执行: 选择战备buff1
+防卡Sleep[2, 1, 1, 1]
+检测是否正在执行Buff
+第3张图片未识别到
+识别第9张图片
+门正在识别levelEntrance
+执行 选择战备buff1 ((np.int64(3007), np.int64(1980)))
+防卡Sleep[2, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别Break
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动10次
+开始识别    原点
+识别第2张图片
+正在执行: 选择战备buff2
+门正在识别BangBu
+防卡Sleep[2, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+门正在识别JiShi
+第3张图片未识别到
+防卡Sleep[2, 1, 1, 1]
+识别第9张图片
+门正在识别TimeStamp
+防卡Sleep[2, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别WuShang
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动11次
+开始识别    原点
+识别第2张图片
+防卡Sleep[2, 1, 1, 1]
+门正在识别YingBi
+第2张图片未识别到
+识别第3张图片
+门正在识别ZhanBei
+防卡Sleep[2, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+跳过未找到的: 选择战备buff2
+正在执行: 确认携带
+门正在识别Boss
+防卡Sleep[2, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别AnotherBoss
+执行 确认携带 ((np.int64(3603), np.int64(1739)))
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动12次
+开始识别    原点
+识别第2张图片
+防卡Sleep[2, 1, 1, 1]
+门正在识别DaiJiaZhiJian
+第2张图片未识别到
+识别第3张图片
+处理退出确认...
+防卡Sleep[2, 1, 1, 1]
+门正在识别OuRan
+第3张图片未识别到
+识别第9张图片
+buff设置为False
+Buff:防卡解锁1,空房间环视一周解锁0
+门正在识别ZhiYouHuiTan
+防卡Sleep[1, 0, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动13次
+开始识别    原点
+识别第2张图片
+门正在识别levelEntrance
+防卡Sleep[1, 0, 1, 1]
+第2张图片未识别到
+识别第3张图片
+门正在识别Break
+防卡Sleep[1, 0, 1, 1]
+第3张图片未识别到
+识别第9张图片
+门正在识别BangBu
+第9张图片未识别到
+va()准备开始操作
+开始操作
+防卡Sleep[1, 0, 1, 1]
+a:0
+门正在识别JiShi
+b:1
+检测到识别进程退出,退出
+圆点启动14次
+[ WARN:1@37.620] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+开始识别    原点
+识别第2张图片
+门正在识别TimeStamp
+防卡Sleep[1, 0, 1, 1]
+第2张图片未识别到
+识别第3张图片
+门正在识别WuShang
+防卡Sleep[1, 0, 1, 1]
+第3张图片未识别到
+识别第9张图片
+门正在识别YingBi
+防卡Sleep[1, 0, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别ZhanBei
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动15次
+开始识别    原点
+防卡Sleep[1, 0, 1, 1]
+识别第2张图片
+门正在识别Boss
+第2张图片未识别到
+识别第3张图片
+防卡Sleep[1, 0, 1, 1]
+门正在识别AnotherBoss
+第3张图片未识别到
+识别第9张图片
+门正在识别DaiJiaZhiJian
+防卡Sleep[1, 0, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动16次
+开始识别    原点
+识别第2张图片
+门正在识别OuRan
+防卡Sleep[1, 0, 1, 1]
+门正在识别ZhiYouHuiTan
+第2张图片未识别到
+识别第3张图片
+防卡Sleep[1, 0, 1, 1]
+门正在识别levelEntrance
+第3张图片未识别到
+识别第9张图片
+门正在识别Break
+防卡Sleep[1, 0, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+门正在识别BangBu
+检测到识别进程退出,退出
+圆点启动17次
+开始识别    原点
+识别第2张图片
+防卡Sleep[1, 0, 1, 1]
+第2张图片未识别到
+识别第3张图片
+门正在识别JiShi
+感叹:2防卡解锁0,门解锁0,圆点解锁0
+开始识别     Gantan
+[ WARN:1@49.223] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+第3张图片未识别到
+识别第9张图片
+门正在识别TimeStamp
+感叹:4门上锁1,原点上锁1
+第9张图片未识别到
+va()准备开始操作
+门正在识别WuShang
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动18次
+开始识别    原点
+识别第2张图片
+第2张图片未识别到
+门正在识别YingBi
+识别第3张图片
+屏幕差异值: 339857725
+第3张图片未识别到
+门正在识别ZhanBei
+识别第9张图片
+门成功识别ZhanBei
+调用method
+准备tracking
+start
+第9张图片未识别到
+va()准备开始操作
+屏幕差异值: 320905984
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动19次
+开始识别    原点
+识别第2张图片
+正在操作
+Recognize.signal:[0]
+第2张图片未识别到
+识别第3张图片
+Target被锁住!
+屏幕差异值: 331630900
+感叹:3防卡上锁1
+Target被锁住!
+第3张图片未识别到
+识别第9张图片
+Target被锁住!
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动20次
+开始识别    原点
+识别第2张图片
+Target被锁住!
+屏幕差异值: 662867109
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+识别成功va()准备开始操作
+2:  第2张图片找到图片，坐标位于: (1068, 742)
+识别第3张图片
+检测是否正在执行Buff
+开始操作
+a:0
+b:0
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+第3张图片未识别到
+识别第9张图片
+Target被锁住!
+第9张图片未识别到
+识别第15张图片
+检测是否正在执行Buff
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+buff设置为True
+Buff:防卡上锁2,空房间环视一周上锁1
+[模式激活] Start
+正在执行: 选择战备buff2
+第15张图片未识别到
+va()准备开始操作
+Target被锁住!
+圆点被锁住
+检测是否正在执行Buff
+Target被锁住!
+防卡Sleep[2, 1, 1, 1]
+执行 选择战备buff2 ((np.int64(2369), np.int64(1966)))
+Target被锁住!
+检测是否正在执行Buff
+圆点被锁住
+Target被锁住!
+防卡Sleep[2, 1, 1, 1]
+正在执行: 确认携带
+Target被锁住!
+圆点被锁住
+执行 确认携带 ((np.int64(3603), np.int64(1739)))
+Target被锁住!
+防卡Sleep[2, 1, 1, 1]
+Target被锁住!
+空房间环视一周：防卡上锁[3, 1, 1, 1]
+圆点被锁住
+Target被锁住!
+处理退出确认...
+防卡Sleep[2, 1, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[2, 1, 1, 1]
+buff设置为False
+Buff:防卡解锁1,空房间环视一周解锁0
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+[ WARN:1@65.607] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+Target被锁住!
+圆点被锁住
+Target被锁住!
+防卡Sleep[1, 0, 1, 1]
+感叹:2防卡解锁0,门解锁0,圆点解锁0
+[ WARN:1@75.067] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+Target被锁住!
+圆点启动21次
+开始识别    原点
+识别第2张图片
+Target被锁住!
+Tatget解锁
+追踪结束ZhanBei
+第2张图片未识别到
+识别第3张图片
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 79974525
+屏幕几乎不动，可能撞墙！
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动22次
+开始识别    原点
+识别第2张图片
+屏幕差异值: 33402594
+屏幕几乎不动，可能撞墙！
+第2张图片未识别到
+识别第3张图片
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 44648396
+屏幕几乎不动，可能撞墙！
+门正在识别Boss
+识别成功va()准备开始操作
+9:  第9张图片找到图片，坐标位于: (1148, 692)
+识别第15张图片
+开始操作
+a:0
+b:0
+圆点:防卡上锁1,门上锁1
+调整完成,开始行动
+self.lockOne为 False
+self.one为true
+圆点:防卡解锁0
+[0, 0, 1, 0]
+x轴偏移-386
+a:0
+b:0
+往前走进行操作
+第15张图片未识别到
+门正在识别AnotherBoss
+识别第18张图片
+屏幕差异值: 45908568
+屏幕几乎不动，可能撞墙！
+门正在识别DaiJiaZhiJian
+识别成功va()准备开始操作
+18:  第18张图片找到图片，坐标位于: (2588, 691)
+操作完成,准备识别
+a:1
+b:0
+开始操作
+a:0
+b:0
+调整完成,开始行动
+self.one为true
+x轴偏移334
+a:0
+b:0
+往前走进行操作
+门成功识别DaiJiaZhiJian
+调用method
+准备tracking
+start
+开始识别    原点
+识别第2张图片
+屏幕差异值: 423538972
+操作完成,准备识别
+a:0
+b:1
+识别成功va()准备开始操作
+2:  第2张图片找到图片，坐标位于: (1782, 682)
+识别第3张图片
+Target被锁住!
+正在操作
+Recognize.signal:[0]
+开始操作
+a:0
+b:0
+调整完成,开始行动
+self.one为true
+x轴偏移-69
+a:0
+b:0
+往前走进行操作
+识别成功va()准备开始操作
+3:  第3张图片找到图片，坐标位于: (1752, 666)
+屏幕差异值: 343526899
+Target被锁住!
+Target被锁住!
+[ WARN:1@85.450] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+操作完成,准备识别
+a:1
+b:0
+开始操作
+a:0
+b:0
+调整完成,开始行动
+self.one为true
+x轴偏移-84
+a:0
+b:0
+往前走进行操作
+识别第9张图片
+屏幕差异值: 449655611
+第9张图片未识别到
+Target被锁住!
+Target被锁住!
+识别第15张图片
+操作完成,准备识别
+a:0
+b:1
+第15张图片未识别到
+识别第18张图片
+屏幕差异值: 340359770
+Target被锁住!
+Target被锁住!
+第18张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+圆点:门解锁0
+检测到识别进程退出,退出
+圆点启动23次
+开始识别    原点
+识别第2张图片
+第2张图片未识别到
+识别第3张图片
+屏幕差异值: 190284186
+屏幕几乎不动，可能撞墙！
+Target被锁住!
+Target被锁住!
+Tatget解锁
+追踪结束DaiJiaZhiJian
+第3张图片未识别到
+识别第9张图片
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动24次
+开始识别    原点
+识别第2张图片
+屏幕差异值: 42433593
+屏幕几乎不动，可能撞墙！
+第2张图片未识别到
+识别第3张图片
+第3张图片未识别到
+空房间环视一周：防卡上锁[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+屏幕差异值: 29663756
+屏幕几乎不动，可能撞墙！
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动25次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门成功识别OuRan
+第2张图片未识别到
+识别第3张图片
+调用method
+准备tracking
+start
+第3张图片未识别到
+到这里第一步
+识别第9张图片
+将signal赋值为1
+[ WARN:1@94.731] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+屏幕差异值: 30213860
+屏幕几乎不动，可能撞墙！
+正在操作
+Recognize.signal:[0]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+正在操作
+检测到识别进程退出,退出
+Recognize.signal:[0]
+圆点启动26次
+屏幕差异值: 362229321
+开始识别    原点
+识别第2张图片
+正在操作
+Recognize.signal:[0]
+正在操作
+Recognize.signal:[0]
+第2张图片未识别到
+屏幕差异值: 374004037
+识别第3张图片
+正在操作
+Recognize.signal:[0]
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 413487957
+正在操作
+Recognize.signal:[0]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动27次
+正在操作
+Recognize.signal:[0]
+开始识别    原点
+识别第2张图片
+屏幕差异值: 491863656
+正在操作
+Recognize.signal:[0]
+第2张图片未识别到
+识别第3张图片
+正在操作
+Recognize.signal:[0]
+屏幕差异值: 443271005
+第3张图片未识别到
+识别第9张图片
+到这里第一步
+将signal赋值为1
+屏幕差异值: 379745109
+到这里第一步
+将signal赋值为1
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+正在操作
+圆点启动28次
+Recognize.signal:[0]
+开始识别    原点
+识别第2张图片
+屏幕差异值: 379016790
+到这里第一步
+将signal赋值为1
+到这里第一步
+将signal赋值为1
+第2张图片未识别到
+识别第3张图片
+屏幕差异值: 455882792
+到这里第一步
+将signal赋值为1
+正在操作
+Recognize.signal:[0]
+第3张图片未识别到
+识别第9张图片
+[ WARN:1@108.696] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+屏幕差异值: 404288867
+到这里第一步
+将signal赋值为1
+正在操作
+Recognize.signal:[0]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动29次
+开始识别    原点
+识别第2张图片
+屏幕差异值: 422315121
+正在操作
+Recognize.signal:[0]
+第2张图片未识别到
+识别第3张图片
+到这里第一步
+将signal赋值为1
+屏幕差异值: 465314814
+正在操作
+Recognize.signal:[0]
+第3张图片未识别到
+识别第9张图片
+正在操作
+Recognize.signal:[0]
+第9张图片未识别到
+va()准备开始操作
+屏幕差异值: 853935994
+正在操作
+Recognize.signal:[0]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动30次
+到这里第一步
+将signal赋值为1
+开始识别    原点
+识别第2张图片
+到这里第一步
+将signal赋值为1
+屏幕差异值: 24163638
+屏幕几乎不动，可能撞墙！
+第2张图片未识别到
+识别第3张图片
+到这里第一步
+将signal赋值为1
+到这里第一步
+将signal赋值为1
+追踪结束OuRan
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 25581198
+屏幕几乎不动，可能撞墙！
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+屏幕差异值: 21092933
+屏幕几乎不动，可能撞墙！
+b:1
+检测到识别进程退出,退出
+圆点启动31次
+开始识别    原点
+识别第2张图片
+第2张图片未识别到
+识别第3张图片
+屏幕差异值: 12454109
+屏幕几乎不动，可能撞墙！
+第3张图片未识别到
+识别第9张图片
+第9张图片未识别到
+va()准备开始操作
+屏幕差异值: 15973144
+屏幕几乎不动，可能撞墙！
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动32次
+开始识别    原点
+识别第2张图片
+[ WARN:1@120.866] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+门正在识别ZhiYouHuiTan
+第2张图片未识别到
+识别第3张图片
+门正在识别levelEntrance
+屏幕差异值: 1259433
+屏幕几乎不动，可能撞墙！
+第3张图片未识别到
+识别第9张图片
+门正在识别Break
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动33次
+开始识别    原点
+识别第2张图片
+门正在识别BangBu
+屏幕差异值: 256211692
+屏幕几乎不动，可能撞墙！
+第2张图片未识别到
+识别第3张图片
+门正在识别JiShi
+第3张图片未识别到
+识别第9张图片
+第9张图片未识别到
+va()准备开始操作
+门正在识别TimeStamp
+屏幕差异值: 38307411
+屏幕几乎不动，可能撞墙！
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动34次
+开始识别    原点
+识别第2张图片
+门正在识别WuShang
+第2张图片未识别到
+识别第3张图片
+门正在识别YingBi
+第3张图片未识别到
+识别第9张图片
+屏幕差异值: 33114419
+屏幕几乎不动，可能撞墙！
+检测到撞墙，尝试脱离...
+检测到撞墙，尝试脱离...
+门正在识别ZhanBei
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动35次
+开始识别    原点
+识别第2张图片
+第2张图片未识别到
+识别第3张图片
+门正在识别Boss
+第3张图片未识别到
+识别第9张图片
+门正在识别AnotherBoss
+第9张图片未识别到
+va()准备开始操作
+门正在识别DaiJiaZhiJian
+开始操作
+屏幕差异值: 36774629
+屏幕几乎不动，可能撞墙！
+检测到撞墙，尝试脱离...
+a:0
+b:1
+空房间环视一周：防卡上锁[1, 0, 0, 0]
+检测到撞墙，尝试脱离...
+self.signal:[1, 1, 1, 1]
+检测到识别进程退出,退出
+圆点启动36次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+门正在识别OuRan
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+[ WARN:1@130.983] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动37次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动38次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动39次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+门正在识别AnotherBoss
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第9张图片未识别到
+门正在识别DaiJiaZhiJian
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动40次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+[ WARN:1@140.654] glob开始操作
+al loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+self.signal:[1, 1, 1, 1]
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动41次
+门正在识别levelEntrance
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动42次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动43次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+第2张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+门正在识别AnotherBoss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+self.signal:[1, 1, 1, 1]
+检测到识别进程退出,退出
+圆点启动44次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别DaiJiaZhiJian
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+[ WARN:1@150.763] global loadsave.cpp:268 cv::findDecoder imrea开始操作
+d_a:0
+b:1
+('self.signal:[1, 1, 1, 1]
+D检测到识别进程退出,退出
+:圆点启动45次
+\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity开始识别    原点
+
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动46次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动47次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别AnotherBoss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别DaiJiaZhiJian
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动48次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+[ WARN:1@161.248] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动49次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动50次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别AnotherBoss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动51次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别DaiJiaZhiJian
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动52次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第3张图片未识别到
+识别第9张图片
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+self.signal:[1, 1, 1, 1]
+检测到识别进程退出,退出
+圆点启动53次
+开始识别    原点
+识别第2张图片
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+[ WARN:1@171.013] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动54次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别AnotherBoss
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+门正在识别DaiJiaZhiJian
+a:0
+b:1
+self.signal:[1, 1, 1, 1]
+检测到识别进程退出,退出
+圆点启动55次
+开始识别    原点
+识别第2张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+开始操作
+self.signal:[1, 1, 1, 1]
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动56次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+防卡Sleep[1, 0, 0, 0]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+self.signal:[1, 1, 1, 1]
+b:1
+门正在识别TimeStamp
+检测到识别进程退出,退出
+[ WARN:1圆点启动57次
+@180.838] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-开始识别    原点
+As识别第2张图片
+sistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动58次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+门正在识别AnotherBoss
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别DaiJiaZhiJian
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动59次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动60次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第9张图片未识别到
+self.signal:[1, 1, 1, 1]
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+开始操作
+self.signal:[1, 1, 1, 1]
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动61次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+[ WARN:1@190.822] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动62次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别AnotherBoss
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+门正在识别DaiJiaZhiJian
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别OuRan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动63次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动64次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+self.signal:[1, 1, 1, 1]
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动65次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别YingBi
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+[ WARN:1@199.967] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check fil第3张图片未识别到
+e path/integrity
+识别第9张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+self.signal:[1, 1, 1, 1]
+b:1
+检测到识别进程退出,退出
+圆点启动66次
+开始识别    原点
+识别第2张图片
+门正在识别AnotherBoss
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+门正在识别DaiJiaZhiJian
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动67次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动68次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别YingBi
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动69次
+self.signal:[1, 1, 1, 1]
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+[ WARN:1@209.367] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别AnotherBoss
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动70次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+门正在识别DaiJiaZhiJian
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别OuRan
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动71次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动72次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第2张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动73次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+self.signal:[1, 1, 1, 1]
+b:1
+检测到识别进程退出,退出
+圆点启动74次
+开始识别    原点
+识别第2张图片
+门正在识别AnotherBoss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+[ WARN:1@219.317] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+门正在识别DaiJiaZhiJian
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+第3张图片未识别到
+防卡Sleep[1, 0, 0, 0]
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+防卡Sleep[1, 0, 0, 0]
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动75次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+门正在识别Break
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别BangBu
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动76次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第2张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+开始操作
+self.signal:[1, 1, 1, 1]
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动77次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别Boss
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别AnotherBoss
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别DaiJiaZhiJian
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+门正在识别OuRan
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+[ WA检测到识别进程退出,退出
+RN:1@228.769] global loadsave.cpp:268 cv::findDecoder imread_('D:\Git\Game-Assistant\Source\3840BloodLoss.png'): can't open/read file: check file path/integrity
+圆点启动78次
+self.signal:[1, 1, 1, 1]
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhiYouHuiTan
+防卡Sleep[1, 0, 0, 0]
+第2张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+门正在识别levelEntrance
+self.signal:[1, 1, 1, 1]
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+门正在识别Break
+开始操作
+self.signal:[1, 1, 1, 1]
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动79次
+开始识别    原点
+识别第2张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别BangBu
+第2张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+门正在识别JiShi
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别TimeStamp
+self.signal:[1, 1, 1, 1]
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动80次
+开始识别    原点
+识别第2张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别WuShang
+self.signal:[1, 1, 1, 1]
+第2张图片未识别到
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+门正在识别YingBi
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别ZhanBei
+self.signal:[1, 1, 1, 1]
+第9张图片未识别到
+va()准备开始操作
+开始操作
+a:0
+b:1
+检测到识别进程退出,退出
+圆点启动81次
+开始识别    原点
+识别第2张图片
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+门正在识别Boss
+第2张图片未识别到
+self.signal:[1, 1, 1, 1]
+识别第3张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+防卡Sleep[1, 0, 0, 0]
+self.signal:[1, 1, 1, 1]
+第3张图片未识别到
+self.signal:[1, 1, 1, 1]
+门正在识别AnotherBoss
+识别第9张图片
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]
+self.signal:[1, 1, 1, 1]

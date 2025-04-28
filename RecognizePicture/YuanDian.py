@@ -44,8 +44,9 @@ class YuanDian:
     def RecognizeYuanDian(self):
 
         stop=0
+        self.rec.pb()
         while True:
-                # self.rec.pb()
+
                 print("开始识别    原点")
                 next = [2, 3, 9, 15, 18]
 
@@ -78,6 +79,7 @@ class YuanDian:
                 for i in next:
                     image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(
                         rec.resolutionRatio[0]) + f"Direction{i}.png"
+                    self.rec.real=False
                     print(f"识别第{i}张图片")
                     try:
                         # 在屏幕上查找图片
@@ -86,6 +88,11 @@ class YuanDian:
                             if self.one and not self.levelOne:
                                 self.lock[2] -= 1
                                 print(f"圆点:门解锁{self.lock[2]}")
+                                self.levelOne=True
+                            if self.one and not self.lockOne:
+                                self.lock[0] -= 1
+                                print(f"圆点:防卡解锁{self.lock}")
+                                self.lockOne = True
                             print("退出")
                             return False
                         location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
@@ -94,6 +101,7 @@ class YuanDian:
                             self.rec.x, self.rec.y = pyautogui.center(location)
                             stop=0
                             self.signal[2]=0
+                            self.rec.real=True
                             self.rec.va()
                             print("识别成功va()准备开始操作")
                             print(f"{i}:  第{i}张图片找到图片，坐标位于: ({self.rec.x}, {self.rec.y})")
@@ -104,12 +112,14 @@ class YuanDian:
                     except Exception as e:
                         stop+=1
                         print(f"第{i}张图片未识别到")
-                        if stop>2:
+                        if stop>6:
+                            self.rec.real=False
                             self.rec.va()
                             print("va()准备开始操作")
 
                             # print("原点未识别到")
                             self.rec.end = True
+
 
                             return False
                         # print(f"发生错误: {e}")
@@ -131,7 +141,7 @@ class YuanDian:
         center_x = screen_width // 2
         center_y = screen_height // 2
         stick=0
-        move=True
+        move=False
         avoid=False
         while True:
             #添加锁机制,如果一个函数运行时不希望其他程序识别时启用锁
@@ -141,11 +151,16 @@ class YuanDian:
             print(f"b:{self.rec.sb}")
             # print("******************************圆点开始操作\n")
             # print("进入操作")
-            if not thread_a.is_alive():
+            if not thread_a.is_alive() or not self.rec.real:
                 self.signal[2] = 1
                 if self.one and not self.levelOne:
                     self.lock[2] -= 1
                     print(f"圆点:门解锁{self.lock[2]}")
+                    self.levelOne = True
+                if self.one and not self.lockOne:
+                    self.lock[0] -= 1
+                    print(f"圆点:防卡解锁{self.lock}")
+                    self.lockOne = True
                 print("检测到识别进程退出,退出")
                 self.rec.vb()
                 return False
@@ -156,17 +171,17 @@ class YuanDian:
                 self.rec.end=True
                 return False
 
-            if  not self.one:
+            if not self.one:
                 self.lock[2] += 1
                 self.lock[0] += 1
                 print(f"圆点:防卡上锁{self.lock[0]},门上锁{self.lock[2]}")
                 self.one=True
             # print("正在操作")
-            self.signal[2]=0
+                self.signal[2]=0
             if (abs(self.rec.x-center_x)>convert_coordinates(900,0,(3840,2160),rec.resolutionRatio)[0] or abs(self.rec.y-center_y)>convert_coordinates(0,580,(3840,2160),rec.resolutionRatio)[1] )and not avoid:
                 stick+=1
                 print(f"圆点不在中心,进行调整,第{stick}次调整")
-                if stick>6:
+                if stick>2:
                     # ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), ctypes.c_int(int((self.rec.y - center_y) // 2)))
                     avoid=True
                     stick=0
@@ -176,11 +191,16 @@ class YuanDian:
                 stick=0
                 move=True
                 avoid=True
+                if not self.lockOne:
+                    print("self.lockOne为 False")
+                if self.one:
+                    print("self.one为true")
                 if self.one and not self.lockOne:
                     self.lock[0]-=1
                     print(f"圆点:防卡解锁{self.lock[0]}")
+                    print(self.lock)
                     self.lockOne=True
-            ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x)//2)), 0)
+            ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int((self.rec.x - center_x)//2), 0)
             print(f"x轴偏移{int((self.rec.x - center_x)//2)}")
             print(f"a:{self.rec.sa}")
             print(f"b:{self.rec.sb}")
