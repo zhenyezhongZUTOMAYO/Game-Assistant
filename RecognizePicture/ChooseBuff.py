@@ -39,7 +39,10 @@ class BuffSelector:
         self.thread = None
         self.sa=0
         self.lock=[]
-        self.the_end_complete = False
+        self.the_end_complete = 0
+        self.limit = 999
+        self.WinStart=time.time()
+        self.WinEnd=None
 
         # 模式配置
         self.modes_config = {
@@ -281,8 +284,27 @@ class BuffSelector:
                 pyautogui.click(self.rec.x, self.rec.y)
                 exit_found = True
                 break
-        if self.current_mode == "TheEnd" and  exit_found:
-            self.the_end_complete = True
+        if self.current_mode == "TheEnd" and exit_found:
+            self.the_end_complete += 1
+            if self.the_end_complete>self.limit:
+                #结束
+                pass
+            else:
+                original_res = (2560, 1440)
+                target_res = pyautogui.size()
+                size_t = 0
+                if target_res[0] / target_res[1] != 16 / 9:
+                    size_t = (target_res[1] - target_res[0] / 16 * 9) / 2
+                sleep(3)
+                pyautogui.click(convert_coordinates(1750, 789 - size_t, original_res, target_res))  # (x,y)战线肃清
+                sleep(1)
+                pyautogui.click(convert_coordinates(1750, 789 - size_t, original_res, target_res))  # (x,y)点一个buff
+                sleep(1)
+                pyautogui.click(convert_coordinates(2274, 1372 - size_t, original_res, target_res))  # (x,y)下一步
+                sleep(1)
+                pyautogui.click(convert_coordinates(2274, 1372 - size_t, original_res, target_res))  # (x,y)出战
+
+
 
         return success_count > 0 or exit_found
 
@@ -349,16 +371,16 @@ class BuffSelector:
                 if self.rec.ToRecognizeWhere(config["entry_image"]):
                     self.current_mode = mode_name
                     print("buff设置为True")
-                    self.lock[0]+=1
-                    self.lock[1]+=1
-                    print(f"Buff:防卡上锁{self.lock[0]},空房间环视一周上锁{self.lock[1]}")
+                    self.lock[0] += 1
+                    self.lock[1] += 1
+                    print(f"Buff:防卡上锁{self.lock[0]},Buff\n空房间环视一周上锁{self.lock[1]}")
                     self.buff=True
                     if self._execute_mode_actions(config):
                         last_mode_time = time.time()
                     print("buff设置为False")
                     self.lock[0] -= 1
                     self.lock[1] -= 1
-                    print(f"Buff:防卡解锁{self.lock[0]},空房间环视一周解锁{self.lock[1]}")
+                    print(f"Buff:防卡解锁{self.lock[0]},Buff\n空房间环视一周解锁{self.lock[1]}")
                     self.buff = False
                     break
             self.va()

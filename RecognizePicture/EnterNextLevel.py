@@ -112,7 +112,7 @@ class LevelSystem:
                         # self.As.THRESHOLD = 200000000
 
                         self.p = 0.3
-                        self.signal[1]=0
+                        self.signal[1] = 0
                         self.curpaint=i
                         self.end = False
                         print(f"门成功识别{i}")

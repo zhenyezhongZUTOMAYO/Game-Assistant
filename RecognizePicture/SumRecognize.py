@@ -26,9 +26,9 @@ class SumRecognize:
         self.avoid=AvoidStick.AvoidStick()
         self.emt=EmptyRound.EmptyRound()
         self.ft=Fight.Fight()
-        self.level.As=self.avoid
-        self.signal=[]
-        for i in range(0,4):
+        self.level.As = self.avoid
+        self.signal = []
+        for i in range(0, 4):
             self.signal.append(1)
         self.gantan.signal=self.signal
         self.level.signal=self.signal

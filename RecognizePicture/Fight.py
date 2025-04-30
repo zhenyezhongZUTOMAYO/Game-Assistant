@@ -22,28 +22,28 @@ class Fight:
     def A(self):
         while not self.end:
             self.mouse.press(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.release(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.press(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.release(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.press(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.release(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.press(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.release(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.press(pynput.mouse.Button.left)
-            time.sleep(0.2)
+            time.sleep(0.1)
             self.mouse.release(pynput.mouse.Button.left)
             if self.isZA():
                 print("ZA")
                 self.mouse.press(pynput.mouse.Button.left)
-                time.sleep(8)
+                time.sleep(6)
                 self.mouse.release(pynput.mouse.Button.left)
 
 
@@ -178,12 +178,18 @@ class Fight:
             self.lock[i] -= 1
         print(f"战斗解锁{self.lock}")
         stop=0
-        while not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
-                self.rec.resolutionRatio[0]) + "ZC.png") and stop<6:
+        while (not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "ZC.png")) and stop<6:
             stop+=1
             self.keyborad.press(pynput.keyboard.Key.space)
             time.sleep(0.5)
             self.keyborad.release(pynput.keyboard.Key.space)
+        self.keyborad.press(pynput.keyboard.Key.space)
+        time.sleep(0.5)
+        self.keyborad.release(pynput.keyboard.Key.space)
+        time.sleep(0.5)
+        self.keyborad.press(pynput.keyboard.Key.space)
+        time.sleep(0.5)
+        self.keyborad.release(pynput.keyboard.Key.space)
 
     def ZC(self):
         while not self.end:
@@ -204,7 +210,7 @@ class Fight:
             self.keyborad.release(pynput.keyboard.Key.space)
             if self.end:
                 break
-            time.sleep(1)
+            time.sleep(2.5)
             Time=0
             if self.isE():
                 Time+=3
@@ -265,8 +271,9 @@ class Fight:
         thread.append(thread_zc)
         thread_r=threading.Thread(target=self.R)
         thread.append(thread_r)
-        for i in range(0,4):
-            self.lock[i]+=1
+        for i in range(0, 4):
+            self.lock[i] += 1
+            print(f"战斗:空房间环视一周上锁{self.lock}")
         for i in thread:
             i.start()
         for i in thread:

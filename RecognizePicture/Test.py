@@ -169,7 +169,8 @@ def detectGanTanHao():
     #         print(f"发生错误: {e}")
 
 if __name__=="__main__":
-    pass
+    winsound.Beep(1000, 500)
+    winsound.Beep(400, 500)
     # time.sleep(2)
     # spk=SpeakNpc.SpeakNpc()
     # spk.isBuff()

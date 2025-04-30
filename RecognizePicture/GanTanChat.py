@@ -10,19 +10,21 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 class GanTanChat:
     def __init__(self):
         self.rec=Recognize.Recognize()
-        self.BuffSelector=None
-        self.lock=[0,0]
+        self.BuffSelector = None
+        self.lock = [0, 0]
         self.keyboard = pynput.keyboard.Controller()
-        self.avoidNpc=0#闪避Npc一定次数不必闪避
+        self.avoidNpc = 0#闪避Npc一定次数不必闪避
         self.signal=[]
-        self.one=False
+        self.one = False
+        self.unlock = False
 
     def method(self,rec,location):
-        self.signal[0]=0
+        self.signal[0] = 0
         # print(f"感叹:3防卡上锁{self.lock[0]}")
         # print("锁住原点")
-        rec.end=True
+        rec.end = True
         keyboard = pynput.keyboard.Controller()
+        time.sleep(0.5)
         if not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
             # if self.avoidNpc <= 2:
             #     keyboard.press('s')
@@ -34,9 +36,11 @@ class GanTanChat:
             #     self.avoidNpc += 1
             rec.end = True  # 外部函数操控内部图象识别是否停止的变量
             rec.real = False  # 是否捕获到目标
-            self.signal[0]=1
-            self.lock[2]-=1
-            self.lock[3]-=1
+            self.signal[0] = 1
+            if self.one and not self.unlock:
+                self.lock[2] -= 1
+                self.lock[3] -= 1
+                self.unlock=True
             keyboard.press('w')
             time.sleep(0.5)
             keyboard.release('w')
@@ -59,8 +63,10 @@ class GanTanChat:
         keyboard.release('s')
         self.signal[0] = 1
         self.lock[0] -= 1
-        self.lock[2] -= 1
-        self.lock[3] -= 1
+        if self.one and not self.unlock:
+            self.lock[2] -= 1
+            self.lock[3] -= 1
+            self.unlock = True
         print(f"感叹:2防卡解锁{self.lock[0]},门解锁{self.lock[2]},圆点解锁{self.lock[3]}")
         # print(f"释放圆点{self.lock[3]}")
         # print("释放原点")
@@ -102,7 +108,8 @@ class GanTanChat:
         # print("Speak结束")
 
     def CommunicateToNpc(self,rec,location,confidence=0.8):
-        self.one=False
+        self.one = False
+        self.unlock = False
         print("开始识别     Gantan")
         # thread_a=threading.Thread(target=rec.ToRecognizeConWhere,args=[rec.source_path+"GanTan.png",])
         rec=Recognize.Recognize()
@@ -129,10 +136,10 @@ class GanTanChat:
         while True:
             if self.rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan.png"):
                 if not self.one:
-                    self.lock[2]+=1
-                    self.lock[3]+=1
+                    self.lock[2] += 1
+                    self.lock[3] += 1
                     print(f"感叹:4门上锁{self.lock[2]},原点上锁{self.lock[3]}")
-                    self.one =True
+                    self.one = True
                 if rec.end:
                     break
                 self.signal[0]=0
@@ -143,17 +150,21 @@ class GanTanChat:
             elif self.rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(rec.resolutionRatio[0]) + "GanTan1.png"):
                 if rec.end:
                     break
-                self.signal[0]=0
+                self.signal[0] = 0
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), 0)
                 self.keyboard.press('w')
                 time.sleep(0.5)
                 self.keyboard.release('w')
             else:
-                stop+=1
-                if stop>3:
-                    self.signal[0]=1
+                stop += 1
+                if stop > 3:
                     break
-
+        if self.one and not self.unlock:
+            self.lock[2] -= 1
+            self.lock[3] -= 1
+            self.unlock = True
+            print(f"感叹:0防卡解锁{self.lock[0]},门解锁{self.lock[2]},圆点解锁{self.lock[3]}")
+        self.signal[0] = 1
         # print("trackingImageEnd")
 
     #测试
