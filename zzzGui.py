@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import *
 import RecognizePicture.Output
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor, QTextCursor
-from totaltrigger import TotalTrigger
+from totaltrigger import TotalTrigger#不断点击启动游戏
 from qfluentwidgets import(
     SpinBox,ComboBox,CardWidget,setTheme,Theme,NavigationInterface,
     NavigationItemPosition,PrimaryPushButton,TitleLabel,BodyLabel,
@@ -32,8 +32,16 @@ class GameAssistant(FluentWindow):
         self.process=None
         self.start=True
         self.create_action_buttons()
-        
 
+        #根据屏幕分辨率设置窗口大小
+        # 获取屏幕分辨率
+        screen=QDesktopWidget().screenGeometry()
+        width=screen.width()
+        height=screen.height()
+        winwidth=(width//1920)*1000
+        winheight=(height//1080)*600
+        self.resize(winwidth,winheight)
+        
     def initUI(self):
         self.COLOR_PALETTE = {# #98F5FF
     "primary": "#0078D4",       # 主色调
@@ -274,10 +282,10 @@ class GameAssistant(FluentWindow):
         
         # 输入框
         self.target_input = CompactSpinBox()#Compact
-        self.target_input.setRange(0, 9999)
-        self.target_input.setValue(100)
+        self.target_input.setRange(0, 999)
+        self.target_input.setValue(1)
         
-        layout.addWidget(BodyLabel('目标次数:'),20)
+        layout.addWidget(BodyLabel('刷取次数:'),20)
         layout.addWidget(self.target_input,80)
         card.setLayout(layout)
         return card
@@ -287,9 +295,9 @@ class GameAssistant(FluentWindow):
         layout = QHBoxLayout(card)
         
         self.role_combo = ComboBox()
-        self.role_combo.addItems(["角色1", "角色2", "角色3"])
+        self.role_combo.addItems(["星见雅 凯撒 耀佳音", "目前暂不支持", "目前暂不支持"])
 
-        layout.addWidget(BodyLabel("选择角色："))
+        layout.addWidget(BodyLabel("选择配队："))
         layout.addWidget(self.role_combo)
         
         return card
@@ -406,12 +414,16 @@ if __name__ == '__main__':
     app.setWindowIcon(QIcon(r"Source\配置@3x.ico"))#E:\zzzHollow脚本\src\icon\配置@3x.ico
 
     ex = GameAssistant()
-
     ex.show()
-    for i in range(100):
-        print("Info: 程序启动成功")
-        print("Warning: 检测到低电量")
-        print("Error: 文件打开失败")
-        print("suffix: 运行结束")
-        print("InfoABC")
+    screen=QDesktopWidget().screenGeometry()
+    width=screen.width()
+    height=screen.height()
+    print(f"Info:屏幕宽度: {width}, 屏幕高度: {height}")
+
+    # for i in range(100):
+    #     print("Info: 程序启动成功")
+    #     print("Warning: 检测到低电量")
+    #     print("Error: 文件打开失败")
+    #     print("suffix: 运行结束")
+    #     print("InfoABC")
     sys.exit(app.exec_())
