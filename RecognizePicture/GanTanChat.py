@@ -193,7 +193,12 @@ class GanTanChat:
                 if rec.end:
                     break
                 self.signal[0] = 0
+                #有没有修改过信号量
                 self.recognize = True
+                if self.rec.y < (center_y / 2):
+                    self.keyboard.press('s')
+                    time.sleep(1)
+                    self.keyboard.release('s')
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.rec.x - center_x) // 2)), 0)
                 self.keyboard.press('w')
                 time.sleep(0.5)

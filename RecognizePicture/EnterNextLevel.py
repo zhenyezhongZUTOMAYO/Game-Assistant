@@ -20,9 +20,9 @@ class LevelSystem:
         self.signal = []
         self.lock=[]
         self.curpaint = ""
-        self.p=0.3
-        self.end=False
-        self.real=False
+        self.p = 0.3
+        self.end = False
+        self.real = False
         self.x = None
         self.y = None
         self.As = None
@@ -67,7 +67,7 @@ class LevelSystem:
                 print("正在操作")
                 # 模拟鼠标的移动
                 self.signal[1] = 0
-                print(f"Recognize.signal:{self.signal}")
+                # print(f"Recognize.signal:{self.signal}")
                 if self.lock[2] > 0:
                     self.end = True
                     while self.lock[2] > 0:
@@ -124,10 +124,15 @@ class LevelSystem:
                         print(f"门成功识别{i}")
                         if self.curpaint[-1] == "1":
                             keyboard = pynput.keyboard.Controller()
+                            for j in range(0, 3):
+                                keyboard.press('f')
+                                time.sleep(0.2)
+                                keyboard.release('f')
+                                time.sleep(0.2)
                             keyboard.press('s')
                             time.sleep(1.7)
                             keyboard.release('s')
-                            i=i[0:len(i)-1]
+                            i = i[0:len(i)-1]
                         thread_a = threading.Thread(target=self.rec.ToRecognizeColorIfThen, args=[self.method, 2])
                         thread_a.daemon = True
                         thread_a.start()
