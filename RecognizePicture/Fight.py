@@ -1,4 +1,5 @@
 import threading
+import winsound
 
 import pyautogui
 import pynput
@@ -15,9 +16,10 @@ class Fight:
         self.keyborad=pynput.keyboard.Controller()
         self.rec=Recognize.Recognize()
         self.end=False
-        self.lock=[]
+        self.lock=[0,0,0,0]
         self.signal=False
         self.Qsignal=False
+        self.sumsignal=[1,1,1,1]
 
     def A(self):
         while not self.end:
@@ -119,7 +121,7 @@ class Fight:
 
         x, y = convert_coordinates(3342, 1900, (3840, 2160), self.rec.resolutionRatio)
         pixel = pyautogui.pixel(x, y)
-        if pixel ==(255,255,255):
+        if pixel == (255, 255, 255):
             return False
         else :
             return True
@@ -140,8 +142,8 @@ class Fight:
                 self.keyborad.press('q')
                 time.sleep(0.5)
                 self.keyborad.release('q')
-                time.sleep(8)
-                self.signal=False
+                time.sleep(5)
+                self.signal = False
 
     def R(self):
         if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
@@ -154,52 +156,47 @@ class Fight:
         while True:
             if not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + "FightEnd.png"):
-                if not self.signal:
-                    self.end=True
-                    break
-                if self.rec.RecognizeColor(position=(711,1424),rgb=(255,255,0)):
+                while self.rec.RecognizeColor(position=(712, 1422), rgb=(255, 255, 0)):
                     print("QTE")
-                    now = time.time()
-                    while time.time() - now < 3:
-                        self.mouse.press(pynput.mouse.Button.left)
-                        time.sleep(0.5)
-                        self.mouse.release(pynput.mouse.Button.left)
-                time.sleep(1.5)
+                    # winsound.Beep(500, 500)
+                    self.mouse.press(pynput.mouse.Button.left)
+                    time.sleep(0.2)
+                    self.mouse.release(pynput.mouse.Button.left)
+                    time.sleep(2)
+                time.sleep(1)
                 #这是对QTE的缓冲机制
                 if not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + "FightEnd.png"):
                     if not self.signal:
                         self.end = True
                         break
-
-
-
         for i in range(0, 4):
             self.lock[i] -= 1
         print(f"战斗解锁{self.lock}")
-        stop=0
-        while (not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "ZC.png")) and stop<6:
-            stop+=1
+        while (not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(self.rec.resolutionRatio[0]) + "ZC.png")):
             self.keyborad.press(pynput.keyboard.Key.space)
             time.sleep(0.5)
             self.keyborad.release(pynput.keyboard.Key.space)
-        self.keyborad.press(pynput.keyboard.Key.space)
-        time.sleep(0.5)
-        self.keyborad.release(pynput.keyboard.Key.space)
-        time.sleep(0.5)
-        self.keyborad.press(pynput.keyboard.Key.space)
-        time.sleep(0.5)
-        self.keyborad.release(pynput.keyboard.Key.space)
+            time.sleep(1.5)
+        self.sumsignal[3] = 1
+        # self.keyborad.press(pynput.keyboard.Key.space)
+        # time.sleep(0.5)
+        # self.keyborad.release(pynput.keyboard.Key.space)
+        # time.sleep(0.5)
+        # self.keyborad.press(pynput.keyboard.Key.space)
+        # time.sleep(0.5)
+        # self.keyborad.release(pynput.keyboard.Key.space)
 
     def ZC(self):
         while not self.end:
-            now =time.time()
-            while (time.time()-now)<20:
+            now = time.time()
+            while (time.time()-now) < 20:
                 while not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                             self.rec.resolutionRatio[0]) + "ZC.png") and not self.end:
                     self.keyborad.press(pynput.keyboard.Key.space)
                     time.sleep(0.5)
                     self.keyborad.release(pynput.keyboard.Key.space)
+                    time.sleep(1)
             while not self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                         self.rec.resolutionRatio[0]) + "ZC.png") and not self.end:
                 self.keyborad.press(pynput.keyboard.Key.space)
@@ -211,12 +208,12 @@ class Fight:
             if self.end:
                 break
             time.sleep(2.5)
-            Time=0
+            Time = 0
             if self.isE():
-                Time+=3
+                Time += 3
             if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                     self.rec.resolutionRatio[0]) + "Q.png"):
-                Time+=5
+                Time += 5
             if self.end:
                 break
             time.sleep(Time)
@@ -225,13 +222,13 @@ class Fight:
             self.keyborad.release(pynput.keyboard.Key.space)
             if self.end:
                 break
-            time.sleep(1)
-            Time=0
+            time.sleep(2.5)
+            Time = 0
             if self.isE():
-                Time+=3
+                Time += 3
             if self.rec.ToRecognizeWhere(self.rec.source_path + "Game-Assistant\\Source\\" + str(
                     self.rec.resolutionRatio[0]) + "Q.png"):
-                Time+=5
+                Time += 5
             if self.end:
                 break
             time.sleep(Time)
@@ -253,7 +250,8 @@ class Fight:
     #         time.sleep()
 
     def Fight(self):
-        self.end=False
+        self.sumsignal[3] = 0
+        self.end = False
         thread=[]
         # thread_za=threading.Thread(target=self.ZA)
         # thread.append(thread_za)
@@ -274,6 +272,8 @@ class Fight:
         for i in range(0, 4):
             self.lock[i] += 1
             print(f"战斗:空房间环视一周上锁{self.lock}")
+        for i in thread:
+            i.daemon = True
         for i in thread:
             i.start()
         for i in thread:

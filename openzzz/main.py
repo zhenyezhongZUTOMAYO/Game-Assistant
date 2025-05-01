@@ -39,8 +39,7 @@ def openZzz():
     keyboard.press(pynput.keyboard.Key['f2'])
     sleep(0.5)
     keyboard.release(pynput.keyboard.Key['f2'])
-    # sleep(2)
-    # pyautogui.press('f2')  # 替代 pynput 的键盘控制
+    # sleep  pyautogui.press('f2')  # 替代 pynput 的键盘控制
     # sleep(2)
     pyautogui.click(convert_coordinates(1819,197,original_res,target_res))#(x,y)作战
     sleep(1)

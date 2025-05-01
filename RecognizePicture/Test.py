@@ -1,3 +1,5 @@
+import random
+
 import pyautogui
 import ctypes
 import sys
@@ -169,8 +171,51 @@ def detectGanTanHao():
     #         print(f"发生错误: {e}")
 
 if __name__=="__main__":
-    winsound.Beep(1000, 500)
-    winsound.Beep(400, 500)
+    # winsound.Beep(1000, 500)
+    # winsound.Beep(400, 500)
+    # original_res = (2560, 1440)
+    # target_res = pyautogui.size()
+    # size_t = 0
+    # if target_res[0] / target_res[1] != 16 / 9:
+    #     size_t = (target_res[1] - target_res[0] / 16 * 9) / 2
+    # time.sleep(3)
+    # pyautogui.click(convert_coordinates(1750, 789 - size_t, original_res, target_res))  # (x,y)战线肃清
+    # time.sleep(1)
+    # pyautogui.click(convert_coordinates(1750, 789 - size_t, original_res, target_res))  # (x,y)点一个buff
+    # time.sleep(1)
+    # pyautogui.click(convert_coordinates(2274, 1372 - size_t, original_res, target_res))  # (x,y)下一步
+    # time.sleep(1)
+    # pyautogui.click(convert_coordinates(2274, 1372 - size_t, original_res, target_res))  # (x,y)出战
+    # rec.RecognizeColor((2245, 92), ('*', 255, '*'))
+    # x, y = (310, 166)
+    # if rec.resolutionRatio[0] == 3840:
+    #     x, y = (458, 245)
+    # elif rec.resolutionRatio[0] == 2560:
+    #     x, y = (310, 166)
+    # pyautogui.moveTo(310,166)
+    # now = time.time()
+    # pixel = pyautogui.pixel(712, 1422)
+    # print(pixel)
+    # print(time.time()-now)
+    # time.sleep(1)
+    # stop = 0
+    # keyboard=pynput.keyboard.Controller()
+    # while (not rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(
+    #         rec.resolutionRatio[0]) + "ZC.png")) and stop < 6:
+    #     stop += 1
+    #     keyboard.press(pynput.keyboard.Key.space)
+    #     time.sleep(0.5)
+    #     keyboard.release(pynput.keyboard.Key.space)
+
+    # x, y = convert_coordinates(1936, 1533, (2560, 1600), rec.resolutionRatio)
+    # pixel = pyautogui.pixel(x, y)
+    # print(pixel)
+    # thread_a = threading.Thread(target=rec.ToRecognizeColorIfThen, args=[method, 2])
+    # thread_a.start()
+    # while True:
+    #     if rec.RecognizeColor(position=(712, 1422), rgb=(255, 255, 0)):
+    #         winsound.Beep(500, 500)
+
     # time.sleep(2)
     # spk=SpeakNpc.SpeakNpc()
     # spk.isBuff()
@@ -276,6 +321,24 @@ if __name__=="__main__":
 #             pyautogui.click(rec.x, rec.y)
 #             break
 #     ft=Fight.Fight()
+#     ft.Fight()
+    def function(rec, location):
+        print('f')
+        for i in range(0, 3):
+            keyboard.press('f')  #+ random.random()/10
+            time.sleep(0.2)
+            keyboard.release('f')
+            time.sleep(0.2)
+    keyboard = pynput.keyboard.Controller()
+    while True:
+        # print(random.random())
+        rec.ToRecognizeColorIfThen(function)
+
+#     time.sleep(3)
+#     keyboard.press('f')
+#     time.sleep(0.2)
+#     keyboard.release('f')
+
 #     while True:
 #         if rec.ToRecognizeWhere(rec.source_path + "Game-Assistant\\Source\\" + str(
 #                 rec.resolutionRatio[0]) + "Fight.png"):

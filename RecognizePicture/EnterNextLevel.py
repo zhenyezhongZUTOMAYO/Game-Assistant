@@ -23,9 +23,10 @@ class LevelSystem:
         self.p=0.3
         self.end=False
         self.real=False
-        self.x=None
-        self.y=None
+        self.x = None
+        self.y = None
         self.As = None
+        self.black = 2
 
     # def RecognizeTarget(self):
     #     """识别目标的方法"""
@@ -72,7 +73,7 @@ class LevelSystem:
                     while self.lock[2] > 0:
                         time.sleep(1)
                         print("Target被锁住!")
-                    print("Tatget解锁")
+                    print("Target解锁")
                 # print("到这里的第二步")
                 ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int(int((self.x - center_x) // 2)), 0)
                 stop = 0
@@ -86,13 +87,12 @@ class LevelSystem:
                     self.signal[1] = 1
                     return
 
-    def RecognizeTarget(self,lock):
+    def RecognizeTarget(self, lock):
         print("开始识别    门")
-        self.rec.lock=self.lock
-        next = ["DaiJiaZhiJian","DaiJiaZhiJian1", "OuRan","OuRan1","ZhiYouHuiTan","ZhiYouHuiTan1",
-                "levelEntrance","levelEntrance1","Break", "Break1","BangBu","BangBu1",
-                "JiShi","JiShi1","TimeStamp","TimeStamp1","WuShang","WuShang1",
-                "YingBi","YingBi1","ZhanBei","ZhanBei1","Boss","Boss1","AnotherBoss","AnotherBoss1"]
+        next = ["DaiJiaZhiJian", "DaiJiaZhiJian1",  "OuRan", "OuRan1", "ZhiYouHuiTan", "ZhiYouHuiTan1",
+                "levelEntrance", "levelEntrance1", "Break",  "Break1", "BangBu", "BangBu1",
+                "JiShi", "JiShi1", "TimeStamp", "TimeStamp1", "WuShang", "WuShang1",
+                "YingBi", "YingBi1", "ZhanBei", "ZhanBei1", "Boss", "Boss1", "AnotherBoss", "AnotherBoss1"]
         while True:
                 # self.rec.pb()
                 # if self.rec.end:
@@ -104,16 +104,22 @@ class LevelSystem:
                         self.rec.resolutionRatio[0]) + f"{i}.png"
                     print(f"门正在识别{i}")
                     if i[-1] == "1":
-                        p=random.random()
-                        if p >=self.p:
+                        p = random.random()
+                        if p >= self.p:
                             continue
                     self.p += 0.03
                     if self.rec.ToRecognizeWhere(image_path_1):
                         # self.As.THRESHOLD = 200000000
-
+                        if i == "BangBu" or i == "BangBu1" or i == "ZhanBei" or i == "ZhanBei":
+                            self.black -= 1
+                            if self.black > 0:
+                                continue
+                        else:
+                            self.black = 4
+                        self.rec.lock = self.lock
                         self.p = 0.3
                         self.signal[1] = 0
-                        self.curpaint=i
+                        self.curpaint = i
                         self.end = False
                         print(f"门成功识别{i}")
                         if self.curpaint[-1] == "1":
@@ -122,7 +128,8 @@ class LevelSystem:
                             time.sleep(1.7)
                             keyboard.release('s')
                             i=i[0:len(i)-1]
-                        thread_a=threading.Thread(target=self.rec.ToRecognizeColorIfThen,args=[self.method,2])
+                        thread_a = threading.Thread(target=self.rec.ToRecognizeColorIfThen, args=[self.method, 2])
+                        thread_a.daemon = True
                         thread_a.start()
                         print("调用method")
                         # print(f"self.rec.sa:{self.rec.sa}")
@@ -132,6 +139,8 @@ class LevelSystem:
                         image_path_1 = self.rec.source_path + "Game-Assistant\\Source\\" + str(
                             self.rec.resolutionRatio[0]) + f"{i}.png"
                         self.tankingImage(image_path_1)
+                        self.rec.end = True
+                        thread_a.join()
                         # print("已经tracking结束")
                         print(f"追踪结束{i}")
                         # image_path_2 = self.rec.source_path + "Game-Assistant\\Source\\" + str(
@@ -258,15 +267,17 @@ class LevelSystem:
     #         self.rec.keyboard.release('w')
     #         self.rec.vb()
 
-    def method(self,rec,location):
+    def method(self, rec, location):
         print("开始method")
         self.signal[1] = 1
         keyboard = pynput.keyboard.Controller()
         self.rec.keyboard.release('w')
-        if self.curpaint[-1]=="1":
-            keyboard.press('f')
-            time.sleep(0.5)
-            keyboard.release('f')
+        if self.curpaint[-1] == "1":
+            for i in range(0, 3):
+                keyboard.press('f')
+                time.sleep(0.2)
+                keyboard.release('f')
+                time.sleep(0.2)
             print("f")
             self.signal[1] = 1
             self.end = True
@@ -274,10 +285,14 @@ class LevelSystem:
         image_path_2 = self.rec.source_path + "Game-Assistant\\Source\\" + str(
             self.rec.resolutionRatio[0]) + f"{self.curpaint+"1"}.png"
         if self.rec.ToRecognizeWhere(image_path_2):
-            keyboard.press('f')
-            time.sleep(0.5)
-            keyboard.release('f')
+            for i in range(0, 3):
+                keyboard.press('f')
+                time.sleep(0.2)
+                keyboard.release('f')
+                time.sleep(0.2)
             print("f")
+            if self.curpaint == "BangBu" or self.curpaint == "BangBu1":
+                self.black = 4
             self.signal[1] = 1
             self.end = True
         else:

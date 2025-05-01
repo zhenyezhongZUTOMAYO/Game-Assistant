@@ -42,7 +42,7 @@ class BuffSelector:
         self.the_end_complete = 0
         self.limit = 999
         self.WinStart=time.time()
-        self.WinEnd=None
+        self.WinTime=None
 
         # 模式配置
         self.modes_config = {
@@ -280,13 +280,16 @@ class BuffSelector:
             #     keyboard.release(pynput.keyboard.Key.esc)
             #     exit_found = True
             #     break
-            if mode_config["exit_image"] =="skip" or self.rec.ToRecognizeWhere(mode_config["exit_image"]):
+            if mode_config["exit_image"] == "skip" or self.rec.ToRecognizeWhere(mode_config["exit_image"]):
                 pyautogui.click(self.rec.x, self.rec.y)
                 exit_found = True
                 break
         if self.current_mode == "TheEnd" and exit_found:
             self.the_end_complete += 1
-            if self.the_end_complete>self.limit:
+            print(f"通关{self.the_end_complete}次!")
+            self.WinTime=time.time()-self.WinStart
+            print(f"通关时间:{(self.WinTime)//60}min{self.WinTime%60}s")
+            if self.the_end_complete >= self.limit:
                 #结束
                 pass
             else:
@@ -295,7 +298,7 @@ class BuffSelector:
                 size_t = 0
                 if target_res[0] / target_res[1] != 16 / 9:
                     size_t = (target_res[1] - target_res[0] / 16 * 9) / 2
-                sleep(3)
+                sleep(10)
                 pyautogui.click(convert_coordinates(1750, 789 - size_t, original_res, target_res))  # (x,y)战线肃清
                 sleep(1)
                 pyautogui.click(convert_coordinates(1750, 789 - size_t, original_res, target_res))  # (x,y)点一个buff

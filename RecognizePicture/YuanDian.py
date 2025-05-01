@@ -43,6 +43,15 @@ class YuanDian:
         self.one = False
         self.lockOne = False
         self.levelOne = False
+        self.s = [1, 1]  # 0lockOne  1levelOne
+
+    def p(self, n):
+        self.s[n] -= 1
+        while self.s[n] < 0:
+            time.sleep(0.2)
+
+    def v(self, n):
+        self.s[n] += 1
 
     def RecognizeYuanDian(self):
 
@@ -88,14 +97,18 @@ class YuanDian:
                     # 在屏幕上查找图片
                     if self.rec.end:
                         self.rec.va()
+                        self.p(1)
                         if self.one and not self.levelOne:
                             self.lock[2] -= 1
                             print(f"圆点:门解锁{self.lock[2]}")
                             self.levelOne = True
+                        self.v(1)
+                        self.p(0)
                         if self.one and not self.lockOne:
                             self.lock[0] -= 1
                             print(f"圆点:防卡解锁{self.lock}")
                             self.lockOne = True
+                        self.v(0)
                         print("退出")
                         return False
                     location = pyautogui.locateOnScreen(image_path_1, confidence=0.8)
@@ -117,12 +130,10 @@ class YuanDian:
                     print(f"第{i}张图片未识别到")
                     if stop > 6:
                         self.rec.real = False
-                        self.rec.va()
-                        print("va()准备开始操作")
-
-                        # print("原点未识别到")
                         self.rec.end = True
-
+                        self.rec.va()
+                        # print("va()准备开始操作")
+                        # print("原点未识别到")
                         return False
                     # print(f"发生错误: {e}")
             # ----识别失败
@@ -138,6 +149,7 @@ class YuanDian:
         # print("******************************进入圆点\n")
         self.rec = Recognize.Recognize()
         thread_a = threading.Thread(target=self.RecognizeYuanDian)
+        thread_a.daemon = True
         thread_a.start()
         screen_width, screen_height = pyautogui.size()
         center_x = screen_width // 2
@@ -155,14 +167,18 @@ class YuanDian:
             # print("进入操作")
             if not thread_a.is_alive() or not self.rec.real:
                 self.signal[2] = 1
+                self.p(1)
                 if self.one and not self.levelOne:
                     self.lock[2] -= 1
                     print(f"圆点:门解锁{self.lock[2]}")
                     self.levelOne = True
+                self.v(1)
+                self.p(0)
                 if self.one and not self.lockOne:
                     self.lock[0] -= 1
                     print(f"圆点:防卡解锁{self.lock}")
                     self.lockOne = True
+                self.v(0)
                 print("检测到识别进程退出,退出")
                 self.rec.vb()
                 return False
@@ -195,15 +211,13 @@ class YuanDian:
                 stick = 0
                 move = True
                 avoid = True
-                if not self.lockOne:
-                    print("self.lockOne为 False")
-                if self.one:
-                    print("self.one为true")
+                self.p(0)
                 if self.one and not self.lockOne:
                     self.lock[0] -= 1
                     print(f"圆点:防卡解锁{self.lock[0]}")
                     print(self.lock)
                     self.lockOne = True
+                self.v(0)
             ctypes.windll.user32.mouse_event(0x0001, ctypes.c_int((self.rec.x - center_x) // 2), 0)
             print(f"x轴偏移{int((self.rec.x - center_x) // 2)}")
             print(f"a:{self.rec.sa}")

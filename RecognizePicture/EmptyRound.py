@@ -50,14 +50,14 @@ class EmptyRound:
             back = self.lock
 
     def LookRound(self):
-        thread_test = threading.Thread(target=self.test)
-        thread_test.start()
+        # thread_test = threading.Thread(target=self.test)
+        # thread_test.start()
         while True:
             if self.signal[0] & self.signal[1] & self.signal[2] & self.signal[3]:
                 time.sleep(12)
                 self.lock[0] += 1
                 print(f"空房间环视一周：防卡上锁{self.lock}")
-                round = 0
+                round = 1
                 while self.signal[0] & self.signal[1] & self.signal[2] & self.signal[3]:
                     if self.lock[1] > 0:
                         while self.lock[1] > 0:
@@ -68,8 +68,12 @@ class EmptyRound:
                     ctypes.windll.user32.mouse_event(0x0001, 10, 0)
                     time.sleep(0.1)
                     round += 1
-                    if round > 600:
+                    if round % 600 == 0:
                         handle_stuck()
-                        round = 0
+                        if round >=1200:
+                            keyboard = pynput.keyboard.Controller()
+                            keyboard.press(pynput.keyboard.Key.space)
+                            time.sleep(0.5)
+                            keyboard.release(pynput.keyboard.Key.space)
                 self.lock[0] -= 1
                 print(f"空房间环视一周，防卡解锁{self.lock[0]}")
