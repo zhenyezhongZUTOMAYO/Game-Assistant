@@ -1,13 +1,16 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import time
 import pynput
 import pyautogui
 import os
 from Recognize import Recognize
 import threading
-import sys
+
 import ctypes
 import random
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 class LevelSystem:

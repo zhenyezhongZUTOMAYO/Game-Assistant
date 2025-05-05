@@ -1,12 +1,15 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from time import sleep
 import Recognize
 import pyautogui
 import pynput
 import threading
 import time
-import os
-import sys
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+
+
 
 def convert_coordinates(x, y, original_res, target_res):
     """

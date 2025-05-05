@@ -1,12 +1,14 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import threading
 
 import pyautogui
 import pynput
 import time
-import sys
-import os
+
 import Recognize
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 
 class Fight:
 

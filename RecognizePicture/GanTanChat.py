@@ -1,12 +1,14 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import Recognize
 import pynput
 import pyautogui
 import threading
 import time
-import sys
-import os
+
 import ctypes
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 class GanTanChat:
     def __init__(self):
         self.rec=Recognize.Recognize()

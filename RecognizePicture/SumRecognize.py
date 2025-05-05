@@ -1,5 +1,7 @@
-import os
 import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 import pyautogui
 import pynput.keyboard
 import GanTanChat
@@ -12,7 +14,7 @@ import threading
 import AvoidStick
 import EmptyRound
 import Fight
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 
 class SumRecognize:
     def __init__(self):

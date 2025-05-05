@@ -1,3 +1,4 @@
+import ctypes
 import sys
 import os
 import subprocess
@@ -5,7 +6,7 @@ from PyQt5.QtWidgets import *
 import RecognizePicture.Output
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor, QTextCursor
-from totaltrigger import TotalTrigger#不断点击启动游戏
+# from totaltrigger import TotalTrigger#不断点击启动游戏
 from qfluentwidgets import(
     SpinBox,ComboBox,CardWidget,setTheme,Theme,NavigationInterface,
     NavigationItemPosition,PrimaryPushButton,TitleLabel,BodyLabel,
@@ -13,6 +14,8 @@ from qfluentwidgets import(
     InfoBarPosition,MessageBox,FluentWindow,GroupHeaderCardWidget,
     setThemeColor,CompactSpinBox
 )
+
+from RecognizePicture.SumRecognize import SumRecognize
 #Version 1  by cy 2025/3/26
 
 #  ======next task======= 
@@ -28,7 +31,7 @@ class GameAssistant(FluentWindow):
         super().__init__()
         self.running = False  # 运行状态标志
         self.initUI()
-        self.tr=TotalTrigger()
+        # self.tr=TotalTrigger()
         self.process=None
         self.start=True
         self.create_action_buttons()
@@ -73,6 +76,7 @@ class GameAssistant(FluentWindow):
         
         # 左侧区域 
         left_widget = QWidget()
+        
         left_layout = QVBoxLayout(left_widget)
         left_layout.setContentsMargins(0, 0, 0, 0)
         left_layout.setSpacing(15)
@@ -98,6 +102,7 @@ class GameAssistant(FluentWindow):
         # 开始运行按钮
         self.start_btn = PrimaryPushButton("开始运行")
         self.start_btn.setObjectName("startButton")
+        #运行游戏与运行脚本不同
         self.start_btn.clicked.connect(self.toggle_running)
         
         # 组装左侧布局
@@ -107,7 +112,7 @@ class GameAssistant(FluentWindow):
         left_layout.addWidget(self.role_card)
         left_layout.addWidget(self.start_btn)
 
-        left_layout.addStretch(1)
+        # left_layout.addStretch(1)
 
         # 右侧区域 
         right_widget = QWidget()
@@ -122,6 +127,7 @@ class GameAssistant(FluentWindow):
         right_layout.addWidget(self.logViewer)
 
         # 主布局比例设置
+
         self.main_layout.addWidget(left_widget, 5)  
         self.main_layout.addWidget(right_widget, 5)
 
@@ -342,7 +348,7 @@ class GameAssistant(FluentWindow):
             self.show_success("","开始运行")
         else:
             self.show_success("","停止运行")
-
+        print(f"Info:运行状态{self.running}")
         if self.running:
             # subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
             #                creationflags=subprocess.CREATE_NO_WINDOW)
@@ -351,10 +357,12 @@ class GameAssistant(FluentWindow):
                 "Start-Process",
                 "python.exe",
                 "-Verb", "RunAs",
-                "-ArgumentList", f"'{__file__[0:__file__.find("Game-Assistant")] + "Game-Assistant\\totaltrigger.py"}'"
+                "-ArgumentList", f"'{__file__[0:__file__.find("Game-Assistant")] + "Game-Assistant\\RecognizePicture\\main.py"}'"
             ])
+            print("Info启动main.py")
         else:
             self.process.terminate()
+            print("Info关闭main.py")
 
     def show_success(self,title,content):
         InfoBar.success(
@@ -407,13 +415,36 @@ class GameAssistant(FluentWindow):
         if at_buttom:
             cursor.movePosition(QTextCursor.End)
             self.logViewer.logText.setTextCursor(cursor)
-        
+    def is_admin(self):
+        """检查当前是否以管理员权限运行"""
+        try:
+            return ctypes.windll.shell32.IsUserAnAdmin()
+        except:
+            return False
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    ex = GameAssistant()
+    sum=SumRecognize()
+    sum.start()
+    # if not ex.is_admin():
+    #     # 如果不是管理员权限，则重新启动自身并以管理员权限运行
+    #     script = os.path.abspath(__file__)
+    #     params = " ".join([f'"{arg}"' for arg in sys.argv[1:]])
+    #     try:
+    #         subprocess.run([
+    #             "powershell",
+    #             "Start-Process",
+    #             "python.exe",
+    #             "-Verb", "RunAs",
+    #             "-ArgumentList", f'"{script}" {params}'
+    #         ])
+    #     except Exception as e:
+    #         print(f"Error: 无法以管理员权限运行: {e}")
+    #     sys.exit(0)  # 退出当前进程
+
     app.setWindowIcon(QIcon(r"Source\配置@3x.ico"))#E:\zzzHollow脚本\src\icon\配置@3x.ico
 
-    ex = GameAssistant()
     ex.show()
     screen=QDesktopWidget().screenGeometry()
     width=screen.width()

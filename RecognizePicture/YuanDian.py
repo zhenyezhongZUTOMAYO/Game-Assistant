@@ -1,10 +1,10 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import Recognize
 import threading
 import pyautogui
-import os
-import sys
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import time
 import ctypes
 from Recognize import rec

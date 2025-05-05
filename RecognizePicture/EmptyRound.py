@@ -1,15 +1,17 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import Recognize
 import pyautogui
 import cv2
 import time
-import os
 import threading
 import pynput
 import ctypes
-import sys
+
 import winsound
 from AvoidStick import handle_stuck
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 class EmptyRound:
