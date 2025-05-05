@@ -65,7 +65,7 @@ class Recognize:
     def vb(self):
         self.sb+=1
 
-    def ToRecognizeIsHave(self,image_path,confidence=0.8):
+    def ToRecognizeIsHave(self,image_path, confidence=0.8):
         thread_a = threading.Thread(target=self.ToRecognizeConWhere, args=[self.source_path + "Game-Assistant\\Source\\" + str(self.resolutionRatio[0]) + "TestSpeak1.png", ])
         thread_a.start()
         stop = 0
@@ -86,7 +86,7 @@ class Recognize:
                     return False
             self.vb()
 
-    def ToRecognizeWhere(self,image_path,confidence=0.8):
+    def ToRecognizeWhere(self,image_path, confidence=0.8):
         """
         用来识别特定图像是否存在,若存在返回其位置
         如果不存在返回False
@@ -137,31 +137,41 @@ class Recognize:
                 if self.end:
                     return False
 
-    def RecognizeColor(self,position,rgb):
+    def RecognizeColor(self, position, rgb):
+        # temp = []
+        # for i in rgb:
+        #     temp.append(i)
         x, y = convert_coordinates(position[0], position[1], (2560, 1600), rec.resolutionRatio)
         pixel = pyautogui.pixel(x, y)
         # print(f"识别结果: {location}")  # 调试输出
+        # for i in range(0,3):
+        #     if temp[i] == '*':
+        #         temp[i] = pixel[i]
         if pixel == rgb:
             return True
+        else:
+            return False
 
-    def ToRecognizeColorIfThen(self,Function,lock=0):
+    def ToRecognizeColorIfThen(self, Function, lock=0):
         while True:
             location = None
             try:
                 # print(f"尝试识别: {image_path}")  # 新增路径打印
-                if self.lock[lock]>0:
+                if self.lock[lock] > 0:
                     while self.lock[lock]>0:
                         time.sleep(1)
                         print("Target被锁住!")
                     return
+                if self.end:
+                    return
                 x, y = convert_coordinates(1936, 1533, (2560, 1600), rec.resolutionRatio)
                 pixel = pyautogui.pixel(x, y)
                 # print(f"识别结果: {location}")  # 调试输出
-                if pixel==(255,255,255):
+                if pixel == (255, 255, 255):
                     # print(f"成功识别坐标: {location}")
-                    print("进入函数!")
+                    # print("进入函数!")
                     # winsound.Beep(500,500)
-                    Function(rec=self,location=location)
+                    Function(rec=self, location=location)
                     return
                 else:
                     time.sleep(0.2)
@@ -186,8 +196,8 @@ class Recognize:
             location = None
             try:
                 # print(f"尝试识别: {image_path}")  # 新增路径打印
-                if self.lock[lock]>0:
-                    while self.lock[lock]>0:
+                if self.lock[lock] > 0:
+                    while self.lock[lock] > 0:
                         time.sleep(1)
                         print("Target被锁住!")
                     return
@@ -232,9 +242,6 @@ class Recognize:
             if self.real:#不断找到位置
                 print("正在操作")
                 #模拟鼠标的移动
-
-                self.signal[signal]=0
-                print(f"Recognize.signal:{self.signal}")
                 if self.lock[lock]>0:
                     self.end=True
                     while self.lock[lock]>0:
@@ -254,11 +261,8 @@ class Recognize:
             else:
                 print("到这里第一步")
 
-                print("将signal赋值为1")
-
                 stop += 1
                 if stop>3:
-                    self.signal[signal]=1
                     return
                 # print("操作完成-误操作")
                 self.vb()

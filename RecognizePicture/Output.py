@@ -26,13 +26,19 @@ class Output(QObject):
 
     # 采用时间+信息输出
     def write(self, text):
-        timestamp = QDateTime.currentDateTime().toString("HH:mm:ss")
-        # self.new_output.emit(f"{timestamp} {text}")
-        if self.log_viewer:
-            if not text.endswith("\n"):
-                text += "\n"
-            self.log_viewer.appendLog(f"{timestamp} {text}")
-        self.original_stdout.write(text)
+        # timestamp = QDateTime.currentDateTime().toString("HH:mm:ss")
+        # # self.new_output.emit(f"{timestamp} {text}")
+        # if self.log_viewer:
+        #     if not text.endswith("\n"):
+        #         text += "\n"
+        #     self.log_viewer.appendLog(f"{timestamp} {text}")
+        # if self.original_stdout is not None:
+        #     # 直接输出到控制台
+        #     self.original_stdout.write(f"{timestamp} {text}")
+        # else:
+        #     print(f"警告：original_stdout 为 None，无法输出: {text}")
+        # self.original_stdout.write(text)
+        pass
 
     # 刷新输出缓冲区
     def flush(self):

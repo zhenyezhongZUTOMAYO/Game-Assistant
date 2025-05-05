@@ -3,6 +3,8 @@ import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import random
 import threading
+import winsound
+
 import cv2
 import numpy as np
 import pyautogui
@@ -58,6 +60,7 @@ class AvoidStick:
         resolutionRatio = pyautogui.size()
         self.THRESHOLD = (340000000 /(3840*2160) )*resolutionRatio[0]*resolutionRatio[1]
         self.STUCK_THRESHOLD = 6
+        self.signal = []
     def capture_screen(self):
         """截取屏幕截图并转换为灰度图像"""
         screenshot = pyautogui.screenshot()  # 截取屏幕
@@ -76,15 +79,15 @@ class AvoidStick:
     def Solve(self):
         while True:
             self.solve()
-            while self.lock[0] > 0:
+            while self.lock[0] > 0 and (self.signal[0] & self.signal[1] & self.signal[2] & self.signal[3]):
                 print(f"防卡Sleep{self.lock}")
                 time.sleep(1)
 
     def solve(self):
         prev_screen = self.capture_screen()  # 获取初始屏幕截图
         stuck_count = 0  # 初始化撞墙计数
-        num=0
-        while self.lock[0] <= 0:
+        num = 0
+        while self.lock[0] <= 0 and not (self.signal[0] & self.signal[1] & self.signal[2] & self.signal[3]):
             time.sleep(CHECK_INTERVAL)  # 等待一段时间
             current_screen = self.capture_screen()  # 获取当前屏幕截图
             diff_sum = self.compare_images(prev_screen, current_screen)  # 比较两张截图的差异
@@ -92,21 +95,25 @@ class AvoidStick:
 
             if diff_sum < self.THRESHOLD:  # 如果屏幕变化值低于阈值
                 print(f"self.THRESHOLD:{self.THRESHOLD}")
+                print(f"self.STUCK_THRESHOLD{self.STUCK_THRESHOLD}")
                 stuck_count += 1
+                print(f"stuck_count{stuck_count}")
                 num += 1
                 print("屏幕几乎不动，可能撞墙！")
+                # winsound.Beep(250, 500)
                 if num > 13:
                     self.STUCK_THRESHOLD = 1
                 if stuck_count > self.STUCK_THRESHOLD:  # 如果连续多次检测到撞墙
                     handle_stuck()  # 调用撞墙处理函数
                     stuck_count = 0  # 重置撞墙计数
             else:
+                # winsound.Beep(500, 500)
                 stuck_count = 0  # 重置撞墙计数
                 num = 0
                 self.STUCK_THRESHOLD = 6
 
             prev_screen = current_screen  # 更新前一帧截图
-
+        # winsound.Beep(500, 500)
 
 
     def solvex(self):
