@@ -168,7 +168,8 @@ class SumRecognize:
         while not self.end:
             time.sleep(1)
 
-
+    def stop(self):
+        self.end = True
 
         # thread_test=threading.Thread(target=self.test)
         # thread_test.start()

@@ -128,7 +128,6 @@ class GameAssistant(FluentWindow):
         right_layout.addWidget(self.logViewer)
 
         # 主布局比例设置
-
         self.main_layout.addWidget(left_widget, 5)  
         self.main_layout.addWidget(right_widget, 5)
 
