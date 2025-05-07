@@ -3,6 +3,7 @@ import sys
 import os
 import ctypes
 import subprocess
+import threading
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QFont, QIcon, QPixmap, QColor, QTextCursor
@@ -37,11 +38,16 @@ class GameAssistant(FluentWindow):
         self.start=True
         self.create_action_buttons()
 
+        self.outputy = Output()
+        sys.stdout = self.outputy
+        sys.stderr = self.outputy  # 同时重定向错误输出
+
         #根据屏幕分辨率设置窗口大小
         # 获取屏幕分辨率
         screen=QDesktopWidget().screenGeometry()
         width=screen.width()
         height=screen.height()
+        self.scale_factor=min(width/1920,height/1080)
         winwidth=(width//1920)*1000
         winheight=(height//1080)*600
         self.resize(winwidth,winheight)
@@ -123,6 +129,7 @@ class GameAssistant(FluentWindow):
         self.output = Output()
         self.output.set_log_viewer(self.logViewer)
         sys.stdout = self.output
+        sys.stderr = self.output  # 重定向标准错误
         right_layout.setContentsMargins(0, 0, 0, 0)
         right_layout.setSpacing(15)
         right_layout.addWidget(self.logViewer)
@@ -346,10 +353,28 @@ class GameAssistant(FluentWindow):
 
         if self.running:
             self.show_success("","开始运行")
+            print("info:开始运行")
         else:
+            print("info:停止运行")
             self.show_success("","停止运行")
-        print(f"Info:运行状态{self.running}")
         if self.running:
+            script_path = os.path.join(os.path.dirname(__file__), "main.py")
+            #加入新参数
+            self.process = subprocess.Popen(
+                ["python312", script_path],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                universal_newlines=True,
+                encoding='utf-8',  # 明确指定编码
+                errors='replace',  # 替换无法解码的字符
+                creationflags=subprocess.CREATE_NO_WINDOW
+            )
+            #新建线程读取输出
+            self.output_thread = threading.Thread(
+                target=self.read_process_output,
+                daemon=True
+            )   
+            self.output_thread.start()         
             # # subprocess.run(["powershell", "Start-Process", f"'{"E:\\MiHoYo\\miHoYo Launcher\\games\\ZenlessZoneZero Game\\ZenlessZoneZero.exe"}'", "-Verb", "RunAs"],
             # #                creationflags=subprocess.CREATE_NO_WINDOW)
             # self.process=subprocess.Popen([
@@ -360,11 +385,14 @@ class GameAssistant(FluentWindow):
             #     "-ArgumentList", f"'{__file__[0:__file__.find("Game-Assistant")] + "Game-Assistant\\RecognizePicture\\main.py"}'"
             # ])
             # print("Info启动main.py")
-            sum=SumRecognize()
-            sum.start()
+            # sum=SumRecognize()
+            # sum.start()
         else:
-            
-            self.process.terminate()
+            # sum.stop()
+            self.show_success("","停止运行")
+            if self.process:
+                self.process.terminate()
+            # self.process.terminate()
             print("Info关闭main.py")
 
     def show_success(self,title,content):
@@ -424,6 +452,23 @@ class GameAssistant(FluentWindow):
             return ctypes.windll.shell32.IsUserAnAdmin()
         except:
             return False
+    
+    def read_process_output(self):
+        """读取子进程输出并转发到LogViewer"""
+        while self.process and self.running:#
+            # 读取标准输出
+            output = self.process.stdout.readline()
+            if output:
+                print(output.strip())
+            
+            # 读取错误输出
+            err = self.process.stderr.readline()
+            if err:
+                print("Error: " + err.strip())
+            
+            # 检查进程是否结束
+            if self.process.poll() is not None:
+                break
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

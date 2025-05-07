@@ -91,7 +91,7 @@ class LevelSystem:
                     return
 
     def RecognizeTarget(self, lock):
-        print("Info 开始识别    门")
+        print("info 开始识别    门")
         next = ["DaiJiaZhiJian", "DaiJiaZhiJian1",  "OuRan", "OuRan1", "ZhiYouHuiTan", "ZhiYouHuiTan1",
                 "levelEntrance", "levelEntrance1", "Break",  "Break1", "BangBu", "BangBu1",
                 "JiShi", "JiShi1", "TimeStamp", "TimeStamp1", "WuShang", "WuShang1",

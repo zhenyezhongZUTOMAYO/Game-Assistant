@@ -12,7 +12,6 @@ from qfluentwidgets import (
     FluentIcon as FIF, CheckBox, StrongBodyLabel, setFont,
     isDarkTheme, InfoBar
 )
-
 class Output(QObject):
     new_output = pyqtSignal(str)
 
@@ -38,11 +37,40 @@ class Output(QObject):
         # else:
         #     print(f"警告：original_stdout 为 None，无法输出: {text}")
         # self.original_stdout.write(text)
-        pass
+        if not text.strip():  # 忽略空内容
+            return
+            
+        timestamp = QDateTime.currentDateTime().toString("HH:mm:ss")
+        if self.log_viewer:
+            if not text.endswith("\n"):
+                text += "\n"
+            self.log_viewer.appendLog(f"{timestamp} {text}")
+        if self.original_stdout is not None:
+            self.original_stdout.write(text)
+        # pass
 
     # 刷新输出缓冲区
     def flush(self):
         self.original_stdout.flush()
+
+
+class log_output(QObject):
+    new_output = pyqtSignal(str)
+    
+    def __init__(self):
+        super().__init__()
+        self.original_stdout = sys.stdout
+        self.log_viewer = None
+    def set_log_viewer(self, log_viewer):
+        """设置日志显示组件"""
+        self.log_viewer = log_viewer
+
+    def log_message(self, text):
+        """向日志显示组件输出信息"""
+        if self.log_viewer:
+            self.log_viewer.appendLog(text)  # 调用 LogViewer 的 appendLog 方法
+        else:
+            print(f"警告：log_viewer 未设置，无法输出日志: {text}")
 
 
 class LogViewer(CardWidget):
@@ -145,14 +173,17 @@ class LogViewer(CardWidget):
 
         # 设置文本颜色
         format = QTextCharFormat()
-        if "Error" in text:
-            text = text.replace("Error", "")
+        # if text.startswith("Error"):r
+        if "error" in text:
+            text = text.replace("error", "")
             format.setForeground(QColor(196, 43, 28))
-        elif "Warning" in text:
-            text = text.replace("Warning", "")
+        # elif text.startswith("Warning"):
+        elif "warning" in text:
+            text = text.replace("warning", "")
             format.setForeground(QColor(255, 184, 0))
-        elif "Info" in text:
-            text = text.replace("Info", "")
+        # elif text.startswith("Info"):
+        elif "info" in text:
+            text = text.replace("info", "")
             format.setForeground(QColor(0, 122, 204) if not isDarkTheme() else QColor(96, 205, 255))
         else:
             return

@@ -59,7 +59,7 @@ class YuanDian:
         self.rec.pb()
         while True:
 
-            print("Info 开始识别    原点")
+            print("info 开始识别    原点")
             next = [2, 3, 9, 15, 18]
 
             # image_path_1 = rec.source_path + "Game-Assistant\\Source\\" + str(
